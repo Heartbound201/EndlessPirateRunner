@@ -372,7 +372,8 @@ MonoBehaviour:
   Gold: 0
   Distance: 1
   Lives: 1
-  boat: {fileID: 11400000, guid: 1d73b522f8561634e8702d05fe4d3329, type: 2}
+  plane: {fileID: 2000302768}
+  shipPrototype: {fileID: 11400000, guid: 1d73b522f8561634e8702d05fe4d3329, type: 2}
 --- !u!4 &89872233
 Transform:
   m_ObjectHideFlags: 0
@@ -380,12 +381,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 89872231}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 1180483270}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &89872234
 SphereCollider:
@@ -1432,7 +1433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 89872232}
-  SeaScrolling: {fileID: 2000302770}
+  seaScrollingPlane: {fileID: 2000302770}
   MenuView: {fileID: 198552165}
   GameView: {fileID: 153073200}
   PauseView: {fileID: 351227316}
@@ -1590,7 +1591,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 500
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -1750,7 +1751,7 @@ Transform:
   - {fileID: 1957672626}
   - {fileID: 1540158790}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1180483269
 GameObject:
@@ -1782,6 +1783,7 @@ Transform:
   m_Children:
   - {fileID: 2000302768}
   - {fileID: 380757803}
+  - {fileID: 89872233}
   m_Father: {fileID: 368348968}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2367,7 +2369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -3151,9 +3153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6105e68612eece4bb0edd0ddcfa2952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  steeringSpeed: 0.1
+  steeringSpeed: 25
   startingScrollingSpeed: 50
-  scrollingAcceleration: 3
   isle: {fileID: 1154080528151886237, guid: cf3a6ccaf88e9004985997cf16a54046, type: 3}
   IsScrolling: 0
 --- !u!114 &2000302771

@@ -4,7 +4,8 @@ public class StateMachine : MonoBehaviour
 {
     private State _currentState;
     public Player Player;
-    public TreadmillScrolling SeaScrolling;
+    // TODO change to singleton
+    public ScrollingPlane seaScrollingPlane;
     public MenuView MenuView;
     public GameView GameView;
     public PauseView PauseView;

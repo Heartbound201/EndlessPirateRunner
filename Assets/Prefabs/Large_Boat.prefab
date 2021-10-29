@@ -77,6 +77,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cannonBallPrefab: {fileID: 5486805860559940334, guid: bf6aa7333ffde0b448be85a9e7199e51, type: 3}
   firingPoint: {fileID: 1216015885294411828}
+  firingAngle: 15
+  firingSpeed: 300
 --- !u!1001 &2508299820279176678
 PrefabInstance:
   m_ObjectHideFlags: 0

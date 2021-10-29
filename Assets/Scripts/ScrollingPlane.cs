@@ -3,12 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TreadmillScrolling : MonoBehaviour
+public class ScrollingPlane : MonoBehaviour
 {
     private float _scrollingSpeed;
     public float steeringSpeed = 0.5f;
     public float startingScrollingSpeed = 50f;
-    public float scrollingAcceleration = 2f;
     public GameObject isle;
     public bool IsScrolling;
 
@@ -29,46 +28,41 @@ public class TreadmillScrolling : MonoBehaviour
     {
         if(!IsScrolling) return;
         
-        // _scrollingSpeed += Time.deltaTime * scrollingAcceleration;
-        CheckInput();
+        Vector3 lateralVector = Steer();
 
         for (int i = 0; i < transform.childCount; i++)
         {
-            transform.GetChild(i).Translate(Vector3.back * _scrollingSpeed * Time.deltaTime);
+            transform.GetChild(i).Translate(Vector3.back * _scrollingSpeed * Time.deltaTime + lateralVector * Time.deltaTime);
+            // Transform child = transform.GetChild(i);
+            // Rigidbody component = child.GetComponent<Rigidbody>();
+            // component.velocity = Vector3.back * _scrollingSpeed + lateralVector;
         }
     }
     
-    private void CheckInput()
+    private Vector3 Steer()
     {
         if (Input.touchCount > 0)
         {
             var touch = Input.GetTouch(0);
             if (touch.position.x < Screen.width / 2)
             {
-                Move(Vector3.right);
+                return Vector3.right * steeringSpeed;
             }
             else if (touch.position.x > Screen.width / 2)
             {
-                Move(Vector3.left);
+                return Vector3.left * steeringSpeed;
             }
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            Move(Vector3.right);
+            return Vector3.right * steeringSpeed;
         }
         else if(Input.GetKey(KeyCode.D))
         {
-            Move(Vector3.left);
+            return Vector3.left * steeringSpeed;
         }
-    }
-
-    private void Move(Vector3 dir)
-    {
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            transform.GetChild(i).Translate(dir * steeringSpeed);
-        }
+        return Vector3.zero;
     }
 
     private void ResetScrollingSpeed()

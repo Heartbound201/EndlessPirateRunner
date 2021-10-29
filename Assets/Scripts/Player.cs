@@ -14,8 +14,11 @@ public class Player : MonoBehaviour
     public int Gold;
     public int Distance;
     public int Lives = 1;
+    
+    // TODO change to singleton
+    public Transform plane;
 
-    [FormerlySerializedAs("boat")] public ShipPrototype shipPrototype;
+    public ShipPrototype shipPrototype;
 
     private GameObject shipGameObject;
     private void OnTriggerEnter(Collider other)
