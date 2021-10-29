@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScrollingPlane : MonoBehaviour
+public class ScrollingPlane : MonoSingleton<ScrollingPlane>
 {
     private float _scrollingSpeed;
     public float steeringSpeed = 0.5f;
@@ -82,5 +82,12 @@ public class ScrollingPlane : MonoBehaviour
     {
         Instantiate(isle, transform);
     }
+    
+    public void StartScrolling(){}
+    public void StopScrolling(){}
+    public void StartGenerating(){}
+    public void StpoGenerating(){}
+    
+    
     
 }

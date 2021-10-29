@@ -11,16 +11,19 @@ public class Player : MonoBehaviour
 {
     public UnityAction OnFatalHit;
     
-    public int Gold;
-    public int Distance;
+    public ObservableInt Gold;
+    public ObservableInt Distance;
     public int Lives = 1;
-    
-    // TODO change to singleton
-    public Transform plane;
 
+    public int scoreIncreasedPerSecond = 10;
     public ShipPrototype shipPrototype;
-
     private GameObject shipGameObject;
+
+    private void Update()
+    {
+        Distance.Value += Mathf.CeilToInt(scoreIncreasedPerSecond * Time.deltaTime);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<Obstacle>())
@@ -34,7 +37,7 @@ public class Player : MonoBehaviour
         else if(other.gameObject.GetComponent<Collectable>())
         {
             Collectable collectable = other.gameObject.GetComponent<Collectable>();
-            Gold += collectable.Worth;
+            Gold.Value += collectable.Worth;
             Destroy(other.gameObject);
             Debug.LogFormat("Collected {0} gold. {1} total", collectable.Worth, Gold);
         }
@@ -53,8 +56,8 @@ public class Player : MonoBehaviour
 
     public void Reset()
     {
-        Gold = 0;
-        Distance = 0;
+        Gold.Value = 0;
+        Distance.Value = 0;
         Lives = 1;
 
         shipGameObject = Instantiate(shipPrototype.prefab, transform);

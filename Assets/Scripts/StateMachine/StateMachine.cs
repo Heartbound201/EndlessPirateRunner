@@ -1,11 +1,10 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class StateMachine : MonoBehaviour
 {
     private State _currentState;
     public Player Player;
-    // TODO change to singleton
-    public ScrollingPlane seaScrollingPlane;
     public MenuView MenuView;
     public GameView GameView;
     public PauseView PauseView;

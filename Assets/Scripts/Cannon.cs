@@ -16,13 +16,11 @@ public class Cannon : MonoBehaviour
     public float firingAngle;
     public float firingSpeed;
     private Camera _camera;
-    public Player player;
 
     // Update is called once per frame
     private void Awake()
     {
         _camera = Camera.main;
-        player = FindObjectOfType<Player>();
     }
 
     void Update()
@@ -55,7 +53,7 @@ public class Cannon : MonoBehaviour
                     Vector3 aim = PredictOnMovingTarget(firingPoint.transform, enemy.transform, Vector3.back * 50f, firingSpeed);
                     // cannonBall.GetComponent<Rigidbody>().velocity = BallisticVelocity(aim, firingAngle);
                     cannonBall.GetComponent<Rigidbody>().velocity = aim;
-                    cannonBall.transform.SetParent(player.plane);
+                    cannonBall.transform.SetParent(ScrollingPlane.Instance.transform);
                     Destroy(cannonBall, 10f);
                     enemy.GetHit();
                 }

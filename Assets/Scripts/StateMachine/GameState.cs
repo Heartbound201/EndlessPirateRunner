@@ -18,7 +18,7 @@ public class GameState : State
         owner.Player.OnFatalHit += FinishClicked;
 
         Time.timeScale = 1;
-        owner.seaScrollingPlane.IsScrolling = true;
+        ScrollingPlane.Instance.IsScrolling = true;
         if (_isNewGame)
         {
             ResetGame();
@@ -29,7 +29,7 @@ public class GameState : State
     private void ResetGame()
     {
         owner.Player.Reset();
-        owner.seaScrollingPlane.Reset();
+        ScrollingPlane.Instance.Reset();
     }
 
     public override void ExitState()
@@ -37,7 +37,7 @@ public class GameState : State
         owner.GameView.Hide();
         owner.GameView.OnPauseClicked -= PauseClicked;
         owner.Player.OnFatalHit -= FinishClicked;
-        owner.seaScrollingPlane.IsScrolling = false;
+        ScrollingPlane.Instance.IsScrolling = false;
         Time.timeScale = 0;
         
         base.ExitState();

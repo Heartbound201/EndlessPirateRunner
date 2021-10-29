@@ -42,7 +42,6 @@ public class EntityGenerator : MonoBehaviour
         var screenPosition = GetRandomScreenPosition();
         o.transform.position = new Vector3(screenPosition.x, horizonHeight, horizonDistance);
         Enemy enemy = o.GetComponent<Enemy>();
-        enemy.plane = parent;
     }
 
     void GenerateObstacle()

@@ -5,8 +5,6 @@ using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour
 {
-    // TODO change to singleton
-    public Transform plane;
     public int Lives = 1;
     public CollectablePrototype reward;
     // Start is called before the first frame update
@@ -38,7 +36,7 @@ public class Enemy : MonoBehaviour
         if (reward != null)
         {
             GameObject o = Instantiate(reward.prefab, transform.position, Quaternion.identity);
-            o.transform.SetParent(plane);
+            o.transform.SetParent(ScrollingPlane.Instance.transform);
         }
     }
 }
