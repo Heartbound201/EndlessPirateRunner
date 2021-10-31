@@ -14,15 +14,15 @@ public class GameState : State
     {
         base.EnterState();
         
-        owner.GameView.OnPauseClicked += PauseClicked;
-        owner.Player.OnFatalHit += FinishClicked;
-
         Time.timeScale = 1;
         ScrollingPlane.Instance.IsScrolling = true;
         if (_isNewGame)
         {
             ResetGame();
         }
+        owner.GameView.OnPauseClicked += PauseClicked;
+        owner.Player.playerShip.OnFatalHit += FinishClicked;
+
         owner.GameView.Show();
     }
 
@@ -36,7 +36,7 @@ public class GameState : State
     {
         owner.GameView.Hide();
         owner.GameView.OnPauseClicked -= PauseClicked;
-        owner.Player.OnFatalHit -= FinishClicked;
+        owner.Player.playerShip.OnFatalHit -= FinishClicked;
         ScrollingPlane.Instance.IsScrolling = false;
         Time.timeScale = 0;
         

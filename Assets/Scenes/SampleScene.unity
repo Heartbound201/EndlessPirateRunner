@@ -464,8 +464,6 @@ GameObject:
   m_Component:
   - component: {fileID: 89872233}
   - component: {fileID: 89872232}
-  - component: {fileID: 89872234}
-  - component: {fileID: 89872235}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -487,8 +485,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Gold: {fileID: 11400000, guid: 907066c129623e34c96762f209b5392c, type: 2}
   Distance: {fileID: 11400000, guid: fa2e50ade30dce242826c8d069408d8c, type: 2}
-  Lives: 1
+  scoreIncreasedPerSecond: 10
   shipPrototype: {fileID: 11400000, guid: 1d73b522f8561634e8702d05fe4d3329, type: 2}
+  playerShip: {fileID: 0}
 --- !u!4 &89872233
 Transform:
   m_ObjectHideFlags: 0
@@ -500,38 +499,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1180483270}
-  m_RootOrder: 2
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &89872234
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 89872231}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 25
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &89872235
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 89872231}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 2
-  m_CollisionDetection: 0
 --- !u!1 &105441073
 GameObject:
   m_ObjectHideFlags: 0
@@ -2059,7 +2029,6 @@ Transform:
   m_Children:
   - {fileID: 2000302768}
   - {fileID: 380757803}
-  - {fileID: 89872233}
   m_Father: {fileID: 368348968}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

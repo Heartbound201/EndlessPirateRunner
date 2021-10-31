@@ -11,56 +11,25 @@ public class Cannon : MonoBehaviour
     // TODO add vfx
     // TODO add sfx
     public GameObject cannonBallPrefab;
-    public Transform firingPoint;
     [Range(10f, 45f)]
     public float firingAngle;
     public float firingSpeed;
-    private Camera _camera;
+    public float firingCooldown;
+    public ParticleSystem firingVfx;
 
-    // Update is called once per frame
-    private void Awake()
+
+    public IEnumerator Fire(Enemy enemy)
     {
-        _camera = Camera.main;
+        Vector3 aim = PredictOnMovingTarget(transform, enemy.transform, Vector3.back * 50f, firingSpeed);
+        GameObject cannonBall = Instantiate(cannonBallPrefab, transform.position, Quaternion.identity);
+        firingVfx.Play();
+        // cannonBall.GetComponent<Rigidbody>().velocity = BallisticVelocity(aim, firingAngle);
+        cannonBall.GetComponent<Rigidbody>().velocity = aim;
+        cannonBall.transform.SetParent(ScrollingPlane.Instance.transform);
+        Destroy(cannonBall, 10f);
+        yield return new WaitForSeconds(firingCooldown);
     }
 
-    void Update()
-    {
-        // TODO move elsewhere
-        if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
-        {
-            FireRaycast(Input.GetTouch(0).position);
-        }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            FireRaycast(Input.mousePosition);
-        }
-    }
-
-    private void FireRaycast(Vector3 touch)
-    {
-        Ray raycast = _camera.ScreenPointToRay(touch);
-        Debug.DrawRay(raycast.origin, raycast.direction * 100);
-        if (Physics.Raycast(raycast, out var raycastHit))
-        {
-            Debug.Log("Something Hit " + raycastHit.collider.name);
-            if (raycastHit.collider != null) ;
-            {
-                Enemy enemy = raycastHit.collider.gameObject.GetComponent<Enemy>();
-                if (enemy != null)
-                {
-                    GameObject cannonBall = Instantiate(cannonBallPrefab, firingPoint.transform.position, Quaternion.identity);
-                    Vector3 aim = PredictOnMovingTarget(firingPoint.transform, enemy.transform, Vector3.back * 50f, firingSpeed);
-                    // cannonBall.GetComponent<Rigidbody>().velocity = BallisticVelocity(aim, firingAngle);
-                    cannonBall.GetComponent<Rigidbody>().velocity = aim;
-                    cannonBall.transform.SetParent(ScrollingPlane.Instance.transform);
-                    Destroy(cannonBall, 10f);
-                    enemy.GetHit();
-                }
-            }
-        }
-    }
-    
     private Vector3 BallisticVelocity(Vector3 destination, float angle)
     {
         Vector3 dir = destination - transform.position; // get Target Direction
@@ -100,14 +69,6 @@ public class Cannon : MonoBehaviour
 
         Debug.LogFormat("aim at {0}, t1 {1}, t2 {2}", (target.position + velTarget * (float) t), t1, t2);
         return velTarget * (float) t + target.position;
-
-
-
-
-        // Vector3 P_InitialTargetPosition = target.position;
-        // Vector3 V_InitialVelocityTarget = velTarget;
-        // float s_firingSpeed = firingSpeed;
-        // float t_timeOfImpact = 0f;
     }
     
 }
