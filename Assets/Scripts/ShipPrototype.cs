@@ -6,4 +6,7 @@ using UnityEngine;
 public class ShipPrototype : ScriptableObject
 {
     public GameObject prefab;
+    public int cost;
+    public Sprite sprite;
+    public bool hasCannons;
 }

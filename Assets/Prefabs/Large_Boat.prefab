@@ -47,10 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ad63f17b12492246a838a877d7b4baf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Gold: {fileID: 11400000, guid: 907066c129623e34c96762f209b5392c, type: 2}
-  Distance: {fileID: 11400000, guid: fa2e50ade30dce242826c8d069408d8c, type: 2}
-  Lives: 1
-  Cannon: {fileID: 556510932565332797}
+  lives: 1
+  gold: {fileID: 11400000, guid: 907066c129623e34c96762f209b5392c, type: 2}
+  cannon: {fileID: 556510932565332797}
+  firingCooldown: 1
 --- !u!54 &4869876911078508194
 Rigidbody:
   m_ObjectHideFlags: 0

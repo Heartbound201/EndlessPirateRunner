@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 2508299821562689679}
   - component: {fileID: 3202896770620137661}
   - component: {fileID: 7036967965009715432}
+  - component: {fileID: 5518029076747362712}
   m_Layer: 0
   m_Name: Medium_Boat
   m_TagString: Untagged
@@ -145,6 +146,22 @@ CapsuleCollider:
   m_Height: 40
   m_Direction: 2
   m_Center: {x: 0, y: 10, z: -5}
+--- !u!114 &5518029076747362712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2508299821562689672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ad63f17b12492246a838a877d7b4baf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lives: 1
+  gold: {fileID: 11400000, guid: 907066c129623e34c96762f209b5392c, type: 2}
+  cannon: {fileID: 0}
+  firingCooldown: 1
 --- !u!1 &4027745459125892136
 GameObject:
   m_ObjectHideFlags: 0

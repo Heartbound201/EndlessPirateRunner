@@ -41,7 +41,7 @@ public class EntityGenerator : MonoBehaviour
         GameObject o = Instantiate(randomProto.prefab, parent);
         var screenPosition = GetRandomScreenPosition();
         o.transform.position = new Vector3(screenPosition.x, horizonHeight, horizonDistance);
-        Enemy enemy = o.GetComponent<Enemy>();
+        EnemyShip enemyShip = o.GetComponent<EnemyShip>();
     }
 
     void GenerateObstacle()

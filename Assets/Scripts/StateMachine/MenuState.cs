@@ -7,6 +7,7 @@ public class MenuState : State
         base.EnterState();
 
         owner.MenuView.OnStartClicked += StartClicked;
+        owner.MenuView.OnShopClicked += ShopClicked;
 
         Time.timeScale = 0;
         
@@ -18,6 +19,7 @@ public class MenuState : State
         owner.MenuView.Hide();
 
         owner.MenuView.OnStartClicked -= StartClicked;
+        owner.MenuView.OnShopClicked -= ShopClicked;
 
         base.ExitState();
     }
@@ -25,6 +27,10 @@ public class MenuState : State
     private void StartClicked()
     {
         owner.ChangeState(new GameState(true));
+    }
+    private void ShopClicked()
+    {
+        owner.ChangeState(new ShopState());
     }
 
 }

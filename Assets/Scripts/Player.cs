@@ -26,7 +26,9 @@ public class Player : MonoBehaviour
     }
 
     public int scoreIncreasedPerSecond = 10;
-    public ShipPrototype shipPrototype;
+    public ShipPrototype currentShip;
+    public ShipPrototype startingShip;
+    public List<ShipPrototype> availableShips = new List<ShipPrototype>();
     public PlayerShip playerShip;
 
     private SaveState _saveState = new SaveState();
@@ -46,7 +48,7 @@ public class Player : MonoBehaviour
         gold.Value = _saveState.gold;
         distance.Value = 0;
 
-        GameObject shipGO = Instantiate(shipPrototype.prefab, transform);
+        GameObject shipGO = Instantiate(currentShip.prefab, transform);
         playerShip = shipGO.GetComponent<PlayerShip>();
     }
 
@@ -55,8 +57,8 @@ public class Player : MonoBehaviour
         _saveState.gold = gold.Value;
         if(distance.Value > _saveState.highscore)
             _saveState.highscore = distance.Value;
-        _saveState.currentShip = shipPrototype;
-        _saveState.unlockedShips = new List<ShipPrototype>() {shipPrototype};
+        _saveState.currentShip = currentShip;
+        _saveState.unlockedShips = availableShips;
         
         FileManager.WriteToFile(_saveState);
     }
@@ -66,7 +68,12 @@ public class Player : MonoBehaviour
         _saveState = FileManager.ReadFromFile();
 
         gold.Value = _saveState.gold;
-        shipPrototype = _saveState.currentShip;
+        currentShip = _saveState.currentShip;
+        availableShips = _saveState.unlockedShips;
+        if (currentShip == null)
+        {
+            currentShip = startingShip;
+        }
         
     }
 }

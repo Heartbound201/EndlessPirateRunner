@@ -7,12 +7,12 @@ public class CannonBall : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        Enemy enemy = other.gameObject.GetComponent<Enemy>();
-        if (enemy != null)
+        IDamageable damageable = other.gameObject.GetComponent<IDamageable>();
+        if (damageable != null)
         {
-            enemy.GetHit();
+            damageable.GetHit();
         }
-        
+        // TODO vfx sfx
         Destroy(gameObject);
     }
 }

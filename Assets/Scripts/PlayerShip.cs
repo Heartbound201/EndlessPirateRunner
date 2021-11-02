@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerShip : MonoBehaviour
+public class PlayerShip : Ship
 {
     public UnityAction OnFatalHit;
     
-    public ObservableInt Gold;
-    public ObservableInt Distance;
-    public int Lives = 1;
-    public Cannon Cannon;
+    public ObservableInt gold;
+    public Cannon cannon;
+    public int firingCooldown = 1;
+    private float _timer;
+
+    private bool CanShoot => !(cannon == null) && _timer > firingCooldown;
+
     private Camera _camera;
 
     private void Awake()
@@ -19,6 +22,8 @@ public class PlayerShip : MonoBehaviour
     }
     void Update()
     {
+        _timer += Time.deltaTime;
+        
         if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
         {
             FireRaycast(Input.GetTouch(0).position);
@@ -39,10 +44,14 @@ public class PlayerShip : MonoBehaviour
             Debug.Log("Something Hit " + raycastHit.collider.name);
             if (raycastHit.collider != null) ;
             {
-                Enemy enemy = raycastHit.collider.gameObject.GetComponent<Enemy>();
-                if (enemy != null)
+                EnemyShip enemyShip = raycastHit.collider.gameObject.GetComponent<EnemyShip>();
+                if (enemyShip != null)
                 {
-                    StartCoroutine(Cannon.Fire(enemy));
+                    if (CanShoot)
+                    {
+                        cannon.Fire(enemyShip.transform.position, Vector3.back * 50f);
+                        _timer = 0;
+                    }
                 }
             }
         }
@@ -55,23 +64,23 @@ public class PlayerShip : MonoBehaviour
         {
             GetHit();
         }
-        else if (obj.GetComponent<Enemy>())
+        else if (obj.GetComponent<EnemyShip>())
         {
             GetHit();
         }
         else if(other.gameObject.GetComponent<Collectable>())
         {
             Collectable collectable = obj.GetComponent<Collectable>();
-            Gold.Value += collectable.Worth;
+            gold.Value += collectable.Worth;
             Destroy(obj);
-            Debug.LogFormat("Collected {0} gold. {1} total", collectable.Worth, Gold);
+            Debug.LogFormat("Collected {0} gold. {1} total", collectable.Worth, gold);
         }
     }
 
-    public void GetHit()
+    public override void GetHit()
     {
-        Lives--;
-        if (Lives <= 0)
+        lives--;
+        if (lives <= 0)
         {
             // TODO sunk animation
             OnFatalHit?.Invoke();

@@ -14,41 +14,48 @@ public class Cannon : MonoBehaviour
     [Range(10f, 45f)]
     public float firingAngle;
     public float firingSpeed;
-    public float firingCooldown;
     public ParticleSystem firingVfx;
 
 
-    public IEnumerator Fire(Enemy enemy)
+    public void Fire(Vector3 target, Vector3 targetVel)
     {
-        Vector3 aim = PredictOnMovingTarget(transform, enemy.transform, Vector3.back * 50f, firingSpeed);
-        GameObject cannonBall = Instantiate(cannonBallPrefab, transform.position, Quaternion.identity);
+        Vector3 position = transform.position;
+        Vector3 aim = PredictOnMovingTarget(position, target, targetVel, firingSpeed);
+        GameObject cannonBall = Instantiate(cannonBallPrefab, position, Quaternion.identity);
         firingVfx.Play();
-        // cannonBall.GetComponent<Rigidbody>().velocity = BallisticVelocity(aim, firingAngle);
-        cannonBall.GetComponent<Rigidbody>().velocity = aim;
+        // TODO sfx play
+        cannonBall.GetComponent<Rigidbody>().velocity = BallisticVelocity(aim, firingAngle, firingSpeed);
+        // cannonBall.GetComponent<Rigidbody>().velocity = aim;
         cannonBall.transform.SetParent(ScrollingPlane.Instance.transform);
         Destroy(cannonBall, 10f);
-        yield return new WaitForSeconds(firingCooldown);
     }
 
-    private Vector3 BallisticVelocity(Vector3 destination, float angle)
+    private Vector3 BallisticVelocity(Vector3 destination, float angle, float bulletSpeed)
     {
         Vector3 dir = destination - transform.position; // get Target Direction
         float height = dir.y; // get height difference
         dir.y = 0; // retain only the horizontal difference
         float dist = dir.magnitude; // get horizontal direction
-        float a = angle * Mathf.Deg2Rad; // Convert angle to radians
-        dir.y = dist * Mathf.Tan(a); // set dir to the elevation angle.
-        dist += height / Mathf.Tan(a); // Correction for small height differences
+
+        float b = (float) (0.5 * Mathf.Asin((dist * Physics.gravity.magnitude) / (bulletSpeed * bulletSpeed)));
+        dir.y = dist * Mathf.Tan(b); // set dir to the elevation angle.
+        dist += height / Mathf.Tan(b); // Correction for small height differences
+        
+        // float a = angle * Mathf.Deg2Rad; // Convert angle to radians
+        // dir.y = dist * Mathf.Tan(a); // set dir to the elevation angle.
+        // dist += height / Mathf.Tan(a); // Correction for small height differences
 
         // Calculate the velocity magnitude
-        float velocity = Mathf.Sqrt(dist * Physics.gravity.magnitude / Mathf.Sin(2 * a));
-        Debug.LogFormat("dir {0}, dir norm {1}, vel {2}, angle {3}, target {4}, res {5}", dir, dir.normalized, velocity, a, destination, dir.normalized * velocity);
-        return 100 * dir.normalized; // Return a normalized vector.
+        // float velocity = Mathf.Sqrt(dist * Physics.gravity.magnitude / Mathf.Sin(2 * a));
+        
+        Debug.LogFormat("dir {0}, dir norm {1}, vel {2}, angle {3}, target {4}, res {5}", dir, dir.normalized, bulletSpeed, b, destination, dir.normalized * bulletSpeed);
+        return bulletSpeed * dir.normalized; // Return a normalized vector.
     }
 
-    private Vector3 PredictOnMovingTarget(Transform shooter, Transform target, Vector3 velTarget, float bulletSpeed)
+    private Vector3 PredictOnMovingTarget(Vector3 shooter, Vector3 target, Vector3 velTarget, float bulletSpeed)
     {
-        Vector3 relativePos = target.position - shooter.position;
+        Debug.LogFormat("predict from {0}, to {1}, at {2}", shooter, target, bulletSpeed);
+        Vector3 relativePos = target - shooter;
         double a = Vector3.Dot(velTarget, velTarget) - (bulletSpeed * bulletSpeed);
         double b = 2 * Vector3.Dot(velTarget, relativePos);
         double c = Vector3.Dot(relativePos, relativePos);
@@ -67,8 +74,8 @@ public class Cannon : MonoBehaviour
             t = t2;
         }
 
-        Debug.LogFormat("aim at {0}, t1 {1}, t2 {2}", (target.position + velTarget * (float) t), t1, t2);
-        return velTarget * (float) t + target.position;
+        Debug.LogFormat("aim at {0}, t1 {1}, t2 {2}", (target + velTarget * (float) t), t1, t2);
+        return velTarget * (float) t + target;
     }
     
 }
