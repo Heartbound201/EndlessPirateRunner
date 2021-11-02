@@ -6,9 +6,8 @@
         owner.GameOverView.OnRetryClicked += RetryClicked;
         owner.GameOverView.OnShopClicked += QuitClicked;
         
-        owner.GameOverView.FillRecap();
-        // TODO save score
-        // TODO save gold
+        owner.GameOverView.FillRecap(owner.Player);
+        owner.Player.Save();
 
         owner.GameOverView.Show();
     }

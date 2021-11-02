@@ -6,10 +6,18 @@ using UnityEngine;
 [Serializable]
 public class SaveState
 {
-    private int gold;
-    private int highscore;
-    private ShipPrototype currentShip;
-    private List<ShipPrototype> unlockedShips;
-    
-    
+    public int gold;
+    public int highscore;
+    public ShipPrototype currentShip;
+    public List<ShipPrototype> unlockedShips;
+
+    public string ToJson()
+    {
+        return JsonUtility.ToJson(this);
+    }
+
+    public void FromJson(string json)
+    {
+        JsonUtility.FromJsonOverwrite(json, this);
+    }
 }

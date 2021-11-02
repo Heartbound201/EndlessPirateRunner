@@ -21,19 +21,19 @@ public class GameOverView : View
         OnShopClicked?.Invoke();
     }
 
-    public void FillRecap()
+    public void FillRecap(Player player)
     {
         NewHighScore.gameObject.SetActive(false);
         GoldText.text = Gold.Value.ToString();
         DistanceText.text = Distance.Value.ToString();
-        if (IsNewHighScore(Distance.Value))
+        if (IsNewHighScore(player.HighScore, Distance.Value))
         {
             NewHighScore.gameObject.SetActive(true);
         }
     }
 
-    private bool IsNewHighScore(int value)
+    private bool IsNewHighScore(int oldScore, int newScore)
     {
-        return true;
+        return oldScore < newScore;
     }
 }

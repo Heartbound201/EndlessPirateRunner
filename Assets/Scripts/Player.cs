@@ -9,25 +9,64 @@ using UnityEngine.Serialization;
 public class Player : MonoBehaviour
 {
     
-    public ObservableInt Gold;
-    public ObservableInt Distance;
+    public ObservableInt gold;
+    public ObservableInt distance;
+
+    public int HighScore
+    {
+        get
+        {
+            if (_saveState != null)
+            {
+                return _saveState.highscore;
+            }
+
+            return 0;
+        }
+    }
 
     public int scoreIncreasedPerSecond = 10;
     public ShipPrototype shipPrototype;
     public PlayerShip playerShip;
 
+    private SaveState _saveState = new SaveState();
+
+    private void Awake()
+    {
+        Load();
+    }
 
     private void Update()
     {
-        Distance.Value += Mathf.CeilToInt(scoreIncreasedPerSecond * Time.deltaTime);
+        distance.Value += Mathf.CeilToInt(scoreIncreasedPerSecond * Time.deltaTime);
     }
 
     public void Reset()
     {
-        Gold.Value = 0;
-        Distance.Value = 0;
+        gold.Value = _saveState.gold;
+        distance.Value = 0;
 
         GameObject shipGO = Instantiate(shipPrototype.prefab, transform);
         playerShip = shipGO.GetComponent<PlayerShip>();
+    }
+
+    public void Save()
+    {
+        _saveState.gold = gold.Value;
+        if(distance.Value > _saveState.highscore)
+            _saveState.highscore = distance.Value;
+        _saveState.currentShip = shipPrototype;
+        _saveState.unlockedShips = new List<ShipPrototype>() {shipPrototype};
+        
+        FileManager.WriteToFile(_saveState);
+    }
+
+    public void Load()
+    {
+        _saveState = FileManager.ReadFromFile();
+
+        gold.Value = _saveState.gold;
+        shipPrototype = _saveState.currentShip;
+        
     }
 }
