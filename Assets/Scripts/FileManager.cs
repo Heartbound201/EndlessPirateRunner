@@ -12,7 +12,16 @@ public class FileManager
     public static SaveState ReadFromFile()
     {
         SaveState save = new SaveState();
-        save.FromJson(File.ReadAllText(Application.persistentDataPath + SAVE_FILENAME));
+        try
+        {
+            string json = File.ReadAllText(Application.persistentDataPath + SAVE_FILENAME);
+            save.FromJson(json);
+        }
+        catch (FileNotFoundException fnf)
+        {
+            Debug.LogWarning("no save file found");
+        }
+
         return save;
     }
 }
