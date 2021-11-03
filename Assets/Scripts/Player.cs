@@ -73,6 +73,7 @@ public class Player : MonoBehaviour
         if (currentShip == null)
         {
             currentShip = startingShip;
+            availableShips = new List<ShipPrototype>() {startingShip};
         }
         
     }

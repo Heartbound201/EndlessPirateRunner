@@ -9,7 +9,7 @@ public class SaveState
     public int gold;
     public int highscore;
     public ShipPrototype currentShip;
-    public List<ShipPrototype> unlockedShips;
+    public List<ShipPrototype> unlockedShips = new List<ShipPrototype>();
 
     public string ToJson()
     {
