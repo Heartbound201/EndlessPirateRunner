@@ -10,6 +10,7 @@ public class StateMachine : MonoBehaviour
     public PauseView PauseView;
     public GameOverView GameOverView;
     public ShopView ShopView;
+    public SettingsView SettingsView;
 
     private void Start()
     {
@@ -18,6 +19,7 @@ public class StateMachine : MonoBehaviour
         PauseView.Hide();
         GameOverView.Hide();
         ShopView.Hide();
+        SettingsView.Hide();
         ChangeState(new MenuState());
     }
 

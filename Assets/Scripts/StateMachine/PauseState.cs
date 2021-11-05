@@ -7,7 +7,7 @@ public class PauseState : State
         base.EnterState();
         
         owner.PauseView.OnResumeClicked += ResumeClicked;
-        owner.PauseView.OnShopClicked += ShopClicked;
+        owner.PauseView.OnMenuClicked += MenuClicked;
         
         owner.PauseView.Show();
     }
@@ -16,7 +16,7 @@ public class PauseState : State
     {
         owner.PauseView.Hide();
         owner.PauseView.OnResumeClicked -= ResumeClicked;
-        owner.PauseView.OnShopClicked -= ShopClicked;
+        owner.PauseView.OnMenuClicked -= MenuClicked;
         
         base.ExitState();
     }
@@ -34,9 +34,9 @@ public class PauseState : State
     {
         owner.ChangeState(new GameState(false));
     }
-    private void ShopClicked()
+    private void MenuClicked()
     {
-        owner.ChangeState(new ShopState());
+        owner.ChangeState(new MenuState());
     }
 
 }

@@ -4,7 +4,7 @@
     {
         base.EnterState();
         owner.GameOverView.OnRetryClicked += RetryClicked;
-        owner.GameOverView.OnShopClicked += QuitClicked;
+        owner.GameOverView.OnMenuClicked += MenuClicked;
         
         owner.GameOverView.FillRecap(owner.Player);
         owner.Player.Save();
@@ -16,7 +16,7 @@
     {
         owner.GameOverView.Hide();
         owner.GameOverView.OnRetryClicked -= RetryClicked;
-        owner.GameOverView.OnShopClicked -= QuitClicked;
+        owner.GameOverView.OnMenuClicked -= MenuClicked;
 
         base.ExitState();
     }
@@ -25,7 +25,7 @@
     {
         owner.ChangeState(new GameState(true));
     }
-    private void QuitClicked()
+    private void MenuClicked()
     {
         owner.ChangeState(new MenuState());
     }

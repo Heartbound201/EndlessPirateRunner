@@ -8,9 +8,11 @@ public class MenuState : State
 
         owner.MenuView.OnStartClicked += StartClicked;
         owner.MenuView.OnShopClicked += ShopClicked;
+        owner.MenuView.OnQuitClicked += QuitClicked;
+        owner.MenuView.OnSettingsClicked += SettingsClicked;
 
         Time.timeScale = 0;
-        
+
         owner.MenuView.Show();
     }
 
@@ -20,6 +22,8 @@ public class MenuState : State
 
         owner.MenuView.OnStartClicked -= StartClicked;
         owner.MenuView.OnShopClicked -= ShopClicked;
+        owner.MenuView.OnQuitClicked -= QuitClicked;
+        owner.MenuView.OnSettingsClicked -= SettingsClicked;
 
         base.ExitState();
     }
@@ -28,9 +32,23 @@ public class MenuState : State
     {
         owner.ChangeState(new GameState(true));
     }
+
     private void ShopClicked()
     {
         owner.ChangeState(new ShopState());
     }
 
+    private void QuitClicked()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
+
+    private void SettingsClicked()
+    {
+        owner.ChangeState(new SettingsState());
+    }
 }

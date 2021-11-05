@@ -3,14 +3,14 @@
 public class PauseView : View
 {
     public UnityAction OnResumeClicked;
-    public UnityAction OnShopClicked;
+    public UnityAction OnMenuClicked;
     
     public void ResumeClick()
     {
         OnResumeClicked?.Invoke();
     }
-    public void ShopClick()
+    public void MenuClick()
     {
-        OnShopClicked?.Invoke();
+        OnMenuClicked?.Invoke();
     }
 }

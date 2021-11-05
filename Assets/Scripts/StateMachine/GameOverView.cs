@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class GameOverView : View
 {
     public UnityAction OnRetryClicked;
-    public UnityAction OnShopClicked;
+    public UnityAction OnMenuClicked;
     
     public ObservableInt Gold;
     public Text GoldText;
@@ -16,9 +16,9 @@ public class GameOverView : View
     {
         OnRetryClicked?.Invoke();
     }
-    public void ShopClick()
+    public void MenuClick()
     {
-        OnShopClicked?.Invoke();
+        OnMenuClicked?.Invoke();
     }
 
     public void FillRecap(Player player)
