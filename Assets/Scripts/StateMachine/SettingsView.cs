@@ -7,9 +7,8 @@ public class SettingsView : View
 {
     public UnityAction OnMenuClicked;
 
-    public static string PREF_KEY_MUSIC_VOLUME = "music_volume";
-    public static string PREF_KEY_SFX_VOLUME = "sfx_volume";
-
+    public AudioManager audioManager;
+    
     public Slider musicSlider;
     public Slider sfxSlider;
 
@@ -18,28 +17,21 @@ public class SettingsView : View
         musicSlider.onValueChanged.AddListener(
             delegate
             {
-                SavePref(PREF_KEY_MUSIC_VOLUME, musicSlider.value);
-                // TODO play sample sound for feedback
+                // SavePref(PREF_KEY_MUSIC_VOLUME, musicSlider.value);
+                audioManager.SetMixerVolume(AudioManager.MIXER_PARAM_MUSIC_VOLUME, musicSlider.value);
             });
         sfxSlider.onValueChanged.AddListener(
             delegate
             {
-                SavePref(PREF_KEY_SFX_VOLUME, sfxSlider.value);
-                // TODO play sample sound for feedback
+                // SavePref(PREF_KEY_SFX_VOLUME, sfxSlider.value);
+                audioManager.SetMixerVolume(AudioManager.MIXER_PARAM_SFX_VOLUME, sfxSlider.value);
             });
-    }
-
-    private void SavePref(string key, float value)
-    {
-        PlayerPrefs.SetFloat(key, value);
-        PlayerPrefs.Save();
-        
     }
 
     private void LoadPrefs()
     {
-        musicSlider.value = PlayerPrefs.GetFloat(PREF_KEY_MUSIC_VOLUME, 1f);
-        sfxSlider.value = PlayerPrefs.GetFloat(PREF_KEY_SFX_VOLUME, 1f);
+        musicSlider.value = audioManager.GetMixerVolume(AudioManager.MIXER_PARAM_MUSIC_VOLUME);
+        sfxSlider.value = audioManager.GetMixerVolume(AudioManager.MIXER_PARAM_SFX_VOLUME);
     }
 
 
