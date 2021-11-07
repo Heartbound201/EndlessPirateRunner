@@ -33,8 +33,7 @@ public class EnemyShip : Ship
 
     private void Fire()
     {
-        // Vector3 target = new Vector3(Random.Range(-10, 10), 5, 0);
-        cannon.Fire(Vector3.zero, Vector3.zero);
+        cannon.Fire(Vector3.zero);
     }
 
     public override void GetHit()

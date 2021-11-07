@@ -6,50 +6,40 @@ using UnityEngine.UIElements;
 
 public class Cannon : MonoBehaviour
 {
-    // TODO change to scriptable object?
-    // TODO add animator
-    // TODO add vfx
     // TODO add sfx
     public GameObject cannonBallPrefab;
     [Range(10f, 45f)]
     public float firingAngle;
-    public float firingSpeed;
     public ParticleSystem firingVfx;
 
 
-    public void Fire(Vector3 target, Vector3 targetVel)
+    public void Fire(Vector3 target)
     {
         Vector3 position = transform.position;
-        Vector3 aim = PredictOnMovingTarget(position, target, targetVel, firingSpeed);
         GameObject cannonBall = Instantiate(cannonBallPrefab, position, Quaternion.identity);
         firingVfx.Play();
         // TODO sfx play
-        cannonBall.GetComponent<Rigidbody>().velocity = BallisticVelocity(aim, firingAngle, firingSpeed);
-        // cannonBall.GetComponent<Rigidbody>().velocity = aim;
-        cannonBall.transform.SetParent(ScrollingPlane.Instance.transform);
+        cannonBall.GetComponent<Rigidbody>().velocity = BallisticVelocity(target, firingAngle);
+        // cannonBall.transform.SetParent(ScrollingPlane.Instance.transform);
         Destroy(cannonBall, 10f);
     }
 
-    private Vector3 BallisticVelocity(Vector3 destination, float angle, float bulletSpeed)
+    private Vector3 BallisticVelocity(Vector3 destination, float angle)
     {
         Vector3 dir = destination - transform.position; // get Target Direction
         float height = dir.y; // get height difference
         dir.y = 0; // retain only the horizontal difference
         float dist = dir.magnitude; // get horizontal direction
-
-        float b = (float) (0.5 * Mathf.Asin((dist * Physics.gravity.magnitude) / (bulletSpeed * bulletSpeed)));
-        dir.y = dist * Mathf.Tan(b); // set dir to the elevation angle.
-        dist += height / Mathf.Tan(b); // Correction for small height differences
-        
-        // float a = angle * Mathf.Deg2Rad; // Convert angle to radians
-        // dir.y = dist * Mathf.Tan(a); // set dir to the elevation angle.
-        // dist += height / Mathf.Tan(a); // Correction for small height differences
+        float a = angle * Mathf.Deg2Rad; // Convert angle to radians
+        dir.y = dist * Mathf.Tan(a); // set dir to the elevation angle.
+        dist += height / Mathf.Tan(a); // Correction for small height differences
 
         // Calculate the velocity magnitude
-        // float velocity = Mathf.Sqrt(dist * Physics.gravity.magnitude / Mathf.Sin(2 * a));
+        float velocity = Mathf.Sqrt(dist * Physics.gravity.magnitude / Mathf.Sin(2 * a));
         
-        Debug.LogFormat("dir {0}, dir norm {1}, vel {2}, angle {3}, target {4}, res {5}", dir, dir.normalized, bulletSpeed, b, destination, dir.normalized * bulletSpeed);
-        return bulletSpeed * dir.normalized; // Return a normalized vector.
+        Debug.LogFormat("dir {0}, dir norm {1}, vel {2}, angle {3}, target {4}, res {5}", dir, dir.normalized, velocity, a, destination, dir.normalized * velocity);
+
+        return velocity * dir.normalized; // Return a normalized vector.
     }
 
     private Vector3 PredictOnMovingTarget(Vector3 shooter, Vector3 target, Vector3 velTarget, float bulletSpeed)

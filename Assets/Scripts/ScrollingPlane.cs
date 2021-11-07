@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class ScrollingPlane : MonoSingleton<ScrollingPlane>
 {
@@ -41,28 +42,8 @@ public class ScrollingPlane : MonoSingleton<ScrollingPlane>
     
     private Vector3 Steer()
     {
-        if (Input.touchCount > 0)
-        {
-            var touch = Input.GetTouch(0);
-            if (touch.position.x < Screen.width / 2)
-            {
-                return Vector3.right * steeringSpeed;
-            }
-            else if (touch.position.x > Screen.width / 2)
-            {
-                return Vector3.left * steeringSpeed;
-            }
-        }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            return Vector3.right * steeringSpeed;
-        }
-        else if(Input.GetKey(KeyCode.D))
-        {
-            return Vector3.left * steeringSpeed;
-        }
-        return Vector3.zero;
+        var axis = CrossPlatformInputManager.GetAxis("Horizontal");
+        return Vector3.left * axis * steeringSpeed;
     }
 
     private void ResetScrollingSpeed()

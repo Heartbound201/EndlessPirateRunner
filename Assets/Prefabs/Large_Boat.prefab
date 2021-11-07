@@ -51,6 +51,11 @@ MonoBehaviour:
   gold: {fileID: 11400000, guid: 907066c129623e34c96762f209b5392c, type: 2}
   cannon: {fileID: 556510932565332797}
   firingCooldown: 1
+  targetIndicatorPrefab: {fileID: 919132149155446097, guid: 75a48b92d57389e429bf03b4c33069f4, type: 3}
+  targetIndicatorMovingSpeed: 0.5
+  targetIndicatorBounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 100, y: 0, z: 300}
 --- !u!54 &4869876911078508194
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -196,11 +201,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5096183919202409008, guid: 19dcfc84d06a8b2478e4027776311bbe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 20.3
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5096183919202409008, guid: 19dcfc84d06a8b2478e4027776311bbe, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 44.9
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 5096183919202409008, guid: 19dcfc84d06a8b2478e4027776311bbe, type: 3}
       propertyPath: m_LocalRotation.w
