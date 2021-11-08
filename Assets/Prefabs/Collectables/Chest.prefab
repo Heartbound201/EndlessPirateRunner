@@ -95,7 +95,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1018073160380269489
 Transform:
   m_ObjectHideFlags: 0
@@ -321,10 +321,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8205960017158668500}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 853c3c71aecc248438bd3721b14da443, type: 3}
+  m_Script: {fileID: 11500000, guid: 80e484e3cb5f4bd1817eac52220e3e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Worth: 10
+  gold: {fileID: 11400000, guid: 907066c129623e34c96762f209b5392c, type: 2}
+  amount: 100
 --- !u!65 &5262036056092746293
 BoxCollider:
   m_ObjectHideFlags: 0

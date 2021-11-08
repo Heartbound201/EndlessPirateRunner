@@ -1,20 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[CreateAssetMenu(fileName = "enemy", menuName = "Create Enemy")]
-public class EnemyPrototype : ScriptableObject
+[CreateAssetMenu(fileName = "Enemy", menuName = "Prototype/Enemy Ship")]
+public class EnemyPrototype : EntityPrototype
 {
-    public GameObject prefab;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

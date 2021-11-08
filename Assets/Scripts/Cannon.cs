@@ -20,24 +20,26 @@ public class Cannon : MonoBehaviour
         firingVfx.Play();
         // TODO sfx play
         cannonBall.GetComponent<Rigidbody>().velocity = BallisticVelocity(target, firingAngle);
-        // cannonBall.transform.SetParent(ScrollingPlane.Instance.transform);
+        cannonBall.transform.SetParent(ScrollingPlane.Instance.transform);
         Destroy(cannonBall, 10f);
     }
 
-    private Vector3 BallisticVelocity(Vector3 destination, float angle)
+    public Vector3 BallisticVelocity(Vector3 destination, float angle)
     {
+        Debug.LogFormat("BallisticVelocity: destination {0}, angle {1}", destination, angle); 
+        
         Vector3 dir = destination - transform.position; // get Target Direction
-        float height = dir.y; // get height difference
+        // float height = dir.y; // get height difference
         dir.y = 0; // retain only the horizontal difference
         float dist = dir.magnitude; // get horizontal direction
         float a = angle * Mathf.Deg2Rad; // Convert angle to radians
         dir.y = dist * Mathf.Tan(a); // set dir to the elevation angle.
-        dist += height / Mathf.Tan(a); // Correction for small height differences
+        // dist += height / Mathf.Tan(a); // Correction for small height differences
 
         // Calculate the velocity magnitude
         float velocity = Mathf.Sqrt(dist * Physics.gravity.magnitude / Mathf.Sin(2 * a));
         
-        Debug.LogFormat("dir {0}, dir norm {1}, vel {2}, angle {3}, target {4}, res {5}", dir, dir.normalized, velocity, a, destination, dir.normalized * velocity);
+        Debug.LogFormat("BallisticVelocity: velocity {0}, velocity * dir.normalized {1}", velocity, dir.normalized * velocity);
 
         return velocity * dir.normalized; // Return a normalized vector.
     }

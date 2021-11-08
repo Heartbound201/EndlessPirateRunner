@@ -3,20 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class Collectable : MonoBehaviour
+public abstract class Collectable : Entity
 {
-
-    public int Worth;
-    // Start is called before the first frame update
-    void Start()
+    public virtual void Collect()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Debug.Log("Collecting " + name);
     }
     
 }

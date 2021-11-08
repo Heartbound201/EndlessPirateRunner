@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 52bd9d0a7eae63243bfd1a7e8aaf008e, type: 3}
-  m_Name: shipwreck_obstacle
+  m_Name: ObstacleRock
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3786432096742282821, guid: 4bff48c0f88cc1246af1ab060d9079d7, type: 3}
+  prefab: {fileID: 3603168882717404212, guid: ca767ae38ce45ca4c8e64d61759fd199, type: 3}

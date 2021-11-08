@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52bd9d0a7eae63243bfd1a7e8aaf008e, type: 3}
-  m_Name: rock_obstacle
+  m_Script: {fileID: 11500000, guid: e74046769e9a1344891f00e78d553729, type: 3}
+  m_Name: CollectableTreasure
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3603168882717404212, guid: ca767ae38ce45ca4c8e64d61759fd199, type: 3}
+  prefab: {fileID: 8205960017158668500, guid: 7f70c6087f48a61418fd062a843e7d98, type: 3}

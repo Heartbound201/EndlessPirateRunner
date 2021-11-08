@@ -1,91 +1,34 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class PlayerShip : Ship
+public class PlayerShip : Entity, IDamageable
 {
     public UnityAction OnFatalHit;
     
+    public ObservableInt lives;
     public ObservableInt gold;
-    public Cannon cannon;
-    public int firingCooldown = 1;
-    public GameObject targetIndicatorPrefab;
-    public float targetIndicatorMovingSpeed = 5f;
-    public Bounds targetIndicatorBounds;
-    private GameObject _targetIndicator;
-    private bool _isFiring = false;
-
-    private bool CanShoot => !(cannon == null) && !_isFiring;
-
-    private Camera _camera;
+    
+    private CannonSystem _cannonSystem;
 
     private void Awake()
     {
-        _camera = Camera.main;
+        _cannonSystem = GetComponent<CannonSystem>();
     }
 
-    private void Start()
+    private void Update()
     {
-        _targetIndicator = Instantiate(targetIndicatorPrefab, transform);
-    }
-
-    void Update()
-    {
+        if(!_cannonSystem) return;
         var axisHorCannon = CrossPlatformInputManager.GetAxis("HorizontalCannon");
         var axisVerCannon = CrossPlatformInputManager.GetAxis("VerticalCannon");
-
         if (CrossPlatformInputManager.GetButton("Cannon"))
         {
-            _targetIndicator.SetActive(true);
-            _targetIndicator.transform.Translate(axisHorCannon * targetIndicatorMovingSpeed, 0, axisVerCannon * targetIndicatorMovingSpeed);
-            
-            Vector3 clampedPosition = _targetIndicator.transform.position;
-            clampedPosition.x = Mathf.Clamp(clampedPosition.x, -targetIndicatorBounds.extents.x, targetIndicatorBounds.extents.x);
-            clampedPosition.z = Mathf.Clamp(clampedPosition.z, 0, targetIndicatorBounds.extents.z);
-            _targetIndicator.transform.position = clampedPosition;
+            _cannonSystem.AimAt(new Vector3(axisHorCannon, 0 , axisVerCannon));
             
         }
         else
         {
-            if (_targetIndicator.transform.position.z >= cannon.transform.position.z)
-            {
-                StartCoroutine(Fire(_targetIndicator.transform.position));
-            }
-            _targetIndicator.transform.position = transform.position;
-            _targetIndicator.SetActive(false);
-        }
-
-    }
-
-    private IEnumerator Fire(Vector3 target)
-    {
-        _isFiring = true;
-        cannon.Fire(target);
-        yield return new WaitForSeconds(firingCooldown);
-        _isFiring = false;
-    }
-
-    private void FireRaycast(Vector3 touch)
-    {
-        Ray raycast = _camera.ScreenPointToRay(touch);
-        Debug.DrawRay(raycast.origin, raycast.direction * 100);
-        if (Physics.Raycast(raycast, out var raycastHit))
-        {
-            Debug.Log("Something Hit " + raycastHit.collider.name);
-            if (raycastHit.collider != null) ;
-            {
-                EnemyShip enemyShip = raycastHit.collider.gameObject.GetComponent<EnemyShip>();
-                if (enemyShip != null)
-                {
-                    if (CanShoot)
-                    {
-                        cannon.Fire(enemyShip.transform.position);
-                    }
-                }
-            }
+            _cannonSystem.Fire();
         }
     }
 
@@ -94,25 +37,20 @@ public class PlayerShip : Ship
         GameObject obj = other.gameObject;
         if (obj.GetComponent<Obstacle>())
         {
-            GetHit();
-        }
-        else if (obj.GetComponent<EnemyShip>())
-        {
-            GetHit();
+            Obstacle obstacle = obj.GetComponent<Obstacle>();
+            obstacle.Collide();
         }
         else if(other.gameObject.GetComponent<Collectable>())
         {
             Collectable collectable = obj.GetComponent<Collectable>();
-            gold.Value += collectable.Worth;
-            Destroy(obj);
-            Debug.LogFormat("Collected {0} gold. {1} total", collectable.Worth, gold);
+            collectable.Collect();
         }
     }
 
-    public override void GetHit()
+    public void GetHit(int damage)
     {
-        lives--;
-        if (lives <= 0)
+        lives.Value -= damage;
+        if (lives.Value <= 0)
         {
             // TODO sunk animation
             OnFatalHit?.Invoke();

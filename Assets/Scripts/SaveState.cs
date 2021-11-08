@@ -8,8 +8,8 @@ public class SaveState
 {
     public int gold;
     public int highscore;
-    public ShipPrototype currentShip;
-    public List<ShipPrototype> unlockedShips = new List<ShipPrototype>();
+    public PlayerShipPrototype currentPlayerShip;
+    public List<PlayerShipPrototype> unlockedShips = new List<PlayerShipPrototype>();
 
     public string ToJson()
     {

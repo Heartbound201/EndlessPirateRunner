@@ -5,9 +5,10 @@ using UnityEngine;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
-public class EnemyShip : Ship
+public class EnemyShip : Enemy
 {
-    public CollectablePrototype reward;
+    public int lives;
+    public List<Reward> rewards = new List<Reward>();
     public Cannon cannon;
     public int firingCooldown = 3;
     private float _timer;
@@ -36,9 +37,9 @@ public class EnemyShip : Ship
         cannon.Fire(Vector3.zero);
     }
 
-    public override void GetHit()
+    public override void GetHit(int damage)
     {
-        lives--;
+        lives -= damage;
         if (lives <= 0)
         {
             // TODO sunk animation
@@ -50,9 +51,10 @@ public class EnemyShip : Ship
 
     private void DropReward()
     {
-        if (reward != null)
+        if (rewards.Count > 0)
         {
-            GameObject o = Instantiate(reward.prefab, transform.position, Quaternion.identity);
+            // TODO get weighted random reward
+            GameObject o = Instantiate(rewards[1].item.prefab, transform.position, Quaternion.identity);
             o.transform.SetParent(ScrollingPlane.Instance.transform);
         }
     }
@@ -68,5 +70,10 @@ public class EnemyShip : Ship
         }
 
         return false;
+    }
+
+    public override void Collide()
+    {
+        base.Collide();
     }
 }
