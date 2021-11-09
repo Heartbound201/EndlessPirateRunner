@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class Reward
+public class Drop
 {
     public EntityPrototype item;
     public float weight;

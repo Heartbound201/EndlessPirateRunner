@@ -8,34 +8,15 @@ using UnityEngine.Serialization;
 
 public class Player : MonoBehaviour
 {
-    
-    public ObservableInt gold;
+    public PlayerData playerData;
+
     public ObservableInt distance;
-
-    public int HighScore
-    {
-        get
-        {
-            if (_saveState != null)
-            {
-                return _saveState.highscore;
-            }
-
-            return 0;
-        }
-    }
-
     public int scoreIncreasedPerSecond = 10;
-    [FormerlySerializedAs("currentShip")] public PlayerShipPrototype currentPlayerShip;
-    [FormerlySerializedAs("startingShip")] public PlayerShipPrototype startingPlayerShip;
-    public List<PlayerShipPrototype> availableShips = new List<PlayerShipPrototype>();
     public PlayerShip playerShip;
-
-    private SaveState _saveState = new SaveState();
 
     private void Awake()
     {
-        Load();
+        SaveManager.Instance.Load();
     }
 
     private void Update()
@@ -45,36 +26,10 @@ public class Player : MonoBehaviour
 
     public void Reset()
     {
-        gold.Value = _saveState.gold;
         distance.Value = 0;
 
-        GameObject shipGO = Instantiate(currentPlayerShip.prefab, transform);
+        GameObject shipGO = Instantiate(playerData.currentShip.prefab, transform);
         playerShip = shipGO.GetComponent<PlayerShip>();
     }
 
-    public void Save()
-    {
-        _saveState.gold = gold.Value;
-        if(distance.Value > _saveState.highscore)
-            _saveState.highscore = distance.Value;
-        _saveState.currentPlayerShip = currentPlayerShip;
-        _saveState.unlockedShips = availableShips;
-        
-        FileManager.WriteToFile(_saveState);
-    }
-
-    public void Load()
-    {
-        _saveState = FileManager.ReadFromFile();
-
-        gold.Value = _saveState.gold;
-        currentPlayerShip = _saveState.currentPlayerShip;
-        availableShips = _saveState.unlockedShips;
-        if (currentPlayerShip == null)
-        {
-            currentPlayerShip = startingPlayerShip;
-            availableShips = new List<PlayerShipPrototype>() {startingPlayerShip};
-        }
-        
-    }
 }

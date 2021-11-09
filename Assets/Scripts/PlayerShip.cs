@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityStandardAssets.CrossPlatformInput;
@@ -7,7 +8,6 @@ public class PlayerShip : Entity, IDamageable
     public UnityAction OnFatalHit;
     
     public ObservableInt lives;
-    public ObservableInt gold;
     
     private CannonSystem _cannonSystem;
 
@@ -38,13 +38,18 @@ public class PlayerShip : Entity, IDamageable
         if (obj.GetComponent<Obstacle>())
         {
             Obstacle obstacle = obj.GetComponent<Obstacle>();
-            obstacle.Collide();
+            obstacle.Collide(this);
         }
         else if(other.gameObject.GetComponent<Collectable>())
         {
             Collectable collectable = obj.GetComponent<Collectable>();
             collectable.Collect();
         }
+    }
+
+    private void Start()
+    {
+        lives.Value = 1;
     }
 
     public void GetHit(int damage)

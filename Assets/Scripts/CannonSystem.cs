@@ -44,6 +44,7 @@ public class CannonSystem : MonoBehaviour
         }
 
         _lr.SetPositions(linePoints.ToArray());
+        _lr.enabled = true;
     }
 
     public void AimAt(Vector3 target)
@@ -80,6 +81,7 @@ public class CannonSystem : MonoBehaviour
 
     public void Fire()
     {
+        _lr.enabled = false;
         if (CanShoot)
         {
             StartCoroutine(DoFire());

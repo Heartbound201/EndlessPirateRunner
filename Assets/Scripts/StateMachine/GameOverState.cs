@@ -7,7 +7,7 @@
         owner.GameOverView.OnMenuClicked += MenuClicked;
         
         owner.GameOverView.FillRecap(owner.Player);
-        owner.Player.Save();
+        SaveManager.Instance.Save();
 
         owner.GameOverView.Show();
     }

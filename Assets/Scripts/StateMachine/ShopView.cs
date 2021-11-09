@@ -7,7 +7,7 @@ public class ShopView : View
 {
     public UnityAction OnMenuClicked;
 
-    public Player player;
+    public PlayerData playerData;
     public GameObject buyItemPrefab;
     public Transform buyItemPanel;
     public List<PlayerShipPrototype> availableShips;
@@ -28,16 +28,16 @@ public class ShopView : View
             // assign on click events
             uiShipCard.useButton.onClick.AddListener(() =>
             {
-                player.currentPlayerShip = uiShipCard.playerShipPrototype;
-                player.Save();
+                playerData.currentShip = uiShipCard.playerShipPrototype;
+                SaveManager.Instance.Save();
                 UpdateShipUpgradeButtons();
             });
             uiShipCard.buyButton.onClick.AddListener(() =>
             {
-                if (player.gold.Value < shipPrototype.cost) return;
-                player.gold.Value -= shipPrototype.cost;
-                player.availableShips.Add(shipPrototype);
-                player.Save();
+                if (playerData.gold.Value < shipPrototype.cost) return;
+                playerData.gold.Value -= shipPrototype.cost;
+                playerData.unlockedShips.Add(shipPrototype);
+                SaveManager.Instance.Save();
                 UpdateShipUpgradeButtons();
             });
             _shipCards.Add(uiShipCard);
@@ -53,11 +53,11 @@ public class ShopView : View
         {
             buyItem.useButton.interactable = true;
             buyItem.buyButton.interactable = true;
-            if (player.availableShips.Contains(buyItem.playerShipPrototype))
+            if (playerData.unlockedShips.Contains(buyItem.playerShipPrototype))
             {
                 buyItem.useButton.gameObject.SetActive(true);
                 buyItem.buyButton.gameObject.SetActive(false);
-                if (player.currentPlayerShip == buyItem.playerShipPrototype)
+                if (playerData.currentShip == buyItem.playerShipPrototype)
                 {
                     buyItem.useButton.interactable = false;
                 }
@@ -66,7 +66,7 @@ public class ShopView : View
             {
                 buyItem.useButton.gameObject.SetActive(false);
                 buyItem.buyButton.gameObject.SetActive(true);
-                if (player.gold.Value < buyItem.playerShipPrototype.cost)
+                if (playerData.gold.Value < buyItem.playerShipPrototype.cost)
                 {
                     buyItem.buyButton.interactable = false;
                 }

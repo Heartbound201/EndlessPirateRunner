@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 class DestroyableObstacle : Obstacle, IDamageable
 {
     
     public int lives;
-    public List<Reward> rewards = new List<Reward>();
+    [FormerlySerializedAs("rewards")] public List<Drop> drops = new List<Drop>();
     public void GetHit(int damage)
     {
         lives -= damage;
@@ -19,10 +20,11 @@ class DestroyableObstacle : Obstacle, IDamageable
     }
     private void DropReward()
     {
-        if (rewards.Count > 0)
+        if (drops.Count > 0)
         {
             // TODO get weighted random reward
-            GameObject o = Instantiate(rewards[1].item.prefab, transform.position, Quaternion.identity);
+            Drop drop = drops[Random.Range(0, drops.Count)];
+            GameObject o = Instantiate(drop.item.prefab, transform.position, Quaternion.identity);
             o.transform.SetParent(ScrollingPlane.Instance.transform);
         }
     }

@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class SaveState
+public class SaveData
 {
     public int gold;
     public int highscore;
-    public PlayerShipPrototype currentPlayerShip;
-    public List<PlayerShipPrototype> unlockedShips = new List<PlayerShipPrototype>();
+    public int currentPlayerShip;
+    public List<int> unlockedShips = new List<int>();
 
     public string ToJson()
     {

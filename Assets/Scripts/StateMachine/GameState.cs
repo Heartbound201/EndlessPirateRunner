@@ -23,6 +23,8 @@ public class GameState : State
         owner.GameView.OnPauseClicked += PauseClicked;
         owner.Player.playerShip.OnFatalHit += FinishClicked;
 
+        owner.GameView.UpdateGold();
+        owner.GameView.UpdateDistance();
         owner.GameView.Show();
     }
 

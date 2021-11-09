@@ -1,17 +1,17 @@
 ﻿using System.IO;
 using UnityEngine;
 
-public class FileManager
+public static class FileManager
 {
     private static readonly string SAVE_FILENAME = "/save.dat";
-    public static void WriteToFile(SaveState saveState)
+    public static void WriteToFile(SaveData saveData)
     {
-        File.WriteAllText(Application.persistentDataPath + SAVE_FILENAME, saveState.ToJson());
+        File.WriteAllText(Application.persistentDataPath + SAVE_FILENAME, saveData.ToJson());
     }
 
-    public static SaveState ReadFromFile()
+    public static SaveData ReadFromFile()
     {
-        SaveState save = new SaveState();
+        SaveData save = new SaveData();
         try
         {
             string json = File.ReadAllText(Application.persistentDataPath + SAVE_FILENAME);

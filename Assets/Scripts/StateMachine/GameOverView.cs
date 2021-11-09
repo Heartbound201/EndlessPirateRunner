@@ -6,9 +6,10 @@ public class GameOverView : View
     public UnityAction OnRetryClicked;
     public UnityAction OnMenuClicked;
     
-    public ObservableInt Gold;
-    public Text GoldText;
+    
+    public PlayerData playerData;
     public ObservableInt Distance;
+    public Text GoldText;
     public Text DistanceText;
     public Text NewHighScore;
     
@@ -24,10 +25,11 @@ public class GameOverView : View
     public void FillRecap(Player player)
     {
         NewHighScore.gameObject.SetActive(false);
-        GoldText.text = Gold.Value.ToString();
+        GoldText.text = playerData.gold.Value.ToString();
         DistanceText.text = Distance.Value.ToString();
-        if (IsNewHighScore(player.HighScore, Distance.Value))
+        if (IsNewHighScore(playerData.highscore, Distance.Value))
         {
+            playerData.highscore = Distance.Value;
             NewHighScore.gameObject.SetActive(true);
         }
     }

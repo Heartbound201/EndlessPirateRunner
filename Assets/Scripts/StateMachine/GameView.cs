@@ -22,6 +22,8 @@ public class GameView : View
         Gold.OnChange -= UpdateGold;
         Distance.OnChange -= UpdateDistance;
     }
+    
+    
 
     public void PauseClick()
     {
@@ -33,11 +35,11 @@ public class GameView : View
         OnFinishClicked?.Invoke();
     }
     
-    private void UpdateGold()
+    public void UpdateGold()
     {
         GoldText.text = Gold.Value.ToString();
     }
-    private void UpdateDistance()
+    public void UpdateDistance()
     {
         DistanceText.text = Distance.Value.ToString();
     }

@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class EnemyShip : Enemy
 {
     public int lives;
-    public List<Reward> rewards = new List<Reward>();
+    [FormerlySerializedAs("rewards")] public List<Drop> drops = new List<Drop>();
     public Cannon cannon;
     public int firingCooldown = 3;
     private float _timer;
@@ -51,10 +52,11 @@ public class EnemyShip : Enemy
 
     private void DropReward()
     {
-        if (rewards.Count > 0)
+        if (drops.Count > 0)
         {
             // TODO get weighted random reward
-            GameObject o = Instantiate(rewards[1].item.prefab, transform.position, Quaternion.identity);
+            Drop drop = drops[Random.Range(0, drops.Count)];
+            GameObject o = Instantiate(drop.item.prefab, transform.position, Quaternion.identity);
             o.transform.SetParent(ScrollingPlane.Instance.transform);
         }
     }
@@ -72,8 +74,4 @@ public class EnemyShip : Enemy
         return false;
     }
 
-    public override void Collide()
-    {
-        base.Collide();
-    }
 }
