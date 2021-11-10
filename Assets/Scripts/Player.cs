@@ -1,10 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.PlayerLoop;
-using UnityEngine.Serialization;
 
 public class Player : MonoBehaviour
 {
@@ -14,7 +8,7 @@ public class Player : MonoBehaviour
     public int scoreIncreasedPerSecond = 10;
     public PlayerShip playerShip;
 
-    private void Awake()
+    private void Start()
     {
         SaveManager.Instance.Load();
     }
@@ -30,6 +24,7 @@ public class Player : MonoBehaviour
 
         GameObject shipGO = Instantiate(playerData.currentShip.prefab, transform);
         playerShip = shipGO.GetComponent<PlayerShip>();
+        playerShip.lives.Value = playerData.currentShip.lives;
     }
 
 }

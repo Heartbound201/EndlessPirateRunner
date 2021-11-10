@@ -15,7 +15,8 @@ public class GameState : State
         base.EnterState();
         
         Time.timeScale = 1;
-        ScrollingPlane.Instance.IsScrolling = true;
+        ScrollingPlane.Instance.Enabled = true;
+        EntityGenerator.Instance.Enabled = true;
         if (_isNewGame)
         {
             ResetGame();
@@ -39,7 +40,8 @@ public class GameState : State
         owner.GameView.Hide();
         owner.GameView.OnPauseClicked -= PauseClicked;
         owner.Player.playerShip.OnFatalHit -= FinishClicked;
-        ScrollingPlane.Instance.IsScrolling = false;
+        ScrollingPlane.Instance.Enabled = false;
+        EntityGenerator.Instance.Enabled = false;
         Time.timeScale = 0;
         
         base.ExitState();

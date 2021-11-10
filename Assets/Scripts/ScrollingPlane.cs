@@ -1,42 +1,36 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
 public class ScrollingPlane : MonoSingleton<ScrollingPlane>
 {
-    private float _scrollingSpeed;
     public float steeringSpeed = 0.5f;
-    public float startingScrollingSpeed = 50f;
+    public float scrollingSpeed = 50f;
     public GameObject isle;
-    public bool IsScrolling;
+    public bool Enabled { get; set; }
 
     private void Start()
     {
-        IsScrolling = false;
         Reset();
+        Enabled = false;
     }
+
 
     public void Reset()
     {
         ResetSpawnedObjects();
-        ResetScrollingSpeed();
         SpawnIsle();
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        if(!IsScrolling) return;
+        if(!Enabled) return;
         
         Vector3 lateralVector = Steer();
 
         for (int i = 0; i < transform.childCount; i++)
         {
-            transform.GetChild(i).Translate(Vector3.back * _scrollingSpeed * Time.deltaTime + lateralVector * Time.deltaTime);
-            // Transform child = transform.GetChild(i);
-            // Rigidbody component = child.GetComponent<Rigidbody>();
-            // component.velocity = Vector3.back * _scrollingSpeed + lateralVector;
+            // transform.GetChild(i).Translate(Vector3.back * scrollingSpeed * Time.deltaTime + lateralVector * Time.deltaTime);
+            transform.GetChild(i).Translate(lateralVector * Time.deltaTime);
         }
     }
     
@@ -46,10 +40,6 @@ public class ScrollingPlane : MonoSingleton<ScrollingPlane>
         return Vector3.left * axis * steeringSpeed;
     }
 
-    private void ResetScrollingSpeed()
-    {
-        _scrollingSpeed = startingScrollingSpeed;
-    }
 
     private void ResetSpawnedObjects()
     {
@@ -61,14 +51,13 @@ public class ScrollingPlane : MonoSingleton<ScrollingPlane>
 
     private void SpawnIsle()
     {
-        Instantiate(isle, transform);
+        var instantiate = Instantiate(isle, transform);
+        Spawn(instantiate);
     }
-    
-    public void StartScrolling(){}
-    public void StopScrolling(){}
-    public void StartGenerating(){}
-    public void StpoGenerating(){}
-    
-    
-    
+
+    public void Spawn(GameObject o)
+    {
+        o.transform.SetParent(gameObject.transform);
+        o.GetComponent<Rigidbody>().velocity = Vector3.back * scrollingSpeed;
+    }
 }

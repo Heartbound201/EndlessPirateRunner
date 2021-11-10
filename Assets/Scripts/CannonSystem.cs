@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityStandardAssets.CrossPlatformInput;
 
 [RequireComponent(typeof(LineRenderer))]
 public class CannonSystem : MonoBehaviour
@@ -14,7 +13,6 @@ public class CannonSystem : MonoBehaviour
 
     private GameObject _targetIndicator;
     private bool _isFiring;
-
     private LineRenderer _lr;
     private int _dotsNumber = 100;
     private float _dotSpacing = .1f;
@@ -60,7 +58,7 @@ public class CannonSystem : MonoBehaviour
         _targetIndicator.transform.position = clampedPosition;
         
         // simulate arc
-        UpdateTrajectory(cannon.transform.position, cannon.BallisticVelocity(clampedPosition, cannon.firingAngle));
+        // UpdateTrajectory(cannon.transform.position, cannon.BallisticVelocity(clampedPosition, cannon.firingAngle));
     }
 
     private IEnumerator DoFire(Vector3 target)
@@ -102,5 +100,18 @@ public class CannonSystem : MonoBehaviour
     {
         _targetIndicator.transform.position = transform.position;
         _targetIndicator.SetActive(false);
+    }
+    
+    public bool IsObstructed(Vector3 target)
+    {
+        if (Physics.Raycast(cannon.transform.position,(target - cannon.transform.position).normalized, out RaycastHit hit, cannon.Reach()))
+        {
+            Debug.DrawRay(cannon.transform.position, target - cannon.transform.position, Color.yellow, 3f);
+            Debug.Log("Did Hit " + hit.collider.name);
+            if (hit.collider.GetComponent<PlayerShip>()) return false;
+            return true;
+        }
+
+        return false;
     }
 }

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99ad16ce47ff6094fb23d4b0d39ea67a, type: 3}
+  m_Name: PlayerData
+  m_EditorClassIdentifier: 
+  gold: {fileID: 11400000, guid: 907066c129623e34c96762f209b5392c, type: 2}
+  highscore: 0
+  currentShip: {fileID: 11400000, guid: e71f8c9c778cffe42b931d74ee5a1af3, type: 2}
+  startingShip: {fileID: 11400000, guid: e71f8c9c778cffe42b931d74ee5a1af3, type: 2}
+  unlockedShips:
+  - {fileID: 11400000, guid: e71f8c9c778cffe42b931d74ee5a1af3, type: 2}
+  - {fileID: 11400000, guid: e71f8c9c778cffe42b931d74ee5a1af3, type: 2}

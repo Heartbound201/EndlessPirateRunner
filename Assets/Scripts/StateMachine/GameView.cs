@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine.Events;
+﻿using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class GameView : View

@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: -5435529112774478407}
   - component: {fileID: 9064479098493952465}
   - component: {fileID: 4887947661967393255}
+  - component: {fileID: 4186768551696542452}
   m_Layer: 0
   m_Name: DestroyableRock
   m_TagString: Untagged
@@ -108,6 +109,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionDamage: 1
   lives: 1
+  dropSystem: {fileID: 4186768551696542452}
+--- !u!114 &4186768551696542452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3419584974126722619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01ea27631423448b805ecf9ffe16e665, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   drops:
   - item: {fileID: 11400000, guid: 4643f2eca703cd440995281242f6057b, type: 2}
     weight: 1

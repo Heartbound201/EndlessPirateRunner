@@ -3286,7 +3286,7 @@ Camera:
   far clip plane: 500
   field of view: 60
   orthographic: 0
-  orthographic size: 5
+  orthographic size: 25
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -6454,7 +6454,6 @@ MonoBehaviour:
   steeringSpeed: 25
   startingScrollingSpeed: 50
   isle: {fileID: 1154080528151886237, guid: cf3a6ccaf88e9004985997cf16a54046, type: 3}
-  IsScrolling: 0
 --- !u!114 &2000302771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6479,6 +6478,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f869f462a69077941b2c48a2b734fa10, type: 2}
   EnemyPrototypes:
   - {fileID: 11400000, guid: 161c92c98e0e1d4459e2ca7595035974, type: 2}
+  waves: []
+  levelScale: 1
+  neighborRadius: 1
+  treePrefab: {fileID: 3419584974126722619, guid: 41663a71921d37143adacda4141da1be, type: 3}
 --- !u!1 &2004741791
 GameObject:
   m_ObjectHideFlags: 0

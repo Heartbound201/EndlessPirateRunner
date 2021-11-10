@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityStandardAssets.CrossPlatformInput;
@@ -8,27 +7,26 @@ public class PlayerShip : Entity, IDamageable
     public UnityAction OnFatalHit;
     
     public ObservableInt lives;
-    
-    private CannonSystem _cannonSystem;
+    public CannonSystem cannonSystem;
 
     private void Awake()
     {
-        _cannonSystem = GetComponent<CannonSystem>();
+        cannonSystem = GetComponent<CannonSystem>();
     }
 
     private void Update()
     {
-        if(!_cannonSystem) return;
+        if(!cannonSystem) return;
         var axisHorCannon = CrossPlatformInputManager.GetAxis("HorizontalCannon");
         var axisVerCannon = CrossPlatformInputManager.GetAxis("VerticalCannon");
         if (CrossPlatformInputManager.GetButton("Cannon"))
         {
-            _cannonSystem.AimAt(new Vector3(axisHorCannon, 0 , axisVerCannon));
+            cannonSystem.AimAt(new Vector3(axisHorCannon, 0 , axisVerCannon));
             
         }
         else
         {
-            _cannonSystem.Fire();
+            cannonSystem.Fire();
         }
     }
 
@@ -45,11 +43,6 @@ public class PlayerShip : Entity, IDamageable
             Collectable collectable = obj.GetComponent<Collectable>();
             collectable.Collect();
         }
-    }
-
-    private void Start()
-    {
-        lives.Value = 1;
     }
 
     public void GetHit(int damage)

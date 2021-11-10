@@ -1,8 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Cannon : MonoBehaviour
 {
@@ -10,6 +7,11 @@ public class Cannon : MonoBehaviour
     public GameObject cannonBallPrefab;
     [Range(10f, 45f)]
     public float firingAngle;
+    public float firingVelocity;
+    public float firingMinDistance;
+    public float firingMaxDistance;
+    public float firingMinAngle;
+    public float firingMaxAngle;
     public ParticleSystem firingVfx;
 
 
@@ -42,6 +44,11 @@ public class Cannon : MonoBehaviour
         Debug.LogFormat("BallisticVelocity: velocity {0}, velocity * dir.normalized {1}", velocity, dir.normalized * velocity);
 
         return velocity * dir.normalized; // Return a normalized vector.
+    }
+
+    public float Reach()
+    {
+        return 250f;
     }
 
     private Vector3 PredictOnMovingTarget(Vector3 shooter, Vector3 target, Vector3 velTarget, float bulletSpeed)

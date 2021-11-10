@@ -1,8 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
-using UnityEngine.Serialization;
 
 public class SaveManager : MonoSingleton<SaveManager>
 {
@@ -20,6 +16,7 @@ public class SaveManager : MonoSingleton<SaveManager>
         
         saveData.currentPlayerShip = allPlayerShips.IndexOf(playerData.currentShip);
 
+        saveData.unlockedShips.Add(allPlayerShips.IndexOf(playerData.startingShip));
         foreach (PlayerShipPrototype shipPrototype in playerData.unlockedShips)
         {
             saveData.unlockedShips.Add(allPlayerShips.IndexOf(shipPrototype));
@@ -39,6 +36,7 @@ public class SaveManager : MonoSingleton<SaveManager>
         playerData.unlockedShips.Clear();
 
         HashSet<PlayerShipPrototype> unlockedShips = new HashSet<PlayerShipPrototype>();
+        unlockedShips.Add(playerData.startingShip);
         foreach (int index in saveData.unlockedShips)
         {
             unlockedShips.Add(allPlayerShips[index]);
