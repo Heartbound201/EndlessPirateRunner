@@ -6452,7 +6452,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   steeringSpeed: 25
-  startingScrollingSpeed: 50
+  scrollingSpeed: 50
   isle: {fileID: 1154080528151886237, guid: cf3a6ccaf88e9004985997cf16a54046, type: 3}
 --- !u!114 &2000302771
 MonoBehaviour:
@@ -6466,22 +6466,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e03cdf7ac1c6154ba1941eadf71ce1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 2000302768}
-  horizonDistance: 1000
-  horizonHeight: 0
-  CollectablePrototypes:
-  - {fileID: 11400000, guid: 696402716510a6247bfe2aaeea3bd4e9, type: 2}
-  - {fileID: 11400000, guid: 4643f2eca703cd440995281242f6057b, type: 2}
-  ObstaclePrototypes:
-  - {fileID: 11400000, guid: 81dc0983bd1bf2e45b1388280e8a54ac, type: 2}
-  - {fileID: 11400000, guid: 446ec2dfc89f2c14cbfaf7d1e29cf47a, type: 2}
-  - {fileID: 11400000, guid: f869f462a69077941b2c48a2b734fa10, type: 2}
-  EnemyPrototypes:
-  - {fileID: 11400000, guid: 161c92c98e0e1d4459e2ca7595035974, type: 2}
-  waves: []
-  levelScale: 1
-  neighborRadius: 1
-  treePrefab: {fileID: 3419584974126722619, guid: 41663a71921d37143adacda4141da1be, type: 3}
+  distance: {fileID: 11400000, guid: fa2e50ade30dce242826c8d069408d8c, type: 2}
+  entities:
+  - prototype: {fileID: 11400000, guid: 696402716510a6247bfe2aaeea3bd4e9, type: 2}
+    minDistance: 0
+    weight: 3
+  - prototype: {fileID: 11400000, guid: 4643f2eca703cd440995281242f6057b, type: 2}
+    minDistance: 3000
+    weight: 1
+  - prototype: {fileID: 11400000, guid: 81dc0983bd1bf2e45b1388280e8a54ac, type: 2}
+    minDistance: 1000
+    weight: 3
+  - prototype: {fileID: 11400000, guid: f869f462a69077941b2c48a2b734fa10, type: 2}
+    minDistance: 2000
+    weight: 2
+  - prototype: {fileID: 11400000, guid: 446ec2dfc89f2c14cbfaf7d1e29cf47a, type: 2}
+    minDistance: 4000
+    weight: 2
+  - prototype: {fileID: 11400000, guid: 161c92c98e0e1d4459e2ca7595035974, type: 2}
+    minDistance: 6000
+    weight: 1
+  spawnQuantity: 200
+  spawnQuantityLinearDecrement: 0.5
+  spawnQuantityMin: 50
+  spawnFrequency: 5
+  spawnFrequencyLinearDecrement: 0.5
+  spawnFrequencyMin: 1.5
+  spawnHorizon: 500
 --- !u!1 &2004741791
 GameObject:
   m_ObjectHideFlags: 0

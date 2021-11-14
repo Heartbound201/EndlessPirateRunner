@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lives: {fileID: 11400000, guid: fe55b12f0b48bea45baf3dbb9f16d717, type: 2}
-  gold: {fileID: 11400000, guid: 907066c129623e34c96762f209b5392c, type: 2}
+  cannonSystem: {fileID: 0}
 --- !u!1 &7439097775088494941
 GameObject:
   m_ObjectHideFlags: 0

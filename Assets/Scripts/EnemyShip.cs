@@ -17,7 +17,7 @@ public class EnemyShip : Enemy
     {
         if(!cannonSystem || cannonSystem.IsObstructed(Vector3.zero)) return;
         // don't shoot if behind the player
-        if(transform.position.z <= 50) return;
+        if(transform.position.z <= 50 || transform.position.z >= 200) return;
         
         cannonSystem.Fire(Vector3.zero);
     }

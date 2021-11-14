@@ -26,7 +26,6 @@ public class DropSystem : MonoBehaviour
             Drop drop = PickDrop();
             GameObject o = Instantiate(drop.item.prefab, transform.position, Quaternion.identity);
             ScrollingPlane.Instance.Spawn(o);
-            // o.transform.SetParent(ScrollingPlane.Instance.transform);
         }
     }
 

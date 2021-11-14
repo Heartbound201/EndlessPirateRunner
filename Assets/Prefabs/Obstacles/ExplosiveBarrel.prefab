@@ -77,7 +77,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionDamage: 3
   lives: 1
-  rewards: []
+  dropSystem: {fileID: 0}
 --- !u!1 &3044022926782054363
 GameObject:
   m_ObjectHideFlags: 0

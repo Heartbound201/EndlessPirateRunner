@@ -1,171 +1,97 @@
-using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class EntityGenerator : MonoSingleton<EntityGenerator>
 {
-    public Transform parent;
-    public float horizonDistance = 200f;
-    public float horizonHeight = 0f;
-    public List<CollectablePrototype> CollectablePrototypes = new List<CollectablePrototype>();
-    public List<ObstaclePrototype> ObstaclePrototypes = new List<ObstaclePrototype>();
-    public List<EnemyPrototype> EnemyPrototypes = new List<EnemyPrototype>();
     public bool Enabled { get; set; }
+    public ObservableInt distance;
+    public List<SpawnData> entities = new List<SpawnData>();
+
+    public float spawnQuantity;
+    public float spawnQuantityLinearDecrement;
+    public float spawnQuantityMin;
+    public float spawnFrequency;
+    public float spawnFrequencyLinearDecrement;
+    public float spawnFrequencyMin;
+    public float spawnHorizon;
+
     private Camera _camera;
+    private bool _isSpawning = false;
+    private float _screenSize;
+    private void OnValidate()
+    {
+        if (spawnFrequency <= 0)
+        {
+            spawnFrequency = 0.1f;
+        }
+    }
 
     void Start()
     {
         _camera = Camera.main;
+        var originScreenToWorldPoint = _camera.ScreenToWorldPoint(new Vector3(0, 0, _camera.farClipPlane / 2));
+        var screenWidthScreenToWorldPoint = _camera.ScreenToWorldPoint(new Vector3(Screen.width, 0, _camera.farClipPlane / 2));
+        _screenSize = screenWidthScreenToWorldPoint.x - originScreenToWorldPoint.x;
         Enabled = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(!Enabled) return;
+        if (!Enabled) return;
+
+        if(_isSpawning) return;
+        StartCoroutine(SpawnEntities());
+
+    }
+
+    private IEnumerator SpawnEntities()
+    {
+        _isSpawning = true;
         
-        if (Random.value < .001f)
+        // select spawn points
+        IEnumerable<Vector2> samples = new PoissonDiscSampler(_screenSize, 100, 
+                DecreaseByDistance(spawnQuantity, spawnQuantityLinearDecrement, distance.Value, spawnQuantityMin, spawnQuantity))
+            .Samples();
+        foreach (Vector2 sample in samples)
         {
-            GenerateCollectable();
+            // move sample position back to the horizon 
+            yield return GenerateEntity(sample + new Vector2(-_screenSize/2, spawnHorizon));
         }
 
-        if (Random.value < .001f)
+        // change spawn frequency
+        yield return new WaitForSeconds(DecreaseByDistance(spawnFrequency, spawnFrequencyLinearDecrement, distance.Value, spawnFrequencyMin, spawnFrequency));
+        _isSpawning = false;
+    }
+
+    private float DecreaseByDistance(float value, float decrement, float dist, float min, float max)
+    {
+        return Mathf.Clamp(value - dist/1000 * decrement, min, max);
+    }
+
+    private GameObject GenerateEntity(Vector2 pos)
+    {
+        GameObject go = Instantiate(PickRandomEntity(entities).prefab, new Vector3(pos.x, 0, pos.y), quaternion.identity);
+        ScrollingPlane.Instance.Spawn(go);
+        return go;
+    }
+
+    private EntityPrototype PickRandomEntity(List<SpawnData> spawnData)
+    {
+        List<SpawnData> prototypes = spawnData.Where(sd => distance.Value >= sd.minDistance).ToList();
+        
+        List<int> prob = new List<int>();
+        for (int i = 0; i < prototypes.Count; i++)
         {
-            GenerateObstacle();
-        }
-
-        if (Random.value < .001f)
-        {
-            GenerateEnemy();
-        }
-    }
-
-    private EntityPrototype PickRandomEntity(List<EntityPrototype> prototypes)
-    {
-        return prototypes[Random.Range(0, prototypes.Count)];
-    }
-
-    private void GenerateEnemy()
-    {
-        EnemyPrototype randomProto = EnemyPrototypes[Random.Range(0, EnemyPrototypes.Count)];
-        GameObject o = Instantiate(randomProto.prefab, parent);
-        var screenPosition = GetRandomScreenPosition();
-        o.transform.position = new Vector3(screenPosition.x, horizonHeight, horizonDistance);
-        EnemyShip enemyShip = o.GetComponent<EnemyShip>();
-        ScrollingPlane.Instance.Spawn(o);
-    }
-
-    void GenerateObstacle()
-    {
-        ObstaclePrototype randomProto = ObstaclePrototypes[Random.Range(0, ObstaclePrototypes.Count)];
-        GameObject o = Instantiate(randomProto.prefab, parent.position, GetRandomYRotation());
-        o.transform.SetParent(parent);
-        var screenPosition = GetRandomScreenPosition();
-        o.transform.position = new Vector3(screenPosition.x, horizonHeight, horizonDistance);
-        ScrollingPlane.Instance.Spawn(o);
-    }
-
-    void GenerateCollectable()
-    {
-        CollectablePrototype randomProto = CollectablePrototypes[Random.Range(0, CollectablePrototypes.Count)];
-        GameObject o = Instantiate(randomProto.prefab, parent.position, GetRandomYRotation());
-        o.transform.SetParent(parent);
-        var screenPosition = GetRandomScreenPosition();
-        o.transform.position = new Vector3(screenPosition.x, horizonHeight, horizonDistance);
-        ScrollingPlane.Instance.Spawn(o);
-    }
-
-    private Quaternion GetRandomYRotation()
-    {
-        return Quaternion.Euler(new Vector3(0, 0, 0));
-    }
-
-    private Vector3 GetRandomScreenPosition()
-    {
-        return _camera.ScreenToWorldPoint(
-            new Vector3(Random.Range(0, Screen.width), 0, _camera.farClipPlane / 2));
-    }
-
-    [SerializeField] private Wave[] waves;
-    [SerializeField] private float levelScale;
-    [SerializeField] private float neighborRadius;
-    [SerializeField] private GameObject treePrefab;
-
-    public float[,] GeneratePerlinNoiseMap(int mapDepth, int mapWidth, float scale, float offsetX, float offsetZ, Wave[] waves)
-    {
-        // create an empty noise map with the mapDepth and mapWidth coordinates
-        float[,] noiseMap = new float[mapDepth, mapWidth];
-        for (int zIndex = 0; zIndex < mapDepth; zIndex++)
-        {
-            for (int xIndex = 0; xIndex < mapWidth; xIndex++)
+            for (int j = 0; j < prototypes[i].weight; j++)
             {
-                // calculate sample indices based on the coordinates, the scale and the offset
-                float sampleX = (xIndex + offsetX) / scale;
-                float sampleZ = (zIndex + offsetZ) / scale;
-                float noise = 0f;
-                float normalization = 0f;
-                foreach (Wave wave in waves)
-                {
-                    // generate noise value using PerlinNoise for a given Wave
-                    noise += wave.amplitude * Mathf.PerlinNoise(sampleX * wave.frequency + wave.seed,
-                        sampleZ * wave.frequency + wave.seed);
-                    normalization += wave.amplitude;
-                }
-
-                // normalize the noise value so that it is within 0 and 1
-                noise /= normalization;
-                noiseMap[zIndex, xIndex] = noise;
+                prob.Add(i);
             }
         }
-
-        return noiseMap;
+        return prototypes[prob[Random.Range(0, prob.Count)]].prototype;
     }
-
-    public void GenerateTrees(int levelDepth, int levelWidth, float levelScale)
-    {
-        // generate a tree noise map using Perlin Noise
-        float[,] treeMap = this.GeneratePerlinNoiseMap(levelDepth, levelWidth, levelScale, 0, 0, this.waves);
-        for (int zIndex = 0; zIndex < levelDepth; zIndex++)
-        {
-            for (int xIndex = 0; xIndex < levelWidth; xIndex++)
-            {
-                float treeValue = treeMap[zIndex, xIndex];
-                // compares the current tree noise value to the neighbor ones
-                int neighborZBegin = (int) Mathf.Max(0, zIndex - this.neighborRadius);
-                int neighborZEnd = (int) Mathf.Min(levelDepth - 1, zIndex + this.neighborRadius);
-                int neighborXBegin = (int) Mathf.Max(0, xIndex - this.neighborRadius);
-                int neighborXEnd = (int) Mathf.Min(levelWidth - 1, xIndex + this.neighborRadius);
-                float maxValue = 0f;
-                for (int neighborZ = neighborZBegin; neighborZ <= neighborZEnd; neighborZ++)
-                {
-                    for (int neighborX = neighborXBegin; neighborX <= neighborXEnd; neighborX++)
-                    {
-                        float neighborValue = treeMap[neighborZ, neighborX];
-                        // saves the maximum tree noise value in the radius
-                        if (neighborValue >= maxValue)
-                        {
-                            maxValue = neighborValue;
-                        }
-                    }
-                }
-
-                // if the current tree noise value is the maximum one, place a tree in this location
-                if (treeValue == maxValue)
-                {
-                    Vector3 treePosition = new Vector3(xIndex, 0, zIndex);
-                    GameObject tree = Instantiate(this.treePrefab, treePosition, Quaternion.identity) as GameObject;
-                    tree.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
-                }
-            }
-        }
-    }
-}
-
-[Serializable]
-public class Wave
-{
-    public float seed;
-    public float frequency;
-    public float amplitude;
 }
