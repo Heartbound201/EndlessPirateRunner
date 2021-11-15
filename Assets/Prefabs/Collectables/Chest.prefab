@@ -324,6 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e484e3cb5f4bd1817eac52220e3e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collectionSfx: {fileID: 11400000, guid: ba3100fca8ab6f045a11d8dcc5902422, type: 2}
   gold: {fileID: 11400000, guid: 907066c129623e34c96762f209b5392c, type: 2}
   amount: 100
 --- !u!65 &5262036056092746293

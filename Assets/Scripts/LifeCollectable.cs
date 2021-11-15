@@ -8,7 +8,7 @@ class LifeCollectable : Collectable
     {
         base.Collect();
         life.Value += amount;
-        Debug.LogFormat("Life{0} + {1}", life.Value, amount);
+        Debug.LogFormat("Life {0} + {1}", life.Value, amount);
         // TODO animation
         Destroy(gameObject);
     }

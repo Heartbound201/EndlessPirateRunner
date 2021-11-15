@@ -15,6 +15,8 @@ public class GameState : State
         owner.GameView.OnPauseClicked += PauseClicked;
         owner.Player.playerShip.OnFatalHit += FinishClicked;
 
+        owner.MoveJoystick.SetActive(true);
+        owner.ShootJoystick.SetActive(owner.Player.playerShip.cannonSystem);
         owner.GameView.UpdateGold();
         owner.GameView.UpdateDistance();
         owner.GameView.Show();
@@ -23,6 +25,8 @@ public class GameState : State
     public override void ExitState()
     {
         owner.GameView.Hide();
+        owner.MoveJoystick.SetActive(false);
+        owner.ShootJoystick.SetActive(false);
         owner.GameView.OnPauseClicked -= PauseClicked;
         owner.Player.playerShip.OnFatalHit -= FinishClicked;
         ScrollingPlane.Instance.Enabled = false;

@@ -9,8 +9,8 @@ public class CannonBall : MonoBehaviour
         if (damageable != null)
         {
             damageable.GetHit(damage);
-        }
         // TODO vfx sfx
+        }
         Destroy(gameObject);
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class StateMachine : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class StateMachine : MonoBehaviour
     public GameOverView GameOverView;
     public ShopView ShopView;
     public SettingsView SettingsView;
+    
+    public GameObject MoveJoystick;
+    public GameObject ShootJoystick;
 
     private void Start()
     {
@@ -19,6 +23,8 @@ public class StateMachine : MonoBehaviour
         GameOverView.Hide();
         ShopView.Hide();
         SettingsView.Hide();
+        MoveJoystick.SetActive(false);
+        ShootJoystick.SetActive(false);
         ChangeState(new MenuState());
     }
 

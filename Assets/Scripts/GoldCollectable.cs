@@ -8,7 +8,7 @@ class GoldCollectable : Collectable
     {
         base.Collect();
         gold.Value += amount;
-        Debug.LogFormat("Gold{0} + {1}", gold.Value, amount);
+        Debug.LogFormat("Gold {0} + {1}", gold.Value, amount);
         // TODO animate
         Destroy(gameObject);
     }

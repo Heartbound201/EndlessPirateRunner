@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Cannon : MonoBehaviour
 {
-    // TODO add sfx
     public GameObject cannonBallPrefab;
     [Range(10f, 45f)]
     public float firingAngle;
@@ -13,6 +12,7 @@ public class Cannon : MonoBehaviour
     public float firingMinAngle;
     public float firingMaxAngle;
     public ParticleSystem firingVfx;
+    public AudioClipSO firingSfx;
 
 
     public void Fire(Vector3 target)
@@ -20,7 +20,7 @@ public class Cannon : MonoBehaviour
         Vector3 position = transform.position;
         GameObject cannonBall = Instantiate(cannonBallPrefab, position, Quaternion.identity);
         firingVfx.Play();
-        // TODO sfx play
+        AudioManager.Instance.PlaySFX(firingSfx);
         cannonBall.GetComponent<Rigidbody>().velocity = BallisticVelocity(target, firingAngle);
         cannonBall.transform.SetParent(ScrollingPlane.Instance.transform);
         Destroy(cannonBall, 10f);

@@ -224,6 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ceed79870e04e929fdb82b2140099e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collectionSfx: {fileID: 11400000, guid: ba3100fca8ab6f045a11d8dcc5902422, type: 2}
   life: {fileID: 11400000, guid: fe55b12f0b48bea45baf3dbb9f16d717, type: 2}
   amount: 1
 --- !u!65 &348653191928487959
