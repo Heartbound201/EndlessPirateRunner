@@ -16,4 +16,4 @@ MonoBehaviour:
   cost: 1000
   sprite: {fileID: 21300000, guid: 25e5b8be8d1af6a4b9f678cb45790123, type: 3}
   hasCannons: 1
-  lives: 999
+  lives: 1

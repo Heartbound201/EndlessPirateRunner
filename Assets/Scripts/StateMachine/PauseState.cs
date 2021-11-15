@@ -32,7 +32,7 @@ public class PauseState : State
 
     private void ResumeClicked()
     {
-        owner.ChangeState(new GameState(false));
+        owner.ChangeState(new GameState());
     }
     private void MenuClicked()
     {

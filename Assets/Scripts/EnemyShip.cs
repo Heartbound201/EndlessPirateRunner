@@ -7,12 +7,6 @@ public class EnemyShip : Enemy
     public CannonSystem cannonSystem;
     public DropSystem dropSystem;
 
-    private void Awake()
-    {
-        cannonSystem = GetComponent<CannonSystem>();
-        dropSystem = GetComponent<DropSystem>();
-    }
-
     private void Update()
     {
         if(!cannonSystem || cannonSystem.IsObstructed(Vector3.zero)) return;

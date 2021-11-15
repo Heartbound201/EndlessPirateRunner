@@ -1,9 +1,10 @@
+using System;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
 public class ScrollingPlane : MonoSingleton<ScrollingPlane>
 {
-    public float steeringSpeed = 0.5f;
+    public float steeringSpeed = 1f;
     public float scrollingSpeed = 50f;
     public GameObject isle;
     public bool Enabled { get; set; }
@@ -26,14 +27,14 @@ public class ScrollingPlane : MonoSingleton<ScrollingPlane>
         if(!Enabled) return;
         
         Vector3 lateralVector = Steer();
-
+        
         for (int i = 0; i < transform.childCount; i++)
         {
             // transform.GetChild(i).Translate(Vector3.back * scrollingSpeed * Time.deltaTime + lateralVector * Time.deltaTime);
             transform.GetChild(i).Translate(lateralVector * Time.deltaTime);
         }
     }
-    
+
     private Vector3 Steer()
     {
         var axis = CrossPlatformInputManager.GetAxis("Horizontal");

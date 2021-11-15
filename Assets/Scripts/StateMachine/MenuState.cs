@@ -13,7 +13,7 @@ public class MenuState : State
         owner.MenuView.OnSettingsClicked += SettingsClicked;
 
         Time.timeScale = 0;
-
+        ResetGame();
         owner.MenuView.Show();
     }
 
@@ -28,10 +28,14 @@ public class MenuState : State
 
         base.ExitState();
     }
-
+    private void ResetGame()
+    {
+        owner.Player.Reset();
+        ScrollingPlane.Instance.Reset();
+    }
     private void StartClicked()
     {
-        owner.ChangeState(new GameState(true));
+        owner.ChangeState(new GameState());
     }
 
     private void ShopClicked()

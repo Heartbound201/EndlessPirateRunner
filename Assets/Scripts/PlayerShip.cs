@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityStandardAssets.CrossPlatformInput;
@@ -8,11 +9,7 @@ public class PlayerShip : Entity, IDamageable
     
     public ObservableInt lives;
     public CannonSystem cannonSystem;
-
-    private void Awake()
-    {
-        cannonSystem = GetComponent<CannonSystem>();
-    }
+    public CollectorSystem collectorSystem;
 
     private void Update()
     {
@@ -22,7 +19,6 @@ public class PlayerShip : Entity, IDamageable
         if (CrossPlatformInputManager.GetButton("Cannon"))
         {
             cannonSystem.AimAt(new Vector3(axisHorCannon, 0 , axisVerCannon));
-            
         }
         else
         {

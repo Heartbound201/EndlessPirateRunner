@@ -3,13 +3,6 @@
 public class GameState : State
 {
 
-    private bool _isNewGame;
-
-    public GameState(bool isNewGame)
-    {
-        _isNewGame = isNewGame;
-    }
-
     public override void EnterState()
     {
         base.EnterState();
@@ -17,22 +10,14 @@ public class GameState : State
         Time.timeScale = 1;
         ScrollingPlane.Instance.Enabled = true;
         EntityGenerator.Instance.Enabled = true;
-        if (_isNewGame)
-        {
-            ResetGame();
-        }
+        WeatherGenerator.Instance.Enabled = true;
+        
         owner.GameView.OnPauseClicked += PauseClicked;
         owner.Player.playerShip.OnFatalHit += FinishClicked;
 
         owner.GameView.UpdateGold();
         owner.GameView.UpdateDistance();
         owner.GameView.Show();
-    }
-
-    private void ResetGame()
-    {
-        owner.Player.Reset();
-        ScrollingPlane.Instance.Reset();
     }
 
     public override void ExitState()
@@ -42,6 +27,7 @@ public class GameState : State
         owner.Player.playerShip.OnFatalHit -= FinishClicked;
         ScrollingPlane.Instance.Enabled = false;
         EntityGenerator.Instance.Enabled = false;
+        WeatherGenerator.Instance.Enabled = false;
         Time.timeScale = 0;
         
         base.ExitState();

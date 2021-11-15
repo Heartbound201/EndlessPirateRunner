@@ -44,12 +44,17 @@ public class EntityGenerator : MonoSingleton<EntityGenerator>
     {
         if (!Enabled) return;
 
-        if(_isSpawning) return;
-        StartCoroutine(SpawnEntities());
+        Generate();
 
     }
 
-    private IEnumerator SpawnEntities()
+    public void Generate()
+    {
+        if(_isSpawning) return;
+        StartCoroutine(DoGenerate());
+    }
+
+    private IEnumerator DoGenerate()
     {
         _isSpawning = true;
         

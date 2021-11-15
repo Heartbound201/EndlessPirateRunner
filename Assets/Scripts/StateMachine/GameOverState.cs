@@ -23,7 +23,7 @@
 
     private void RetryClicked()
     {
-        owner.ChangeState(new GameState(true));
+        owner.ChangeState(new GameState());
     }
     private void MenuClicked()
     {
