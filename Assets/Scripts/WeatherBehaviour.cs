@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 
-public class WeatherBehaviour : MonoBehaviour
+public abstract class WeatherBehaviour : MonoBehaviour
 {
+    public float duration;
     public virtual void Show()
     {
         gameObject.SetActive(true);

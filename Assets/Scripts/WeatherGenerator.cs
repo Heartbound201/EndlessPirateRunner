@@ -1,12 +1,14 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 public class WeatherGenerator : MonoSingleton<WeatherGenerator>
 {
     // actually a state machine
     public bool Enabled { get; set; }
-    public Weather Weather => _currentWeather;
+    public ObservableInt distance;
+    public List<WeatherSpawnData> WeatherSpawnData = new List<WeatherSpawnData>();
     public ClearBehaviour ClearBehaviour;
     public WindyBehaviour WindyBehaviour;
     public bool IsCheckingWeather { get; set; }
@@ -48,4 +50,27 @@ public class WeatherGenerator : MonoSingleton<WeatherGenerator>
             _currentWeather.EnterState();
         }
     }
+    
+    private WeatherBehaviour PickRandomWeather(List<WeatherSpawnData> spawnData)
+    {
+        List<WeatherSpawnData> prototypes = spawnData.Where(sd => distance.Value >= sd.minDistance).ToList();
+        
+        List<int> prob = new List<int>();
+        for (int i = 0; i < prototypes.Count; i++)
+        {
+            for (int j = 0; j < prototypes[i].chance; j++)
+            {
+                prob.Add(i);
+            }
+        }
+        return prototypes[prob[Random.Range(0, prob.Count)]].behaviour;
+    }
+}
+
+public class WeatherSpawnData
+{
+    public WeatherBehaviour behaviour;
+    public int minDistance;
+    [Range(0f, 1f)]
+    public float chance;
 }

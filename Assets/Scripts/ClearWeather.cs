@@ -12,7 +12,7 @@ public class ClearWeather : Weather
     public override IEnumerator CheckWeather()
     {
         owner.IsCheckingWeather = true;
-        if (Random.Range(0f, 1f) < .3f)
+        if (Random.Range(0f, 1f) < .05f)
         {
             owner.ChangeWeather(new WindyWeather());
         }

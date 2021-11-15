@@ -1580,6 +1580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4c21130bff241229a5e8989f05bcf19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  duration: 0
 --- !u!1 &351227314
 GameObject:
   m_ObjectHideFlags: 0
@@ -1713,6 +1714,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 551deeacb70249a6bc4da43315060828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  duration: 0
   warningMessage: Beware of the wind!
   warningText: {fileID: 1749838978}
   windStrengthMin: 10
@@ -3276,6 +3278,14 @@ PrefabInstance:
     - target: {fileID: 22400000, guid: 4944c563feebee342b64a6677c9d0b1c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400002, guid: 4944c563feebee342b64a6677c9d0b1c, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 477085937969679356, guid: 4944c563feebee342b64a6677c9d0b1c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4944c563feebee342b64a6677c9d0b1c, type: 3}
@@ -6693,6 +6703,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de7ad0058acd4334a8152c31e881c129, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distance: {fileID: 0}
   ClearBehaviour: {fileID: 332639517}
   WindyBehaviour: {fileID: 365848608}
 --- !u!4 &2000302768

@@ -21,7 +21,10 @@ public class Player : MonoBehaviour
     public void Reset()
     {
         distance.Value = 0;
-
+        if (playerShip != null)
+        {
+            Destroy(playerShip.gameObject);
+        }
         GameObject shipGO = Instantiate(playerData.currentShip.prefab, transform);
         playerShip = shipGO.GetComponent<PlayerShip>();
         playerShip.lives.Value = playerData.currentShip.lives;
