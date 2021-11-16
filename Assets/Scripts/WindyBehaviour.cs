@@ -1,7 +1,5 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using Random = UnityEngine.Random;
 
 public class WindyBehaviour : WeatherBehaviour
 {

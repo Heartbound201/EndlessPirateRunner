@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Serialization;
-
-class DestroyableObstacle : Obstacle, IDamageable
+﻿class DestroyableObstacle : Obstacle, IDamageable
 {
     
     public int lives;

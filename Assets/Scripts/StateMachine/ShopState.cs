@@ -1,7 +1,4 @@
-﻿using UnityEditor.SceneManagement;
-using UnityEngine;
-
-public class ShopState : State
+﻿public class ShopState : State
 {
     public override void EnterState()
     {

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -8,14 +9,25 @@ public class Player : MonoBehaviour
     public int scoreIncreasedPerSecond = 10;
     public PlayerShip playerShip;
 
+    private bool _isIncrementingDistance;
     private void Start()
     {
         SaveManager.Instance.Load();
+        _isIncrementingDistance = false;
     }
 
     private void Update()
     {
-        distance.Value += Mathf.CeilToInt(scoreIncreasedPerSecond * Time.deltaTime);
+        if(_isIncrementingDistance) return;
+        StartCoroutine(IncrementDistance());
+    }
+
+    private IEnumerator IncrementDistance()
+    {
+        _isIncrementingDistance = true;
+        distance.Value += scoreIncreasedPerSecond;
+        yield return new WaitForSeconds(1);
+        _isIncrementingDistance = false;
     }
 
     public void Reset()

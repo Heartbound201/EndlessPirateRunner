@@ -10,12 +10,14 @@ public class ShopView : View
     public PlayerData playerData;
     public GameObject buyItemPrefab;
     public Transform buyItemPanel;
+    public Text currentGoldText;
     public List<PlayerShipPrototype> availableShips;
 
     private readonly List<UIShipCard> _shipCards = new List<UIShipCard>();
 
     public void FillShopItems()
     {
+        currentGoldText.text = playerData.gold.Value.ToString();
         // fill every ship in the game
         foreach (PlayerShipPrototype shipPrototype in availableShips)
         {
