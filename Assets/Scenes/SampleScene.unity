@@ -3583,13 +3583,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.13052616, y: -0, z: -0, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: 75, z: -100}
+  m_LocalRotation: {x: 0.3420201, y: 0, z: 0, w: 0.9396927}
+  m_LocalPosition: {x: 0, y: 175, z: -100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 40, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3597,7 +3597,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b395b616b6224de2b416fd70db701c99, type: 3}
   m_Name: 
@@ -7287,25 +7287,25 @@ MonoBehaviour:
     minDistance: 0
     weight: 3
   - prototype: {fileID: 11400000, guid: 4643f2eca703cd440995281242f6057b, type: 2}
-    minDistance: 3000
+    minDistance: 500
     weight: 1
   - prototype: {fileID: 11400000, guid: 81dc0983bd1bf2e45b1388280e8a54ac, type: 2}
-    minDistance: 1000
+    minDistance: 100
     weight: 3
   - prototype: {fileID: 11400000, guid: f869f462a69077941b2c48a2b734fa10, type: 2}
-    minDistance: 2000
+    minDistance: 400
     weight: 2
   - prototype: {fileID: 11400000, guid: 446ec2dfc89f2c14cbfaf7d1e29cf47a, type: 2}
-    minDistance: 4000
+    minDistance: 400
     weight: 2
   - prototype: {fileID: 11400000, guid: 161c92c98e0e1d4459e2ca7595035974, type: 2}
-    minDistance: 6000
+    minDistance: 500
     weight: 1
   spawnQuantity: 200
-  spawnQuantityLinearDecrement: 0.5
+  spawnQuantityLinearDecrement: 0.05
   spawnQuantityMin: 50
   spawnFrequency: 5
-  spawnFrequencyLinearDecrement: 0.5
+  spawnFrequencyLinearDecrement: 0.01
   spawnFrequencyMin: 1.5
   spawnHorizon: 500
 --- !u!1 &2004741791

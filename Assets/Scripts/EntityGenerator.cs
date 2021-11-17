@@ -11,9 +11,11 @@ public class EntityGenerator : MonoSingleton<EntityGenerator>
     public ObservableInt distance;
     public List<SpawnData> entities = new List<SpawnData>();
 
+    [Tooltip("This variable decreases by Distance * Decrement, up to a minimum")]
     public float spawnQuantity;
     public float spawnQuantityLinearDecrement;
     public float spawnQuantityMin;
+    [Tooltip("This variable decreases by Distance * Decrement, up to a minimum")]
     public float spawnFrequency;
     public float spawnFrequencyLinearDecrement;
     public float spawnFrequencyMin;
@@ -74,7 +76,7 @@ public class EntityGenerator : MonoSingleton<EntityGenerator>
 
     private float DecreaseByDistance(float value, float decrement, float dist, float min, float max)
     {
-        return Mathf.Clamp(value - dist/1000 * decrement, min, max);
+        return Mathf.Clamp(value - dist * decrement, min, max);
     }
 
     private GameObject GenerateEntity(Vector2 pos)

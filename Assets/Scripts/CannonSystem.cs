@@ -18,8 +18,10 @@ public class CannonSystem : MonoBehaviour
     private float _dotSpacing = .1f;
     private Vector3 _pos;
     private float _timeStamp;
-    private bool CanShoot => !(cannon == null) && !_isFiring && _targetIndicator.transform.position.z >= cannon.transform.position.z;
-    
+
+    private bool CanShoot => !(cannon == null) && !_isFiring &&
+                             _targetIndicator.transform.position.z >= cannon.transform.position.z;
+
     private void Start()
     {
         _targetIndicator = Instantiate(targetIndicatorPrefab, transform);
@@ -27,16 +29,18 @@ public class CannonSystem : MonoBehaviour
         _lr.positionCount = _dotsNumber;
         ResetTargetIndicator();
     }
-    
-    public void UpdateTrajectory (Vector3 cannonPos, Vector3 forceApplied)
+
+    public void UpdateTrajectory(Vector3 cannonPos, Vector3 forceApplied)
     {
         List<Vector3> linePoints = new List<Vector3> {cannonPos};
         _timeStamp = _dotSpacing;
-        for (int i = 0; i < _dotsNumber; i++) {
+        for (int i = 0; i < _dotsNumber; i++)
+        {
             _pos.x = (cannonPos.x + forceApplied.x * _timeStamp);
-            _pos.y = (cannonPos.y + forceApplied.y * _timeStamp) - (Physics2D.gravity.magnitude * _timeStamp * _timeStamp) / 2f;
+            _pos.y = (cannonPos.y + forceApplied.y * _timeStamp) -
+                     (Physics2D.gravity.magnitude * _timeStamp * _timeStamp) / 2f;
             _pos.z = (cannonPos.z + forceApplied.z * _timeStamp);
-            
+
             linePoints.Add(_pos);
             _timeStamp += _dotSpacing;
         }
@@ -47,16 +51,18 @@ public class CannonSystem : MonoBehaviour
 
     public void AimAt(Vector3 target)
     {
-        if(cannon == null) return;
-        
+        if (cannon == null) return;
+
         _targetIndicator.SetActive(true);
-        _targetIndicator.transform.Translate(target.x * targetIndicatorMovingSpeed, 0, target.z * targetIndicatorMovingSpeed);
-            
+        _targetIndicator.transform.Translate(target.x * targetIndicatorMovingSpeed, 0,
+            target.z * targetIndicatorMovingSpeed);
+
         Vector3 clampedPosition = _targetIndicator.transform.position;
-        clampedPosition.x = Mathf.Clamp(clampedPosition.x, -targetIndicatorBounds.extents.x, targetIndicatorBounds.extents.x);
+        clampedPosition.x = Mathf.Clamp(clampedPosition.x, -targetIndicatorBounds.extents.x,
+            targetIndicatorBounds.extents.x);
         clampedPosition.z = Mathf.Clamp(clampedPosition.z, 0, targetIndicatorBounds.extents.z);
         _targetIndicator.transform.position = clampedPosition;
-        
+
         // simulate arc
         // UpdateTrajectory(cannon.transform.position, cannon.BallisticVelocity(clampedPosition, cannon.firingAngle));
     }
@@ -84,6 +90,7 @@ public class CannonSystem : MonoBehaviour
         {
             StartCoroutine(DoFire());
         }
+
         ResetTargetIndicator();
     }
 
@@ -93,6 +100,7 @@ public class CannonSystem : MonoBehaviour
         {
             StartCoroutine(DoFire(target));
         }
+
         ResetTargetIndicator();
     }
 
@@ -101,14 +109,19 @@ public class CannonSystem : MonoBehaviour
         _targetIndicator.transform.position = transform.position;
         _targetIndicator.SetActive(false);
     }
-    
+
     public bool IsObstructed(Vector3 target)
     {
-        if (Physics.Raycast(cannon.transform.position,(target - cannon.transform.position).normalized, out RaycastHit hit, cannon.Reach()))
+        if (Physics.Raycast(cannon.transform.position, (target - cannon.transform.position).normalized,
+            out RaycastHit hit, cannon.Reach()))
         {
             Debug.DrawRay(cannon.transform.position, target - cannon.transform.position, Color.yellow, 3f);
-            Debug.Log("Did Hit " + hit.collider.name);
-            if (hit.collider.GetComponent<PlayerShip>()) return false;
+            if (hit.collider.GetComponent<PlayerShip>())
+            {
+                Debug.Log("Cannon Obstructed from " + hit.collider.name);
+                return false;
+            }
+
             return true;
         }
 

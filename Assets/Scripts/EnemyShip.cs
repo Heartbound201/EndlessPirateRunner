@@ -9,9 +9,9 @@ public class EnemyShip : Enemy
 
     private void Update()
     {
-        if(!cannonSystem || cannonSystem.IsObstructed(Vector3.zero)) return;
         // don't shoot if behind the player
-        if(transform.position.z <= 50 || transform.position.z >= 200) return;
+        if (!cannonSystem || transform.position.z <= 100 || transform.position.z >= 400 ||
+            cannonSystem.IsObstructed(Vector3.zero)) return;
         
         cannonSystem.Fire(Vector3.zero);
     }
