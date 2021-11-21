@@ -37,7 +37,7 @@ public class EntityGenerator : MonoSingleton<EntityGenerator>
         _camera = Camera.main;
         var originScreenToWorldPoint = _camera.ScreenToWorldPoint(new Vector3(0, 0, _camera.farClipPlane / 2));
         var screenWidthScreenToWorldPoint = _camera.ScreenToWorldPoint(new Vector3(Screen.width, 0, _camera.farClipPlane / 2));
-        _screenSize = screenWidthScreenToWorldPoint.x - originScreenToWorldPoint.x;
+        _screenSize = (screenWidthScreenToWorldPoint.x - originScreenToWorldPoint.x) * 2;
         Enabled = false;
     }
 

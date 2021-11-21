@@ -58,6 +58,6 @@ public class ScrollingPlane : MonoSingleton<ScrollingPlane>
     public void Spawn(GameObject o)
     {
         o.transform.SetParent(gameObject.transform);
-        o.GetComponent<Rigidbody>().velocity = Vector3.back * scrollingSpeed;
+        o.GetComponent<Rigidbody>().velocity += Vector3.back * scrollingSpeed;
     }
 }

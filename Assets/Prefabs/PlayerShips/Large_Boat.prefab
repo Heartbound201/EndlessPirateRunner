@@ -48,9 +48,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ad63f17b12492246a838a877d7b4baf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxLives: 0
   lives: {fileID: 11400000, guid: fe55b12f0b48bea45baf3dbb9f16d717, type: 2}
   cannonSystem: {fileID: 8586176215584706305}
   collectorSystem: {fileID: 6418084197775525778}
+  renderer: {fileID: 3823222675850396002}
+  graceTime: 0.5
 --- !u!54 &4869876911078508194
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -379,6 +382,11 @@ PrefabInstance:
 --- !u!4 &2685829936552868365 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: da313316ff8c8a9459f6c794ba9efe99, type: 3}
+  m_PrefabInstance: {fileID: 2508299820279176678}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &3823222675850396002 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: da313316ff8c8a9459f6c794ba9efe99, type: 3}
   m_PrefabInstance: {fileID: 2508299820279176678}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3936634737740846476

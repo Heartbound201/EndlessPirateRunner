@@ -19,6 +19,7 @@ public class GameState : State
         owner.ShootJoystick.SetActive(owner.Player.playerShip.cannonSystem);
         owner.GameView.UpdateGold();
         owner.GameView.UpdateDistance();
+        owner.GameView.UpdateLives();
         owner.GameView.Show();
     }
 

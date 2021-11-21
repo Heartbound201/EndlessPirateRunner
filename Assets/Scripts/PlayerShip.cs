@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityStandardAssets.CrossPlatformInput;
@@ -5,10 +6,15 @@ using UnityStandardAssets.CrossPlatformInput;
 public class PlayerShip : Entity, IDamageable
 {
     public UnityAction OnFatalHit;
-    
+
+    public int maxLives;
     public ObservableInt lives;
     public CannonSystem cannonSystem;
     public CollectorSystem collectorSystem;
+    public Renderer renderer;
+    public float graceTime;
+
+    private bool _isInvulnerable = false;
 
     private void Update()
     {
@@ -42,6 +48,8 @@ public class PlayerShip : Entity, IDamageable
 
     public void GetHit(int damage)
     {
+        if(_isInvulnerable) return;
+        StartCoroutine(FlashRed());
         lives.Value -= damage;
         if (lives.Value <= 0)
         {
@@ -49,6 +57,17 @@ public class PlayerShip : Entity, IDamageable
             OnFatalHit?.Invoke();
             Destroy(gameObject);
         }
+
+
     }
 
+    private IEnumerator FlashRed()
+    {
+        _isInvulnerable = true;
+        var material = renderer.material;
+        material.color = Color.red;
+        yield return new WaitForSeconds(graceTime);
+        material.color = Color.white;
+        _isInvulnerable = false;
+    }
 }

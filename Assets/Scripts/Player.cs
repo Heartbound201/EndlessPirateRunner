@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
         }
         GameObject shipGO = Instantiate(playerData.currentShip.prefab, transform);
         playerShip = shipGO.GetComponent<PlayerShip>();
+        playerShip.maxLives = playerData.currentShip.lives;
         playerShip.lives.Value = playerData.currentShip.lives;
     }
 

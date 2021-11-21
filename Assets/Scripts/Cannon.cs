@@ -23,6 +23,7 @@ public class Cannon : MonoBehaviour
         AudioManager.Instance.PlaySFX(firingSfx);
         cannonBall.GetComponent<Rigidbody>().velocity = BallisticVelocity(target, firingAngle);
         cannonBall.transform.SetParent(ScrollingPlane.Instance.transform);
+        ScrollingPlane.Instance.Spawn(cannonBall);
         Destroy(cannonBall, 10f);
     }
 
