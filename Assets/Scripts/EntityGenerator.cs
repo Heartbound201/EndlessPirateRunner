@@ -8,6 +8,7 @@ using Random = UnityEngine.Random;
 public class EntityGenerator : MonoSingleton<EntityGenerator>
 {
     public bool Enabled { get; set; }
+    public Transform environment;
     public ObservableInt distance;
     public List<SpawnData> entities = new List<SpawnData>();
 
@@ -19,7 +20,6 @@ public class EntityGenerator : MonoSingleton<EntityGenerator>
     public float spawnFrequency;
     public float spawnFrequencyLinearDecrement;
     public float spawnFrequencyMin;
-    public float spawnHorizon;
 
     private Camera _camera;
     private bool _isSpawning = false;
@@ -66,7 +66,7 @@ public class EntityGenerator : MonoSingleton<EntityGenerator>
         foreach (Vector2 sample in samples)
         {
             // move sample position back to the horizon 
-            yield return GenerateEntity(sample + new Vector2(-_screenSize/2, spawnHorizon));
+            yield return GenerateEntity(sample + new Vector2(-_screenSize/2 + transform.position.x, transform.position.z));
         }
 
         // change spawn frequency
@@ -82,7 +82,7 @@ public class EntityGenerator : MonoSingleton<EntityGenerator>
     private GameObject GenerateEntity(Vector2 pos)
     {
         GameObject go = Instantiate(PickRandomEntity(entities).prefab, new Vector3(pos.x, 0, pos.y), quaternion.identity);
-        ScrollingPlane.Instance.Spawn(go);
+        go.transform.SetParent(environment);
         return go;
     }
 

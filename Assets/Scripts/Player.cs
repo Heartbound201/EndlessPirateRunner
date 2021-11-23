@@ -5,42 +5,57 @@ public class Player : MonoBehaviour
 {
     public PlayerData playerData;
 
-    public ObservableInt distance;
-    public int scoreIncreasedPerSecond = 10;
     public PlayerShip playerShip;
 
-    private bool _isIncrementingDistance;
     private void Start()
     {
         SaveManager.Instance.Load();
-        _isIncrementingDistance = false;
     }
 
     private void Update()
     {
-        if(_isIncrementingDistance) return;
-        StartCoroutine(IncrementDistance());
+        if (!playerShip)
+        {
+            return;
+        }
+
+        transform.position = playerShip.transform.position;
     }
 
-    private IEnumerator IncrementDistance()
-    {
-        _isIncrementingDistance = true;
-        distance.Value += scoreIncreasedPerSecond;
-        yield return new WaitForSeconds(1);
-        _isIncrementingDistance = false;
-    }
 
     public void Reset()
     {
-        distance.Value = 0;
+        transform.position = Vector3.zero;
+        playerData.score.Value = 0;
         if (playerShip != null)
         {
             Destroy(playerShip.gameObject);
         }
-        GameObject shipGO = Instantiate(playerData.currentShip.prefab, transform);
-        playerShip = shipGO.GetComponent<PlayerShip>();
-        playerShip.maxLives = playerData.currentShip.lives;
-        playerShip.lives.Value = playerData.currentShip.lives;
+
+        playerShip = BuildShip(playerData.currentShip);
+    }
+
+    private PlayerShip BuildShip(PlayerShipPrototype prototype)
+    {
+        GameObject shipGO = Instantiate(playerData.currentShip.prefab, transform.position, Quaternion.identity);
+        
+        PlayerShip playerShipComponent = shipGO.GetComponent<PlayerShip>();
+        playerShipComponent.lateralSpeed = prototype.lateralSpeed;
+        playerShipComponent.forwardSpeed = prototype.forwardSpeed;
+        playerShipComponent.playerData = playerData;
+        playerShipComponent.graceTime = prototype.graceTime;
+        playerShipComponent.scoreIncreasedPerSecond = prototype.scoreIncreasedPerSecond;
+        playerShipComponent.maxLives = prototype.lives;
+
+        if(prototype.hasCannons)
+        {
+            playerShipComponent.cannonSystem.firingCooldown = prototype.firingCooldown;
+            playerShipComponent.cannonSystem.targetIndicatorSpeed = prototype.targetIndicatorSpeed;
+        }
+        
+        playerData.lives.Value = playerShipComponent.maxLives;
+
+        return playerShipComponent;
     }
 
 }

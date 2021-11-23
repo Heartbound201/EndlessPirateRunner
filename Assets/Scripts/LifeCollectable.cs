@@ -2,13 +2,20 @@
 
 class LifeCollectable : Collectable
 {
-    public ObservableInt life;
     public int amount;
-    public override void Collect()
+    public override void Collect(PlayerShip ship)
     {
-        base.Collect();
-        life.Value += amount;
-        Debug.LogFormat("Life {0} + {1}", life.Value, amount);
+        base.Collect(ship);
+        if (ship.playerData.lives.Value < ship.maxLives)
+        {
+            Debug.LogFormat("Life {0} + {1}", ship.playerData.lives.Value, amount);
+            ship.playerData.lives.Value += amount;
+        }
+        else
+        {
+            Debug.Log("Life at max");
+        }
+
         // TODO animation
         Destroy(gameObject);
     }

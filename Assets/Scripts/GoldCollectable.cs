@@ -2,13 +2,12 @@
 
 class GoldCollectable : Collectable
 {
-    public ObservableInt gold;
     public int amount;
-    public override void Collect()
+    public override void Collect(PlayerShip ship)
     {
-        base.Collect();
-        gold.Value += amount;
-        Debug.LogFormat("Gold {0} + {1}", gold.Value, amount);
+        base.Collect(ship);
+        Debug.LogFormat("Gold {0} + {1}", ship.playerData.gold.Value, amount);
+        ship.playerData.gold.Value += amount;
         // TODO animate
         Destroy(gameObject);
     }

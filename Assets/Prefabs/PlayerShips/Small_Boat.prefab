@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20f73762a6ec4cd1b2c4da8451908fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ship: {fileID: 0}
 --- !u!65 &5064651788937197418
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -106,7 +107,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 2
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!136 &2703451160235629371
 CapsuleCollider:
@@ -134,9 +135,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ad63f17b12492246a838a877d7b4baf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lives: {fileID: 11400000, guid: fe55b12f0b48bea45baf3dbb9f16d717, type: 2}
+  playerData: {fileID: 0}
+  lateralSpeed: 0
+  forwardSpeed: 0
+  maxLives: 0
+  graceTime: 1
+  scoreIncreasedPerSecond: 0
   cannonSystem: {fileID: 0}
-  collectorSystem: {fileID: 0}
+  collectorSystem: {fileID: 6846544432893016407}
+  renderer: {fileID: 4394311347777624148}
+  rigidbody: {fileID: 2217420888544634117}
 --- !u!1 &7439097775088494941
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,5 +248,10 @@ PrefabInstance:
 --- !u!4 &3220238931582722875 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b13deba3052a3e3468c04bcf1abf9a19, type: 3}
+  m_PrefabInstance: {fileID: 3114854054243747024}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &4394311347777624148 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: b13deba3052a3e3468c04bcf1abf9a19, type: 3}
   m_PrefabInstance: {fileID: 3114854054243747024}
   m_PrefabAsset: {fileID: 0}

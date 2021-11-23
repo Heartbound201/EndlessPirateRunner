@@ -31,7 +31,7 @@ public class MenuState : State
     private void ResetGame()
     {
         owner.Player.Reset();
-        ScrollingPlane.Instance.Reset();
+        // ScrollingPlane.Instance.Reset();
     }
     private void StartClicked()
     {

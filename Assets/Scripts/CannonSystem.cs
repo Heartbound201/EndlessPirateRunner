@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(LineRenderer))]
 public class CannonSystem : MonoBehaviour
@@ -8,7 +9,7 @@ public class CannonSystem : MonoBehaviour
     public Cannon cannon;
     public float firingCooldown = 1f;
     public GameObject targetIndicatorPrefab;
-    public float targetIndicatorMovingSpeed = 5f;
+    public float targetIndicatorSpeed = 5f;
     public Bounds targetIndicatorBounds;
 
     private GameObject _targetIndicator;
@@ -54,8 +55,8 @@ public class CannonSystem : MonoBehaviour
         if (cannon == null) return;
 
         _targetIndicator.SetActive(true);
-        _targetIndicator.transform.Translate(target.x * targetIndicatorMovingSpeed, 0,
-            target.z * targetIndicatorMovingSpeed);
+        _targetIndicator.transform.Translate(target.x * targetIndicatorSpeed, 0,
+            target.z * targetIndicatorSpeed);
 
         Vector3 clampedPosition = _targetIndicator.transform.position;
         clampedPosition.x = Mathf.Clamp(clampedPosition.x, -targetIndicatorBounds.extents.x,

@@ -3,17 +3,12 @@ using UnityEngine.UI;
 
 public class WindyBehaviour : WeatherBehaviour
 {
+    public Player player;
     public string warningMessage;
     public Text warningText;
     public int windStrengthMin;
     public int windStrengthMax;
-    private ScrollingPlane _scrollingPlane;
     private Vector3 _windVelocity;
-
-    private void Start()
-    {
-        _scrollingPlane = FindObjectOfType<ScrollingPlane>();
-    }
 
     private void OnEnable()
     {
@@ -32,10 +27,7 @@ public class WindyBehaviour : WeatherBehaviour
 
     private void FixedUpdate()
     {
-        for (int i = 0; i < _scrollingPlane.transform.childCount; i++)
-        {
-            _scrollingPlane.transform.GetChild(i).Translate(_windVelocity * Time.deltaTime);
-        }
+        player.playerShip.rigidbody.AddForce(_windVelocity);
     }
 
     public override void Show()

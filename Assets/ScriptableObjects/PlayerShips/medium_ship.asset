@@ -16,4 +16,10 @@ MonoBehaviour:
   cost: 500
   sprite: {fileID: 21300000, guid: 10d867f181e4ca44aad1f49e399a0fb1, type: 3}
   hasCannons: 0
+  lateralSpeed: 50
+  forwardSpeed: 50
   lives: 3
+  graceTime: 1
+  scoreIncreasedPerSecond: 10
+  firingCooldown: 0
+  targetIndicatorSpeed: 0

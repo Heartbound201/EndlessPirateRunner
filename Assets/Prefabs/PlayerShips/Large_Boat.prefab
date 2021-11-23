@@ -48,12 +48,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ad63f17b12492246a838a877d7b4baf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerData: {fileID: 0}
+  lateralSpeed: 50
+  forwardSpeed: 50
   maxLives: 0
-  lives: {fileID: 11400000, guid: fe55b12f0b48bea45baf3dbb9f16d717, type: 2}
+  graceTime: 1
+  scoreIncreasedPerSecond: 0
   cannonSystem: {fileID: 8586176215584706305}
   collectorSystem: {fileID: 6418084197775525778}
   renderer: {fileID: 3823222675850396002}
-  graceTime: 0.5
+  rigidbody: {fileID: 4869876911078508194}
 --- !u!54 &4869876911078508194
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -68,7 +72,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 2
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!136 &5283811722421118736
 CapsuleCollider:
@@ -141,6 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20f73762a6ec4cd1b2c4da8451908fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ship: {fileID: 0}
 --- !u!1 &5006445330259072854
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,7 +292,7 @@ MonoBehaviour:
   cannon: {fileID: 556510932565332797}
   firingCooldown: 1.5
   targetIndicatorPrefab: {fileID: 8102226767956562858, guid: 3875e80756b8c7a45be45f60f6e20ae2, type: 3}
-  targetIndicatorMovingSpeed: 1
+  targetIndicatorSpeed: 1
   targetIndicatorBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 200, y: 0, z: 300}

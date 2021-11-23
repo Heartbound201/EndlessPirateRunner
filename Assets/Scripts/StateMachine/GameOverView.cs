@@ -1,4 +1,5 @@
 ﻿using UnityEngine.Events;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class GameOverView : View
@@ -7,10 +8,9 @@ public class GameOverView : View
     public UnityAction OnMenuClicked;
     
     
-    public PlayerData playerData;
-    public ObservableInt Distance;
+    public PlayerData PlayerData;
     public Text GoldText;
-    public Text DistanceText;
+    public Text ScoreText;
     public Text NewHighScore;
     
     public void RetryClick()
@@ -25,11 +25,11 @@ public class GameOverView : View
     public void FillRecap(Player player)
     {
         NewHighScore.gameObject.SetActive(false);
-        GoldText.text = playerData.gold.Value.ToString();
-        DistanceText.text = Distance.Value.ToString();
-        if (IsNewHighScore(playerData.highscore, Distance.Value))
+        GoldText.text = PlayerData.gold.Value.ToString();
+        ScoreText.text = PlayerData.score.Value.ToString();
+        if (IsNewHighScore(PlayerData.highscore, PlayerData.score.Value))
         {
-            playerData.highscore = Distance.Value;
+            PlayerData.highscore = PlayerData.score.Value;
             NewHighScore.gameObject.SetActive(true);
         }
     }
