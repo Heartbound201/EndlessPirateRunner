@@ -1,12 +1,17 @@
-﻿using System.Collections;
+﻿using UnityEngine;
+using UnityEngine.Events;
 
-public abstract class Weather
+public abstract class Weather : MonoBehaviour
 {
-    public WeatherGenerator owner;
-
-    public abstract IEnumerator CheckWeather();
-
-    public abstract void ExitState();
-
-    public abstract void EnterState();
+    public UnityAction OnExpiration;
+    public Player player;
+    public float duration;
+    public virtual void Show()
+    {
+        gameObject.SetActive(true);
+    }
+    public virtual void Hide()
+    {
+        gameObject.SetActive(false);
+    }
 }

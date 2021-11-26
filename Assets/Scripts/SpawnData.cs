@@ -1,10 +1,11 @@
 ﻿using System;
+using UnityEngine.Serialization;
 
 [Serializable]
-public class SpawnData
+public class SpawnData<T>
 {
-    public EntityPrototype prototype;
-    public int minDistance;
+    public T data;
+    public int minScore;
     public int weight;
 
 }

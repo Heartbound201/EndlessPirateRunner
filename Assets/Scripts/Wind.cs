@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class WindyBehaviour : WeatherBehaviour
+public class Wind : Weather
 {
-    public Player player;
     public string warningMessage;
     public Text warningText;
     public int windStrengthMin;
     public int windStrengthMax;
     private Vector3 _windVelocity;
+    private float _expiredTime;
 
     private void OnEnable()
     {
@@ -23,11 +23,19 @@ public class WindyBehaviour : WeatherBehaviour
         }
 
         _windVelocity = new Vector3(windStrength, 0, 0);
+        Debug.Log("wind strength: " + _windVelocity);
+        _expiredTime = 0f;
     }
 
     private void FixedUpdate()
     {
-        player.playerShip.rigidbody.AddForce(_windVelocity);
+        player.playerShip.rigidbody.AddForce(_windVelocity, ForceMode.Force);
+        _expiredTime += Time.deltaTime;
+        if(_expiredTime >= duration)
+        {
+            OnExpiration?.Invoke();
+            Hide();
+        }
     }
 
     public override void Show()
