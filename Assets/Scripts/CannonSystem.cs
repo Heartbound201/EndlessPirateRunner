@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-[RequireComponent(typeof(LineRenderer))]
 public class CannonSystem : MonoBehaviour
 {
     public Cannon cannon;
-    public float firingCooldown = 1f;
+    public float firingCooldown;
     public GameObject targetIndicatorPrefab;
-    public float targetIndicatorSpeed = 5f;
-    public Bounds targetIndicatorBounds;
+    public float targetIndicatorSpeed;
+    public float targetIndicatorRadius;
+    public LaunchArcRenderer arcRenderer;
 
     private GameObject _targetIndicator;
     private bool _isFiring;
@@ -26,8 +26,8 @@ public class CannonSystem : MonoBehaviour
     private void Start()
     {
         _targetIndicator = Instantiate(targetIndicatorPrefab, transform);
-        _lr = GetComponent<LineRenderer>();
-        _lr.positionCount = _dotsNumber;
+        // _lr = GetComponent<LineRenderer>();
+        // _lr.positionCount = _dotsNumber;
         ResetTargetIndicator();
     }
 
@@ -46,8 +46,8 @@ public class CannonSystem : MonoBehaviour
             _timeStamp += _dotSpacing;
         }
 
-        _lr.SetPositions(linePoints.ToArray());
-        _lr.enabled = true;
+        // _lr.SetPositions(linePoints.ToArray());
+        // _lr.enabled = true;
     }
 
     public void AimAt(Vector3 target)
@@ -58,14 +58,23 @@ public class CannonSystem : MonoBehaviour
         _targetIndicator.transform.Translate(target.x * targetIndicatorSpeed, 0,
             target.z * targetIndicatorSpeed);
 
-        Vector3 clampedPosition = _targetIndicator.transform.position;
-        clampedPosition.x = Mathf.Clamp(clampedPosition.x, -targetIndicatorBounds.extents.x,
-            targetIndicatorBounds.extents.x);
-        clampedPosition.z = Mathf.Clamp(clampedPosition.z, 0, targetIndicatorBounds.extents.z);
-        _targetIndicator.transform.position = clampedPosition;
+        Vector3 targetPosition = _targetIndicator.transform.position;
+        
+        Vector3 centerPosition = cannon.transform.position;
+        float distance = Vector3.Distance(targetPosition, centerPosition);
+ 
+        if (distance > targetIndicatorRadius)
+        {
+            Vector3 fromOriginToObject = targetPosition - centerPosition;
+            fromOriginToObject *= targetIndicatorRadius / distance; 
+            targetPosition = centerPosition + fromOriginToObject;
+        }
+        
+        _targetIndicator.transform.position = targetPosition;
 
         // simulate arc
         // UpdateTrajectory(cannon.transform.position, cannon.BallisticVelocity(clampedPosition, cannon.firingAngle));
+        // arcRenderer.RenderArc(100, 10);
     }
 
     private IEnumerator DoFire(Vector3 target)
@@ -86,7 +95,7 @@ public class CannonSystem : MonoBehaviour
 
     public void Fire()
     {
-        _lr.enabled = false;
+        // _lr.enabled = false;
         if (CanShoot)
         {
             StartCoroutine(DoFire());

@@ -12,5 +12,4 @@ public class PlayerShipPrototype : EntityPrototype
     public float graceTime;
     public int scoreIncreasedPerSecond;
     public float firingCooldown;
-    public float targetIndicatorSpeed;
 }

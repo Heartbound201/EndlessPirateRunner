@@ -50,7 +50,6 @@ public class Player : MonoBehaviour
         if(prototype.hasCannons)
         {
             playerShipComponent.cannonSystem.firingCooldown = prototype.firingCooldown;
-            playerShipComponent.cannonSystem.targetIndicatorSpeed = prototype.targetIndicatorSpeed;
         }
         
         playerData.lives.Value = playerShipComponent.maxLives;

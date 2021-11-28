@@ -6,7 +6,7 @@ public class Cannon : MonoBehaviour
     public GameObject cannonBallPrefab;
     [Range(10f, 45f)]
     public float firingAngle;
-    public float firingVelocity;
+    public float bulletSpeed;
     public float firingMinDistance;
     public float firingMaxDistance;
     public float firingMinAngle;
@@ -22,7 +22,6 @@ public class Cannon : MonoBehaviour
         firingVfx.Play();
         AudioManager.Instance.PlaySFX(firingSfx);
         cannonBall.GetComponent<Rigidbody>().velocity = BallisticVelocity(target, firingAngle);
-        Destroy(cannonBall, 10f);
     }
 
     public Vector3 BallisticVelocity(Vector3 destination, float angle)
@@ -43,6 +42,12 @@ public class Cannon : MonoBehaviour
         Debug.LogFormat("BallisticVelocity: velocity {0}, velocity * dir.normalized {1}", velocity, dir.normalized * velocity);
 
         return velocity * dir.normalized; // Return a normalized vector.
+    }
+
+    public Vector3 GetDistance(Vector3 dir)
+    {
+        return dir * bulletSpeed;
+
     }
 
     public float Reach()

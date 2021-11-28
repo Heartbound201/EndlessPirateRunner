@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -491,7 +491,8 @@ MonoBehaviour:
         m_MethodName: PlaySFX
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 2f19440a83d8fec45b9e32ff7aee97d8, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 2f19440a83d8fec45b9e32ff7aee97d8,
+            type: 2}
           m_ObjectArgumentAssemblyTypeName: AudioClipSO, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -864,7 +865,7 @@ Transform:
   - {fileID: 861356964}
   - {fileID: 1699091734}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &105441073
 GameObject:
@@ -1061,7 +1062,8 @@ CanvasRenderer:
   m_CullTransparentMesh: 1
 --- !u!114 &138387278 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2519271408403960308, guid: 25a31d213f6d8cb43bba572d93445e6e, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2519271408403960308, guid: 25a31d213f6d8cb43bba572d93445e6e,
+    type: 3}
   m_PrefabInstance: {fileID: 2519271408266694330}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -1188,7 +1190,8 @@ MonoBehaviour:
   GoldText: {fileID: 1346046419}
   ScoreText: {fileID: 51495762}
   LivesParent: {fileID: 1377963340}
-  LifePrefab: {fileID: 4458817352298766058, guid: e5d3f7337e8abdd4f9fc387b4b6dbaf1, type: 3}
+  LifePrefab: {fileID: 4458817352298766058, guid: e5d3f7337e8abdd4f9fc387b4b6dbaf1,
+    type: 3}
 --- !u!114 &153073201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1406,7 +1409,8 @@ MonoBehaviour:
         m_MethodName: PlaySFX
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 2f19440a83d8fec45b9e32ff7aee97d8, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 2f19440a83d8fec45b9e32ff7aee97d8,
+            type: 2}
           m_ObjectArgumentAssemblyTypeName: AudioClipSO, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -2170,7 +2174,8 @@ MonoBehaviour:
         m_MethodName: PlaySFX
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 2f19440a83d8fec45b9e32ff7aee97d8, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 2f19440a83d8fec45b9e32ff7aee97d8,
+            type: 2}
           m_ObjectArgumentAssemblyTypeName: AudioClipSO, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -2762,7 +2767,8 @@ MonoBehaviour:
         m_MethodName: PlaySFX
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 2f19440a83d8fec45b9e32ff7aee97d8, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 2f19440a83d8fec45b9e32ff7aee97d8,
+            type: 2}
           m_ObjectArgumentAssemblyTypeName: AudioClipSO, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -3164,7 +3170,8 @@ MonoBehaviour:
         m_MethodName: PlaySFX
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 2f19440a83d8fec45b9e32ff7aee97d8, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 2f19440a83d8fec45b9e32ff7aee97d8,
+            type: 2}
           m_ObjectArgumentAssemblyTypeName: AudioClipSO, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -5077,7 +5084,8 @@ MonoBehaviour:
         m_MethodName: PlaySFX
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 2f19440a83d8fec45b9e32ff7aee97d8, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 2f19440a83d8fec45b9e32ff7aee97d8,
+            type: 2}
           m_ObjectArgumentAssemblyTypeName: AudioClipSO, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -5222,7 +5230,8 @@ MonoBehaviour:
         m_MethodName: PlaySFX
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 2f19440a83d8fec45b9e32ff7aee97d8, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 2f19440a83d8fec45b9e32ff7aee97d8,
+            type: 2}
           m_ObjectArgumentAssemblyTypeName: AudioClipSO, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -6151,7 +6160,8 @@ MonoBehaviour:
         m_MethodName: PlaySFX
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 2f19440a83d8fec45b9e32ff7aee97d8, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 2f19440a83d8fec45b9e32ff7aee97d8,
+            type: 2}
           m_ObjectArgumentAssemblyTypeName: AudioClipSO, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -6865,7 +6875,8 @@ MonoBehaviour:
         m_MethodName: PlaySFX
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 2f19440a83d8fec45b9e32ff7aee97d8, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 2f19440a83d8fec45b9e32ff7aee97d8,
+            type: 2}
           m_ObjectArgumentAssemblyTypeName: AudioClipSO, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -7047,7 +7058,8 @@ MonoBehaviour:
         m_MethodName: PlaySFX
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 2f19440a83d8fec45b9e32ff7aee97d8, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 2f19440a83d8fec45b9e32ff7aee97d8,
+            type: 2}
           m_ObjectArgumentAssemblyTypeName: AudioClipSO, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -7503,7 +7515,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2095504968
 GameObject:
@@ -7709,7 +7721,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: e3598ac255708414d90af84270ef2028, type: 2}
-  buyItemPrefab: {fileID: 8912534633792697285, guid: 1844434332e0dd5438ef625405d16bd4, type: 3}
+  buyItemPrefab: {fileID: 8912534633792697285, guid: 1844434332e0dd5438ef625405d16bd4,
+    type: 3}
   buyItemPanel: {fileID: 1861191556}
   currentGoldText: {fileID: 1288911972}
   availableShips:
@@ -7761,51 +7774,63 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2519271408403960310, guid: 25a31d213f6d8cb43bba572d93445e6e, type: 3}
+    - target: {fileID: 2519271408403960310, guid: 25a31d213f6d8cb43bba572d93445e6e,
+        type: 3}
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
-    - target: {fileID: 2519271408403960311, guid: 25a31d213f6d8cb43bba572d93445e6e, type: 3}
+    - target: {fileID: 2519271408403960311, guid: 25a31d213f6d8cb43bba572d93445e6e,
+        type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 2519271408403960311, guid: 25a31d213f6d8cb43bba572d93445e6e, type: 3}
+    - target: {fileID: 2519271408403960311, guid: 25a31d213f6d8cb43bba572d93445e6e,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2519271408403960311, guid: 25a31d213f6d8cb43bba572d93445e6e, type: 3}
+    - target: {fileID: 2519271408403960311, guid: 25a31d213f6d8cb43bba572d93445e6e,
+        type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2519271408403960311, guid: 25a31d213f6d8cb43bba572d93445e6e, type: 3}
+    - target: {fileID: 2519271408403960311, guid: 25a31d213f6d8cb43bba572d93445e6e,
+        type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2519271408403960311, guid: 25a31d213f6d8cb43bba572d93445e6e, type: 3}
+    - target: {fileID: 2519271408403960311, guid: 25a31d213f6d8cb43bba572d93445e6e,
+        type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2519271408403960311, guid: 25a31d213f6d8cb43bba572d93445e6e, type: 3}
+    - target: {fileID: 2519271408403960311, guid: 25a31d213f6d8cb43bba572d93445e6e,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2519271408403960311, guid: 25a31d213f6d8cb43bba572d93445e6e, type: 3}
+    - target: {fileID: 2519271408403960311, guid: 25a31d213f6d8cb43bba572d93445e6e,
+        type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2519271408403960311, guid: 25a31d213f6d8cb43bba572d93445e6e, type: 3}
+    - target: {fileID: 2519271408403960311, guid: 25a31d213f6d8cb43bba572d93445e6e,
+        type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2519271408403960311, guid: 25a31d213f6d8cb43bba572d93445e6e, type: 3}
+    - target: {fileID: 2519271408403960311, guid: 25a31d213f6d8cb43bba572d93445e6e,
+        type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2519271408403960311, guid: 25a31d213f6d8cb43bba572d93445e6e, type: 3}
+    - target: {fileID: 2519271408403960311, guid: 25a31d213f6d8cb43bba572d93445e6e,
+        type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2519271408403960311, guid: 25a31d213f6d8cb43bba572d93445e6e, type: 3}
+    - target: {fileID: 2519271408403960311, guid: 25a31d213f6d8cb43bba572d93445e6e,
+        type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
