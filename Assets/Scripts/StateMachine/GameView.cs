@@ -15,7 +15,17 @@ public class GameView : View
     public Transform LivesParent;
     public GameObject LifePrefab;
 
+    public Vector3 cameraPosition;
+    public Quaternion cameraRotation;
+
     private List<GameObject> _lives = new List<GameObject>();
+
+    public void MoveCamera()
+    {
+        Camera.main.transform.position = cameraPosition;
+        Camera.main.transform.rotation = cameraRotation;
+        
+    }
 
     private void Start()
     {

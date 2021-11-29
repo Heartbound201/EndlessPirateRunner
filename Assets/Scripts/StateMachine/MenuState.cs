@@ -31,8 +31,10 @@ public class MenuState : State
     private void ResetGame()
     {
         owner.Player.Reset();
-        // ScrollingPlane.Instance.Reset();
+        EntityGenerator.Instance.Reset();
+        owner.MenuView.MoveCamera();
     }
+    
     private void StartClicked()
     {
         owner.ChangeState(new GameState());

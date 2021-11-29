@@ -21,7 +21,9 @@ public class GameState : State
         owner.GameView.UpdateScore();
         owner.GameView.UpdateLives();
         owner.GameView.Show();
-        
+
+        owner.GameView.MoveCamera();
+
         owner.Player.playerShip.Sail();
     }
 

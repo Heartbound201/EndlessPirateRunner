@@ -1192,6 +1192,8 @@ MonoBehaviour:
   LivesParent: {fileID: 1377963340}
   LifePrefab: {fileID: 4458817352298766058, guid: e5d3f7337e8abdd4f9fc387b4b6dbaf1,
     type: 3}
+  cameraPosition: {x: 0, y: 175, z: -100}
+  cameraRotation: {x: 0.34202012, y: 0, z: 0, w: 0.9396926}
 --- !u!114 &153073201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1663,6 +1665,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 886362bf3e284d5493a1cd26878649c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraPosition: {x: 80, y: 100, z: 80}
+  cameraRotation: {x: -0.044642586, y: 0.93165344, z: -0.122654505, w: -0.3390941}
 --- !u!114 &198552166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1896,7 +1900,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &365848607
 Transform:
   m_ObjectHideFlags: 0
@@ -6597,6 +6601,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   environment: {fileID: 368348968}
   score: {fileID: 11400000, guid: fa2e50ade30dce242826c8d069408d8c, type: 2}
+  islePrefab: {fileID: 1154080528151886237, guid: cf3a6ccaf88e9004985997cf16a54046,
+    type: 3}
   entities:
   - data: {fileID: 11400000, guid: 696402716510a6247bfe2aaeea3bd4e9, type: 2}
     minScore: 0
@@ -6624,6 +6630,8 @@ MonoBehaviour:
   frequencyMax: 3
   frequency: 3
   frequencyLinearChange: 0
+  generatorWidth: 500
+  generatorDepth: 100
 --- !u!1 &1828545027
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ public class EntityGenerator : MonoSingleton<EntityGenerator>
     public bool Enabled { get; set; }
     public Transform environment;
     public ObservableInt score;
+    public GameObject islePrefab;
     public List<SpawnData<EntityPrototype>> entities = new List<SpawnData<EntityPrototype>>();
 
     public float quantityMin;
@@ -23,16 +24,13 @@ public class EntityGenerator : MonoSingleton<EntityGenerator>
     public float frequency;
     public float frequencyLinearChange;
 
-    private Camera _camera;
+    public float generatorWidth;
+    public float generatorDepth;
+
     private bool _isSpawning = false;
-    private float _screenSize;
 
     void Start()
     {
-        _camera = Camera.main;
-        var originScreenToWorldPoint = _camera.ScreenToWorldPoint(new Vector3(0, 0, _camera.farClipPlane / 2));
-        var screenWidthScreenToWorldPoint = _camera.ScreenToWorldPoint(new Vector3(Screen.width, 0, _camera.farClipPlane / 2));
-        _screenSize = (screenWidthScreenToWorldPoint.x - originScreenToWorldPoint.x) * 3;
         Enabled = false;
     }
 
@@ -42,6 +40,23 @@ public class EntityGenerator : MonoSingleton<EntityGenerator>
 
         Generate();
 
+    }
+
+    public void Reset()
+    {
+        ResetSpawnedObjects();
+        SpawnIsle();
+    }
+    private void ResetSpawnedObjects()
+    {
+        for (int i = 0; i < environment.childCount; i++)
+        {
+            Destroy(environment.GetChild(i).gameObject);
+        }
+    }
+    private void SpawnIsle()
+    {
+        Instantiate(islePrefab, environment);
     }
 
     public void Generate()
@@ -55,13 +70,13 @@ public class EntityGenerator : MonoSingleton<EntityGenerator>
         _isSpawning = true;
         
         // select spawn points
-        IEnumerable<Vector2> samples = new PoissonDiscSampler(_screenSize, 100, 
+        IEnumerable<Vector2> samples = new PoissonDiscSampler(generatorWidth, generatorDepth, 
                 ChangeByDistance(quantity, quantityLinearChange, score.Value, quantityMin, quantityMax))
             .Samples();
         foreach (Vector2 sample in samples)
         {
             // move sample position back to the horizon 
-            yield return GenerateEntity(sample + new Vector2(-_screenSize/2 + transform.position.x, transform.position.z));
+            yield return GenerateEntity(sample + new Vector2(-generatorWidth/2 + transform.position.x, transform.position.z));
         }
 
         // change spawn frequency

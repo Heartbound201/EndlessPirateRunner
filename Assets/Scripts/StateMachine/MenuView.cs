@@ -1,4 +1,5 @@
-﻿using UnityEngine.Events;
+﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class MenuView : View
 {
@@ -7,6 +8,16 @@ public class MenuView : View
     public UnityAction OnQuitClicked;
     public UnityAction OnSettingsClicked;
 
+    public Vector3 cameraPosition;
+    public Quaternion cameraRotation;
+
+    public void MoveCamera()
+    {
+        Camera.main.transform.position = cameraPosition;
+        Camera.main.transform.rotation = cameraRotation;
+        
+    }
+    
     public void StartClick()
     {
         OnStartClicked?.Invoke();
