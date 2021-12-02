@@ -19,6 +19,7 @@ public class GameView : View
     public Quaternion cameraRotation;
 
     private List<GameObject> _lives = new List<GameObject>();
+    private Color _lifePrefabOriginalColor;
 
     public void MoveCamera()
     {
@@ -32,6 +33,8 @@ public class GameView : View
         PlayerData.gold.OnChange += UpdateGold;
         PlayerData.score.OnChange += UpdateScore;
         PlayerData.lives.OnChange += UpdateLives;
+
+        _lifePrefabOriginalColor = LifePrefab.GetComponent<Image>().color;
     }
     private void OnDestroy()
     {
@@ -77,7 +80,7 @@ public class GameView : View
         {
             if (i < PlayerData.lives.Value)
             {
-                _lives[i].GetComponent<Image>().color = Color.white;
+                _lives[i].GetComponent<Image>().color = _lifePrefabOriginalColor;
             }
             else
             {

@@ -25,10 +25,12 @@ public class PlayerShip : Entity, IDamageable
     private bool _canMove = false;
     private bool _isInvulnerable = false;
     private bool _isIncrementingScore = false;
+    private Color _originalColor;
 
     private void Start()
     {
         collectorSystem.ship = this;
+        _originalColor = renderer.material.color;
     }
 
     private void Update()
@@ -113,7 +115,7 @@ public class PlayerShip : Entity, IDamageable
         var material = renderer.material;
         material.color = Color.red;
         yield return new WaitForSeconds(graceTime);
-        material.color = Color.white;
+        material.color = _originalColor;
         _isInvulnerable = false;
     }
 }

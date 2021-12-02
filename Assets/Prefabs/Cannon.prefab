@@ -44,13 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f93c9bdb94043249b8dfd0603101d42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cannonBallPrefab: {fileID: 5486805860559940334, guid: bf6aa7333ffde0b448be85a9e7199e51, type: 3}
+  cannonBallPrefab: {fileID: 5486805860559940334, guid: bf6aa7333ffde0b448be85a9e7199e51,
+    type: 3}
   firingAngle: 15
-  firingVelocity: 0
-  firingMinDistance: 0
-  firingMaxDistance: 0
-  firingMinAngle: 0
-  firingMaxAngle: 0
+  gravity: 60
   firingVfx: {fileID: 8758687328453715897}
   firingSfx: {fileID: 11400000, guid: 35910450d543a7541802dc024d4fb624, type: 2}
 --- !u!1 &7974105350178103145

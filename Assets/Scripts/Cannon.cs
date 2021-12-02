@@ -6,11 +6,7 @@ public class Cannon : MonoBehaviour
     public GameObject cannonBallPrefab;
     [Range(10f, 45f)]
     public float firingAngle;
-    public float bulletSpeed;
-    public float firingMinDistance;
-    public float firingMaxDistance;
-    public float firingMinAngle;
-    public float firingMaxAngle;
+    public float gravity;
     public ParticleSystem firingVfx;
     public AudioClipSO firingSfx;
 
@@ -21,7 +17,10 @@ public class Cannon : MonoBehaviour
         GameObject cannonBall = Instantiate(cannonBallPrefab, position, Quaternion.identity);
         firingVfx.Play();
         AudioManager.Instance.PlaySFX(firingSfx);
-        cannonBall.GetComponent<Rigidbody>().velocity = BallisticVelocity(target, firingAngle);
+        var rb = cannonBall.GetComponent<Rigidbody>();
+        rb.velocity = BallisticVelocity(target, firingAngle);
+        var ball = cannonBall.GetComponent<CannonBall>();
+        ball.gravity = gravity;
     }
 
     public Vector3 BallisticVelocity(Vector3 destination, float angle)
@@ -37,17 +36,11 @@ public class Cannon : MonoBehaviour
         // dist += height / Mathf.Tan(a); // Correction for small height differences
 
         // Calculate the velocity magnitude
-        float velocity = Mathf.Sqrt(dist * Physics.gravity.magnitude / Mathf.Sin(2 * a));
+        float velocity = Mathf.Sqrt(dist * gravity / Mathf.Sin(2 * a));
         
         Debug.LogFormat("BallisticVelocity: velocity {0}, velocity * dir.normalized {1}", velocity, dir.normalized * velocity);
 
         return velocity * dir.normalized; // Return a normalized vector.
-    }
-
-    public Vector3 GetDistance(Vector3 dir)
-    {
-        return dir * bulletSpeed;
-
     }
 
     public float Reach()
