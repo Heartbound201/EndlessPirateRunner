@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8271836487866917243}
   - component: {fileID: 4869876911078508194}
   - component: {fileID: 5283811722421118736}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Large_Boat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 856581704913286637}
   - component: {fileID: 7099874994199182107}
   - component: {fileID: 864868951020592995}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Trajectory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,7 +299,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5556385846730761923}
   - component: {fileID: 8586176215584706305}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cannons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -341,6 +341,9 @@ MonoBehaviour:
   targetIndicatorSpeed: 1
   targetIndicatorRadius: 200
   arcRenderer: {fileID: 864868951020592995}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &8596695341044856129
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,7 +353,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3712087305079236400}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -434,6 +437,66 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7599110010525697942, guid: da313316ff8c8a9459f6c794ba9efe99,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -7433994649687145899, guid: da313316ff8c8a9459f6c794ba9efe99,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -6736030489985399317, guid: da313316ff8c8a9459f6c794ba9efe99,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -6434361238027034924, guid: da313316ff8c8a9459f6c794ba9efe99,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -6083307940050145392, guid: da313316ff8c8a9459f6c794ba9efe99,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -5672290350466415067, guid: da313316ff8c8a9459f6c794ba9efe99,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -5057921123468121110, guid: da313316ff8c8a9459f6c794ba9efe99,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -3610262271512543967, guid: da313316ff8c8a9459f6c794ba9efe99,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -3512280631289030583, guid: da313316ff8c8a9459f6c794ba9efe99,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -1684066251715409805, guid: da313316ff8c8a9459f6c794ba9efe99,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -610339057454368862, guid: da313316ff8c8a9459f6c794ba9efe99,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 517589329686303420, guid: da313316ff8c8a9459f6c794ba9efe99,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 517589329686303420, guid: da313316ff8c8a9459f6c794ba9efe99,
         type: 3}
       propertyPath: m_IsActive
@@ -443,6 +506,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ship_light
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: da313316ff8c8a9459f6c794ba9efe99,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 950431676820097001, guid: da313316ff8c8a9459f6c794ba9efe99,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5774322271612992562, guid: da313316ff8c8a9459f6c794ba9efe99,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6300066245713502144, guid: da313316ff8c8a9459f6c794ba9efe99,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7259967663380108052, guid: da313316ff8c8a9459f6c794ba9efe99,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7892731409688792989, guid: da313316ff8c8a9459f6c794ba9efe99,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088103378209610463, guid: da313316ff8c8a9459f6c794ba9efe99,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da313316ff8c8a9459f6c794ba9efe99, type: 3}
@@ -469,6 +567,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cannon
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454665521280352023, guid: 19dcfc84d06a8b2478e4027776311bbe,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5096183919202409008, guid: 19dcfc84d06a8b2478e4027776311bbe,
         type: 3}
@@ -524,6 +627,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7974105350178103145, guid: 19dcfc84d06a8b2478e4027776311bbe,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19dcfc84d06a8b2478e4027776311bbe, type: 3}

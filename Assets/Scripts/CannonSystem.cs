@@ -11,6 +11,7 @@ public class CannonSystem : MonoBehaviour
     public float targetIndicatorSpeed;
     public float targetIndicatorRadius;
     public LaunchArcRenderer arcRenderer;
+    public LayerMask layerMask;
 
     private GameObject _targetIndicator;
     private bool _isFiring;
@@ -123,12 +124,12 @@ public class CannonSystem : MonoBehaviour
     public bool IsObstructed(Vector3 target)
     {
         if (Physics.Raycast(cannon.transform.position, (target - cannon.transform.position).normalized,
-            out RaycastHit hit, cannon.Reach()))
+            out RaycastHit hit, targetIndicatorRadius, layerMask))
         {
             Debug.DrawRay(cannon.transform.position, target - cannon.transform.position, Color.yellow, 3f);
+            Debug.Log("Cannon Obstructed from " + hit.collider.name);
             if (hit.collider.GetComponent<PlayerShip>())
             {
-                Debug.Log("Cannon Obstructed from " + hit.collider.name);
                 return false;
             }
 

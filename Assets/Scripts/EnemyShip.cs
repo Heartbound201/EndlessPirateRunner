@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class EnemyShip : Enemy
 {
@@ -7,13 +8,25 @@ public class EnemyShip : Enemy
     public CannonSystem cannonSystem;
     public DropSystem dropSystem;
 
+    private PlayerShip _playerShip;
+    private void Start()
+    {
+        _playerShip = FindObjectOfType<PlayerShip>();
+    }
+
     private void Update()
     {
-        // don't shoot if behind the player
-        if (!cannonSystem || transform.position.z <= 100 || transform.position.z >= 400 ||
-            cannonSystem.IsObstructed(Vector3.zero)) return;
+        if(!_playerShip) return;
         
-        cannonSystem.Fire(Vector3.zero);
+        if(!cannonSystem) return;
+        
+        bool isInRange = Vector3.Distance(transform.position, _playerShip.transform.position) < cannonSystem.targetIndicatorRadius;
+        bool isBehindPlayer = _playerShip.transform.position.z > transform.position.z;
+        
+        if (!isInRange || isBehindPlayer || cannonSystem.IsObstructed(_playerShip.transform.position)) 
+            return;
+        
+        cannonSystem.Fire(_playerShip.transform.position);
     }
 
     public override void GetHit(int damage)

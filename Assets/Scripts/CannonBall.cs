@@ -25,8 +25,8 @@ public class CannonBall : MonoBehaviour
         if (damageable != null)
         {
             damageable.GetHit(damage);
-            Instantiate(explosion, transform.position, Quaternion.identity);
         }
+        Instantiate(explosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 
