@@ -17,6 +17,6 @@ class LifeCollectable : Collectable
         }
 
         // TODO animation
-        Destroy(gameObject);
+        GameObjectPoolController.Enqueue(gameObject.GetComponent<Poolable>());
     }
 }

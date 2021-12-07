@@ -6623,6 +6623,12 @@ MonoBehaviour:
   - data: {fileID: 11400000, guid: 161c92c98e0e1d4459e2ca7595035974, type: 2}
     minScore: 500
     weight: 1
+  - data: {fileID: 11400000, guid: f2c764fcecbf0bb448f0af546f4993bd, type: 2}
+    minScore: 500
+    weight: 1
+  - data: {fileID: 11400000, guid: da62b2f1ae7a10d4cb32c9d9dcabedfe, type: 2}
+    minScore: 500
+    weight: 1
   quantityMin: 50
   quantityMax: 300
   quantity: 300

@@ -9,6 +9,6 @@ class GoldCollectable : Collectable
         Debug.LogFormat("Gold {0} + {1}", ship.playerData.gold.Value, amount);
         ship.playerData.gold.Value += amount;
         // TODO animate
-        Destroy(gameObject);
+        GameObjectPoolController.Enqueue(gameObject.GetComponent<Poolable>());
     }
 }

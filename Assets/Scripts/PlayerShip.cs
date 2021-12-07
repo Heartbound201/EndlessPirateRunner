@@ -118,4 +118,16 @@ public class PlayerShip : Entity, IDamageable
         material.color = _originalColor;
         _isInvulnerable = false;
     }
+    
+    public void GiveInvulnerability(float duration)
+    {
+        StartCoroutine(DoGiveInvulnerability(duration));
+    }
+
+    private IEnumerator DoGiveInvulnerability(float duration)
+    {
+        _isInvulnerable = true;
+        yield return new WaitForSeconds(duration);
+        _isInvulnerable = false;
+    }
 }

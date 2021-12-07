@@ -31,9 +31,11 @@ public class CollectorSystem : MonoBehaviour
         StartCoroutine(DoChangeSize(size, duration));
     }
 
-    private IEnumerator DoChangeSize(float size, float duration)
+    private IEnumerator DoChangeSize(float sizeMultiplier, float duration)
     {
-        _boxCollider.size = _startingSize * size;
+        Vector3 newSize = _boxCollider.size;
+        newSize.x *= sizeMultiplier;
+        _boxCollider.size = newSize;
         yield return new WaitForSeconds(duration);
         _boxCollider.size = _startingSize;
     }
