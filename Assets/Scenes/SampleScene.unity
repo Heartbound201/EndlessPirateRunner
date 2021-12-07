@@ -1190,6 +1190,7 @@ MonoBehaviour:
   GoldText: {fileID: 1346046419}
   ScoreText: {fileID: 51495762}
   LivesParent: {fileID: 1377963340}
+  poolKey: LifeSprite
   LifePrefab: {fileID: 4458817352298766058, guid: e5d3f7337e8abdd4f9fc387b4b6dbaf1,
     type: 3}
   cameraPosition: {x: 0, y: 175, z: -100}
@@ -6724,12 +6725,12 @@ MonoBehaviour:
     m_Bottom: 0
   m_ChildAlignment: 3
   m_Spacing: 5
-  m_ChildForceExpandWidth: 0
-  m_ChildForceExpandHeight: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
-  m_ChildScaleWidth: 1
-  m_ChildScaleHeight: 1
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
 --- !u!1 &1864572375
 GameObject:
@@ -7772,6 +7773,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: e3598ac255708414d90af84270ef2028, type: 2}
+  poolKey: ShopItem
   buyItemPrefab: {fileID: 8912534633792697285, guid: 1844434332e0dd5438ef625405d16bd4,
     type: 3}
   buyItemPanel: {fileID: 1861191556}

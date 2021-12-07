@@ -31,6 +31,14 @@ public class EntityGenerator : MonoSingleton<EntityGenerator>
 
     void Start()
     {
+        foreach (var entity in entities)
+        {
+            if (GameObjectPoolController.AddEntry(entity.data.poolKey, entity.data.prefab, 5, 10))
+                Debug.Log("Pre-populating pool. key:" + entity.data.poolKey);
+            else
+                Debug.Log(entity.data.poolKey + "Pool already configured");
+        }
+        
         Enabled = false;
     }
 
@@ -91,9 +99,14 @@ public class EntityGenerator : MonoSingleton<EntityGenerator>
 
     private GameObject GenerateEntity(Vector2 pos)
     {
-        GameObject go = Instantiate(PickRandomEntity(entities).prefab, new Vector3(pos.x, 0, pos.y), quaternion.identity);
-        go.transform.SetParent(environment);
-        return go;
+        EntityPrototype randomEntity = PickRandomEntity(entities);
+        
+        Poolable obj = GameObjectPoolController.Dequeue(randomEntity.poolKey);
+        obj.transform.position = new Vector3(pos.x, 0, pos.y);
+        obj.gameObject.SetActive(true);
+        obj.transform.SetParent(environment);
+        
+        return obj.gameObject;
     }
 
     private EntityPrototype PickRandomEntity(List<SpawnData<EntityPrototype>> spawnData)

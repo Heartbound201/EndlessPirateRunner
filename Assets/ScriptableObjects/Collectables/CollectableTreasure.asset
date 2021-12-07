@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e74046769e9a1344891f00e78d553729, type: 3}
   m_Name: CollectableTreasure
   m_EditorClassIdentifier: 
+  poolKey: entity.collectable.chest
   prefab: {fileID: 8205960017158668500, guid: 7f70c6087f48a61418fd062a843e7d98, type: 3}

@@ -36,8 +36,7 @@ public class EnemyShip : Enemy
         {
             // TODO sunk animation
             dropSystem.DropReward();
-            Destroy(gameObject);
-            
+            GameObjectPoolController.Enqueue(gameObject.GetComponent<Poolable>());
         }
     }
 

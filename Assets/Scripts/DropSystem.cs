@@ -1,11 +1,24 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class DropSystem : MonoBehaviour
 {
     public List<Drop> drops = new List<Drop>();
 
     private List<int> _prob = new List<int>();
+
+    private void Awake()
+    {
+        foreach (var drop in drops)
+        {
+            if (GameObjectPoolController.AddEntry(drop.item.poolKey, drop.item.prefab, 5, 10))
+                Debug.Log("Pre-populating pool. key:" + drop.item.poolKey);
+            else
+                Debug.Log(drop.item.poolKey + "Pool already configured");
+        }
+    }
 
     private void Start()
     {
@@ -24,7 +37,11 @@ public class DropSystem : MonoBehaviour
         if (drops.Count > 0)
         {
             Drop drop = PickDrop();
-            GameObject o = Instantiate(drop.item.prefab, transform.position, Quaternion.identity);
+            
+            Poolable obj = GameObjectPoolController.Dequeue(drop.item.poolKey);
+            var spawnPos = transform.position;
+            obj.transform.position = new Vector3(spawnPos.x, 0, spawnPos.z);
+            obj.gameObject.SetActive(true);
         }
     }
 

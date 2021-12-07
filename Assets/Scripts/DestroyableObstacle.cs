@@ -10,7 +10,7 @@
         {
             // TODO sunk animation
             dropSystem.DropReward();
-            Destroy(gameObject);
+            GameObjectPoolController.Enqueue(gameObject.GetComponent<Poolable>());
             
         }
     }

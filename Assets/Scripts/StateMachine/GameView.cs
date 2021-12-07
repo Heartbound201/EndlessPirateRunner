@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -13,6 +14,8 @@ public class GameView : View
     public Text GoldText;
     public Text ScoreText;
     public Transform LivesParent;
+
+    public string poolKey;
     public GameObject LifePrefab;
 
     public Vector3 cameraPosition;
@@ -26,6 +29,14 @@ public class GameView : View
         Camera.main.transform.position = cameraPosition;
         Camera.main.transform.rotation = cameraRotation;
         
+    }
+
+    private void Awake()
+    {
+        if (GameObjectPoolController.AddEntry(poolKey, LifePrefab, 5, 10))
+            Debug.Log("Pre-populating pool. key:" + poolKey);
+        else
+            Debug.Log(poolKey + "Pool already configured");
     }
 
     private void Start()
@@ -65,14 +76,17 @@ public class GameView : View
     {
         while (_lives.Count < PlayerData.currentShip.lives)
         {
-            GameObject go = Instantiate(LifePrefab, LivesParent);
-            _lives.Add(go);
+            Poolable obj = GameObjectPoolController.Dequeue(poolKey);
+            obj.transform.SetParent(LivesParent);
+            obj.gameObject.SetActive(true);
+            obj.transform.localScale = Vector3.one;
+            _lives.Add(obj.gameObject);
         }
 
         while (_lives.Count > PlayerData.currentShip.lives)
         {
             GameObject o = _lives[0];
-            Destroy(o);
+            GameObjectPoolController.Enqueue(o.GetComponent<Poolable>());
             _lives.Remove(o);
         }
         

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -8,12 +9,21 @@ public class ShopView : View
     public UnityAction OnMenuClicked;
 
     public PlayerData playerData;
+    public string poolKey;
     public GameObject buyItemPrefab;
     public Transform buyItemPanel;
     public Text currentGoldText;
     public List<PlayerShipPrototype> availableShips;
 
     private readonly List<UIShipCard> _shipCards = new List<UIShipCard>();
+
+    private void Awake()
+    {
+        if (GameObjectPoolController.AddEntry(poolKey, buyItemPrefab, 3, 5))
+            Debug.Log("Pre-populating pool. key:" + poolKey);
+        else
+            Debug.Log(poolKey + "Pool already configured");
+    }
 
     public void FillShopItems()
     {
@@ -22,8 +32,12 @@ public class ShopView : View
         foreach (PlayerShipPrototype shipPrototype in availableShips)
         {
             // instantiate ui obj
-            GameObject item = Instantiate(buyItemPrefab, buyItemPanel);
-            UIShipCard uiShipCard = item.GetComponent<UIShipCard>();
+            Poolable obj = GameObjectPoolController.Dequeue(poolKey);
+            obj.transform.SetParent(buyItemPanel);
+            obj.gameObject.SetActive(true);
+            obj.transform.localScale = Vector3.one;
+            
+            UIShipCard uiShipCard = obj.GetComponent<UIShipCard>();
             uiShipCard.image.sprite = shipPrototype.sprite;
             uiShipCard.playerShipPrototype = shipPrototype;
             uiShipCard.buyButton.GetComponentInChildren<Text>().text = shipPrototype.cost + " Gold";
@@ -80,7 +94,7 @@ public class ShopView : View
     {
         foreach (UIShipCard item in _shipCards)
         {
-            Destroy(item.gameObject);
+            GameObjectPoolController.Enqueue(item.GetComponent<Poolable>());
         }
 
         _shipCards.Clear();

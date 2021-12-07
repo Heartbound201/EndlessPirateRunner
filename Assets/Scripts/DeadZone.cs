@@ -4,6 +4,14 @@ public class DeadZone : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(other.gameObject);
+        Poolable poolable = other.gameObject.GetComponent<Poolable>();
+        if (poolable)
+        {
+            GameObjectPoolController.Enqueue(poolable);
+        }
+        else
+        {
+            Destroy(other.gameObject);
+        }
     }
 }

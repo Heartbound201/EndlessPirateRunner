@@ -7,13 +7,28 @@ public class CannonBall : MonoBehaviour
 {
     public int damage = 1;
     public float gravity;
+    public string explosionPoolKey;
     public GameObject explosion;
     // public AudioClipSO explosionSfx;
+    public string waterSplashPoolKey;
     public GameObject waterSplash;
     // public AudioClipSO waterSplashSfx;
 
     private Rigidbody _rb;
-    
+
+    private void Awake()
+    {
+        if (GameObjectPoolController.AddEntry(explosionPoolKey, explosion, 10, 20))
+            Debug.Log("Pre-populating pool. key:" + explosionPoolKey);
+        else
+            Debug.Log(explosionPoolKey + "Pool already configured");
+        
+        if (GameObjectPoolController.AddEntry(waterSplashPoolKey, waterSplash, 10, 20))
+            Debug.Log("Pre-populating pool. key:" + waterSplashPoolKey);
+        else
+            Debug.Log(waterSplashPoolKey + "Pool already configured");
+    }
+
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -26,8 +41,10 @@ public class CannonBall : MonoBehaviour
         {
             damageable.GetHit(damage);
         }
-        Instantiate(explosion, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        Poolable obj = GameObjectPoolController.Dequeue(explosionPoolKey);
+        obj.transform.position = transform.position;
+        obj.gameObject.SetActive(true);
+        GameObjectPoolController.Enqueue(gameObject.GetComponent<Poolable>());
     }
 
     private void FixedUpdate()
@@ -39,8 +56,10 @@ public class CannonBall : MonoBehaviour
     {
         if (transform.position.y <= 0)
         {
-            Instantiate(waterSplash, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            Poolable obj = GameObjectPoolController.Dequeue(waterSplashPoolKey);
+            obj.transform.position = transform.position;
+            obj.gameObject.SetActive(true);
+            GameObjectPoolController.Enqueue(gameObject.GetComponent<Poolable>());
         }
     }
 

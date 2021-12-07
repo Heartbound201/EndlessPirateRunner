@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e74046769e9a1344891f00e78d553729, type: 3}
   m_Name: CollectableWood
   m_EditorClassIdentifier: 
+  poolKey: entity.collectable.wood
   prefab: {fileID: 5363063186765604708, guid: 97fa23e45e94c994992be632d13d1413, type: 3}

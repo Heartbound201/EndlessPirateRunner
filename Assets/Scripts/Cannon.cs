@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Cannon : MonoBehaviour
 {
+    public string cannonBallPoolKey;
     public GameObject cannonBallPrefab;
     [Range(10f, 45f)]
     public float firingAngle;
@@ -10,16 +11,27 @@ public class Cannon : MonoBehaviour
     public ParticleSystem firingVfx;
     public AudioClipSO firingSfx;
 
+    private void Awake()
+    {
+        if (GameObjectPoolController.AddEntry(cannonBallPoolKey, cannonBallPrefab, 10, 20))
+            Debug.Log("Pre-populating pool. key:" + cannonBallPoolKey);
+        else
+            Debug.Log(cannonBallPoolKey + "Pool already configured");
+    }
 
     public void Fire(Vector3 target)
     {
         Vector3 position = transform.position;
-        GameObject cannonBall = Instantiate(cannonBallPrefab, position, Quaternion.identity);
+        Poolable obj = GameObjectPoolController.Dequeue(cannonBallPoolKey);
+        obj.transform.position = position;
+        obj.gameObject.SetActive(true);
+        obj.transform.localScale = Vector3.one;
+        
         firingVfx.Play();
         AudioManager.Instance.PlaySFX(firingSfx);
-        var rb = cannonBall.GetComponent<Rigidbody>();
+        var rb = obj.GetComponent<Rigidbody>();
         rb.velocity = BallisticVelocity(target, firingAngle);
-        var ball = cannonBall.GetComponent<CannonBall>();
+        var ball = obj.GetComponent<CannonBall>();
         ball.gravity = gravity;
     }
 

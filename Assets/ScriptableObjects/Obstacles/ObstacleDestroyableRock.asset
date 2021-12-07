@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52bd9d0a7eae63243bfd1a7e8aaf008e, type: 3}
   m_Name: ObstacleDestroyableRock
   m_EditorClassIdentifier: 
+  poolKey: entity.obstacle.rock2
   prefab: {fileID: 3419584974126722619, guid: 41663a71921d37143adacda4141da1be, type: 3}

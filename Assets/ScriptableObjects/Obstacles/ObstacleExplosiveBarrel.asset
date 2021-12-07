@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52bd9d0a7eae63243bfd1a7e8aaf008e, type: 3}
   m_Name: ObstacleExplosiveBarrel
   m_EditorClassIdentifier: 
+  poolKey: entity.obstacle.explosivebarrel
   prefab: {fileID: 1869448385745014714, guid: f37d34f6c0266f34f8b5b148d44fa064, type: 3}
