@@ -26,7 +26,7 @@ public class EnemyShip : Enemy
         if (!isInRange || isBehindPlayer || cannonSystem.IsObstructed(_playerShip.transform.position)) 
             return;
         
-        cannonSystem.Fire(_playerShip.transform.position);
+        cannonSystem.Fire(_playerShip.transform.position + Vector3.forward * _playerShip.forwardSpeed);
     }
 
     public override void GetHit(int damage)

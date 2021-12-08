@@ -149,8 +149,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2508299821562689679}
   - component: {fileID: 3202896770620137661}
-  - component: {fileID: 7036967965009715432}
   - component: {fileID: 5518029076747362712}
+  - component: {fileID: 9223206678245728906}
   m_Layer: 6
   m_Name: Medium_Boat
   m_TagString: Untagged
@@ -191,20 +191,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &7036967965009715432
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2508299821562689672}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 10
-  m_Height: 30
-  m_Direction: 2
-  m_Center: {x: 0, y: 10, z: -5}
 --- !u!114 &5518029076747362712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,6 +213,19 @@ MonoBehaviour:
   collectorSystem: {fileID: 7324752889155259130}
   renderer: {fileID: 3194094577681613304}
   rigidbody: {fileID: 3202896770620137661}
+--- !u!65 &9223206678245728906
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2508299821562689672}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 20.98, y: 87.67, z: 31.94}
+  m_Center: {x: 0, y: 17.66, z: -2.75}
 --- !u!1 &4027745459125892136
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,7 +680,7 @@ PrefabInstance:
     - target: {fileID: 5096183919202409008, guid: 19dcfc84d06a8b2478e4027776311bbe,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 19.05
+      value: 21.2
       objectReference: {fileID: 0}
     - target: {fileID: 5096183919202409008, guid: 19dcfc84d06a8b2478e4027776311bbe,
         type: 3}
