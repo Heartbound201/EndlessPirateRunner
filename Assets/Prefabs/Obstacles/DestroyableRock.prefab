@@ -44,7 +44,6 @@ GameObject:
   - component: {fileID: 9064479098493952465}
   - component: {fileID: 4887947661967393255}
   - component: {fileID: 4186768551696542452}
-  - component: {fileID: -3107290876572925519}
   m_Layer: 6
   m_Name: DestroyableRock
   m_TagString: Untagged
@@ -126,20 +125,6 @@ MonoBehaviour:
   drops:
   - item: {fileID: 11400000, guid: 4643f2eca703cd440995281242f6057b, type: 2}
     weight: 1
---- !u!114 &-3107290876572925519
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3419584974126722619}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52c99a8ee6d70af4189b3d3bef2b4fe4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  key: entity.obstacle.rock2
-  isPooled: 0
 --- !u!1001 &314497029882681289
 PrefabInstance:
   m_ObjectHideFlags: 0

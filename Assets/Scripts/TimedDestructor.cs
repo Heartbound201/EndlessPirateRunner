@@ -8,7 +8,7 @@ public class TimedDestructor : MonoBehaviour
     [SerializeField] private bool m_DetachChildren = false;
 
 
-    private void Awake()
+    private void OnEnable()
     {
         Invoke("DestroyNow", m_TimeOut);
     }

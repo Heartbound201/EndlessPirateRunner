@@ -14,20 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TimeOut: 3
   m_DetachChildren: 0
---- !u!114 &7673623755150924773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5602288306624573635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52c99a8ee6d70af4189b3d3bef2b4fe4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  key: WaterSplash
-  isPooled: 0
 --- !u!1001 &5600592582428117879
 PrefabInstance:
   m_ObjectHideFlags: 0

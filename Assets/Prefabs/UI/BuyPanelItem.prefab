@@ -644,7 +644,6 @@ GameObject:
   - component: {fileID: 3230943631420480025}
   - component: {fileID: 824999446419806112}
   - component: {fileID: 8992232491824707888}
-  - component: {fileID: 1794396172481804721}
   m_Layer: 5
   m_Name: BuyPanelItem
   m_TagString: Untagged
@@ -729,17 +728,3 @@ MonoBehaviour:
   image: {fileID: 6927633788681018800}
   useButton: {fileID: 2114167741739602593}
   buyButton: {fileID: 5372287681937387509}
---- !u!114 &1794396172481804721
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8912534633792697285}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52c99a8ee6d70af4189b3d3bef2b4fe4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  key: ShopItem
-  isPooled: 0
