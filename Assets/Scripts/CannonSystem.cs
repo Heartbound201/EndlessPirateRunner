@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 
 public class CannonSystem : MonoBehaviour
 {
-    public Cannon cannon;
+    public List<Cannon> cannonBattery = new List<Cannon>();
     public float firingCooldown;
     public GameObject targetIndicatorPrefab;
     public float targetIndicatorSpeed;
@@ -21,8 +21,7 @@ public class CannonSystem : MonoBehaviour
     private Vector3 _pos;
     private float _timeStamp;
 
-    private bool CanShoot => !(cannon == null) && !_isFiring &&
-                             _targetIndicator.transform.position.z >= cannon.transform.position.z;
+    private bool CanShoot => cannonBattery.Count > 0 && !_isFiring;
 
     private void Start()
     {
@@ -53,8 +52,10 @@ public class CannonSystem : MonoBehaviour
 
     public void AimAt(Vector3 target)
     {
-        if (cannon == null) return;
+        if (cannonBattery.Count == 0) return;
 
+        Cannon cannon = SelectClosestCannon(target);
+        
         _targetIndicator.SetActive(true);
         _targetIndicator.transform.Translate(target.x * targetIndicatorSpeed, 0,
             target.z * targetIndicatorSpeed);
@@ -78,9 +79,43 @@ public class CannonSystem : MonoBehaviour
         // arcRenderer.RenderArc(100, 10);
     }
 
+    private Cannon SelectClosestCannon(Vector3 target)
+    {
+        if (cannonBattery.Count == 0) return null;
+        float minDistance = 0f;
+        Cannon retCannon = null;
+        for (int i = 0; i < cannonBattery.Count; i++)
+        {
+            float distance = Vector3.Distance(target, cannonBattery[i].transform.position);
+            if (distance <= minDistance)
+            {
+                minDistance = distance;
+                retCannon = cannonBattery[i];
+            }
+            if (i == 0)
+            {
+                minDistance = distance;
+                retCannon = cannonBattery[i];
+            }
+        }
+        foreach (Cannon cannon in cannonBattery)
+        {
+            
+            float distance = Vector3.Distance(target, cannon.transform.position);
+            if (distance <= minDistance)
+            {
+                minDistance = distance;
+                retCannon = cannon;
+            }
+        }
+
+        return retCannon;
+    }
+
     private IEnumerator DoFire(Vector3 target)
     {
         _isFiring = true;
+        Cannon cannon = SelectClosestCannon(target);
         cannon.Fire(target);
         yield return new WaitForSeconds(firingCooldown);
         _isFiring = false;
@@ -89,6 +124,7 @@ public class CannonSystem : MonoBehaviour
     private IEnumerator DoFire()
     {
         _isFiring = true;
+        Cannon cannon = SelectClosestCannon(_targetIndicator.transform.position);
         cannon.Fire(_targetIndicator.transform.position);
         yield return new WaitForSeconds(firingCooldown);
         _isFiring = false;
@@ -123,6 +159,7 @@ public class CannonSystem : MonoBehaviour
 
     public bool IsObstructed(Vector3 target)
     {
+        Cannon cannon = SelectClosestCannon(target);
         if (Physics.Raycast(cannon.transform.position, (target - cannon.transform.position).normalized,
             out RaycastHit hit, targetIndicatorRadius, layerMask))
         {

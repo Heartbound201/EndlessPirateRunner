@@ -50,7 +50,7 @@ public class PlayerShip : Entity, IDamageable
             {
                 cannonSystem.AimAt(new Vector3(axisHorCannon, 0, axisVerCannon));
             }
-            else
+            else if (CrossPlatformInputManager.GetButtonUp("Cannon"))
             {
                 cannonSystem.Fire();
             }

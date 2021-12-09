@@ -6729,7 +6729,7 @@ MonoBehaviour:
     m_Right: 5
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 3
+  m_ChildAlignment: 4
   m_Spacing: 5
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -7785,7 +7785,6 @@ MonoBehaviour:
   buyItemPanel: {fileID: 1861191556}
   currentGoldText: {fileID: 1288911972}
   availableShips:
-  - {fileID: 11400000, guid: e71f8c9c778cffe42b931d74ee5a1af3, type: 2}
   - {fileID: 11400000, guid: 31b4bfd7de100af4f9bb613c205631c2, type: 2}
   - {fileID: 11400000, guid: 1d73b522f8561634e8702d05fe4d3329, type: 2}
 --- !u!114 &2144944147

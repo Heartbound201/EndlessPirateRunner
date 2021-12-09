@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 856f9958d364e7b4cadedbec2e7174e7, type: 3}
   m_Name: medium_ship
   m_EditorClassIdentifier: 
+  poolKey: 
   prefab: {fileID: 2508299821562689672, guid: 5b4c9b2fe2c05434ca6d623238bf519b, type: 3}
   cost: 500
   sprite: {fileID: 21300000, guid: 10d867f181e4ca44aad1f49e399a0fb1, type: 3}
-  hasCannons: 0
+  hasCannons: 1
   lateralSpeed: 50
   forwardSpeed: 50
   lives: 3
   graceTime: 1
   scoreIncreasedPerSecond: 10
   firingCooldown: 0
-  targetIndicatorSpeed: 0
