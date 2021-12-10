@@ -11,11 +11,19 @@ public class PlayerShip : Entity, IDamageable
 
     public PlayerData playerData;
     
-    public float lateralSpeed;
-    public float forwardSpeed;
     public int maxLives;
     public float graceTime;
     public int scoreIncreasedPerSecond;
+
+    public float lateralSpeedMin;
+    public float lateralSpeedMax;
+    public float lateralSpeed;
+    public float lateralSpeedLinearChange;
+    
+    public float forwardSpeedMin;
+    public float forwardSpeedMax;
+    public float forwardSpeed;
+    public float forwardSpeedLinearChange;
 
     public CannonSystem cannonSystem;
     public CollectorSystem collectorSystem;
@@ -66,8 +74,8 @@ public class PlayerShip : Entity, IDamageable
     {
         if(!_canMove) return;
         var axis = CrossPlatformInputManager.GetAxis("Horizontal");
-        Vector3 forwardVelocity = Vector3.forward * forwardSpeed;
-        Vector3 lateralVelocity = Vector3.right * axis * lateralSpeed;
+        Vector3 forwardVelocity = Vector3.forward * ChangeByDistance(forwardSpeed, forwardSpeedLinearChange, playerData.score.Value, forwardSpeedMin, forwardSpeedMax);
+        Vector3 lateralVelocity = Vector3.right * axis * ChangeByDistance(lateralSpeed, lateralSpeedLinearChange, playerData.score.Value, lateralSpeedMin, lateralSpeedMax);
         rigidbody.velocity = forwardVelocity + lateralVelocity;
     }
 
@@ -108,6 +116,11 @@ public class PlayerShip : Entity, IDamageable
 
 
     }
+    
+    private float ChangeByDistance(float value, float decrement, float dist, float min, float max)
+    {
+        return Mathf.Clamp(value + dist * decrement, min, max);
+    }
 
     private IEnumerator FlashRed()
     {
@@ -127,7 +140,10 @@ public class PlayerShip : Entity, IDamageable
     private IEnumerator DoGiveInvulnerability(float duration)
     {
         _isInvulnerable = true;
+        var material = renderer.material;
+        material.color = Color.yellow;
         yield return new WaitForSeconds(duration);
+        material.color = _originalColor;
         _isInvulnerable = false;
     }
 }

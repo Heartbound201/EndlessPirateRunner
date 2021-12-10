@@ -37,21 +37,10 @@ public class Player : MonoBehaviour
 
     private PlayerShip BuildShip(PlayerShipPrototype prototype)
     {
-        GameObject shipGO = Instantiate(playerData.currentShip.prefab, transform.position, Quaternion.identity);
-        
-        PlayerShip playerShipComponent = shipGO.GetComponent<PlayerShip>();
-        playerShipComponent.lateralSpeed = prototype.lateralSpeed;
-        playerShipComponent.forwardSpeed = prototype.forwardSpeed;
-        playerShipComponent.playerData = playerData;
-        playerShipComponent.graceTime = prototype.graceTime;
-        playerShipComponent.scoreIncreasedPerSecond = prototype.scoreIncreasedPerSecond;
-        playerShipComponent.maxLives = prototype.lives;
+        GameObject shipGO = Instantiate(prototype.prefab, transform.position, Quaternion.identity);
 
-        if(prototype.hasCannons)
-        {
-            playerShipComponent.cannonSystem.firingCooldown = prototype.firingCooldown;
-        }
-        
+        prototype.Build(shipGO);
+        PlayerShip playerShipComponent = shipGO.GetComponent<PlayerShip>();
         playerData.lives.Value = playerShipComponent.maxLives;
 
         return playerShipComponent;
