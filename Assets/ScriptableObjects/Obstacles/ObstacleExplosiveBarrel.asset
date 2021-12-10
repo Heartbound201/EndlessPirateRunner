@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolKey: entity.obstacle.explosivebarrel
   prefab: {fileID: 1869448385745014714, guid: f37d34f6c0266f34f8b5b148d44fa064, type: 3}
+  damage: 3

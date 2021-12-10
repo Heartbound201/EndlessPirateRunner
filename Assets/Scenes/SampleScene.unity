@@ -152,7 +152,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2000, y: 500, z: 50}
+  m_Size: {x: 10000, y: 500, z: 50}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &8007955
 Transform:
@@ -1929,11 +1929,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 89872232}
-  duration: 10
+  duration: 5
   warningMessage: Beware of the wind!
   warningText: {fileID: 1749838978}
   windStrengthMin: 500
-  windStrengthMax: 1000
+  windStrengthMax: 3500
 --- !u!1 &368348967
 GameObject:
   m_ObjectHideFlags: 0
@@ -5704,7 +5704,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1540158790
 Transform:
   m_ObjectHideFlags: 0
@@ -6605,24 +6605,21 @@ MonoBehaviour:
   islePrefab: {fileID: 1154080528151886237, guid: cf3a6ccaf88e9004985997cf16a54046,
     type: 3}
   entities:
-  - data: {fileID: 11400000, guid: 696402716510a6247bfe2aaeea3bd4e9, type: 2}
-    minScore: 0
-    weight: 3
   - data: {fileID: 11400000, guid: 4643f2eca703cd440995281242f6057b, type: 2}
-    minScore: 500
+    minScore: 1000
     weight: 1
   - data: {fileID: 11400000, guid: 81dc0983bd1bf2e45b1388280e8a54ac, type: 2}
-    minScore: 100
-    weight: 3
+    minScore: 0
+    weight: 5
   - data: {fileID: 11400000, guid: f869f462a69077941b2c48a2b734fa10, type: 2}
-    minScore: 400
-    weight: 2
+    minScore: 250
+    weight: 5
   - data: {fileID: 11400000, guid: 446ec2dfc89f2c14cbfaf7d1e29cf47a, type: 2}
-    minScore: 400
-    weight: 2
-  - data: {fileID: 11400000, guid: 161c92c98e0e1d4459e2ca7595035974, type: 2}
     minScore: 500
-    weight: 1
+    weight: 5
+  - data: {fileID: 11400000, guid: 161c92c98e0e1d4459e2ca7595035974, type: 2}
+    minScore: 0
+    weight: 3
   quantityMin: 50
   quantityMax: 300
   quantity: 300
@@ -6631,7 +6628,7 @@ MonoBehaviour:
   frequencyMax: 3
   frequency: 3
   frequencyLinearChange: 0
-  generatorWidth: 500
+  generatorWidth: 1500
   generatorDepth: 100
 --- !u!1 &1828545027
 GameObject:
@@ -7347,7 +7344,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1957672626
 Transform:
   m_ObjectHideFlags: 0

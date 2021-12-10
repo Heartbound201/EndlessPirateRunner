@@ -92,6 +92,14 @@ public class PlayerShip : Entity, IDamageable
             Obstacle obstacle = obj.GetComponent<Obstacle>();
             obstacle.Collide(this);
         }
+        if(_isInvulnerable)
+        {
+            IDamageable damageable = other.gameObject.GetComponent<IDamageable>();
+            if (damageable != null)
+            {
+                damageable.GetHit(1);
+            }
+        }
     }
     
     private IEnumerator IncrementScore()

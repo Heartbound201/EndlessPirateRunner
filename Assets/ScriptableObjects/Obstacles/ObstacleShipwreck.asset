@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolKey: entity.obstacle.shipwreck
   prefab: {fileID: 3786432096742282821, guid: 4bff48c0f88cc1246af1ab060d9079d7, type: 3}
+  damage: 1

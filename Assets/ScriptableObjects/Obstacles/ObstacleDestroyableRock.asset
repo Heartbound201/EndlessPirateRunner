@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolKey: entity.obstacle.rock2
   prefab: {fileID: 3419584974126722619, guid: 41663a71921d37143adacda4141da1be, type: 3}
+  damage: 1
