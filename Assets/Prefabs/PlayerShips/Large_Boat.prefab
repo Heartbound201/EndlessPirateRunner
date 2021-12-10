@@ -420,6 +420,7 @@ GameObject:
   - component: {fileID: 8271836487866917243}
   - component: {fileID: 4869876911078508194}
   - component: {fileID: 5283811722421118736}
+  - component: {fileID: 3241827095473802880}
   m_Layer: 6
   m_Name: Large_Boat
   m_TagString: Untagged
@@ -457,15 +458,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 0}
-  lateralSpeed: 50
-  forwardSpeed: 50
   maxLives: 0
   graceTime: 1
   scoreIncreasedPerSecond: 0
+  lateralSpeedMin: 0
+  lateralSpeedMax: 0
+  lateralSpeed: 50
+  lateralSpeedLinearChange: 0
+  forwardSpeedMin: 0
+  forwardSpeedMax: 0
+  forwardSpeed: 50
+  forwardSpeedLinearChange: 0
   cannonSystem: {fileID: 8586176215584706305}
   collectorSystem: {fileID: 6418084197775525778}
-  renderer: {fileID: 3823222675850396002}
   rigidbody: {fileID: 4869876911078508194}
+  hitAnim: large_boat_hit
+  invulAnim: large_boat_invuln
+  sinkAnim: large_boat_sink
 --- !u!54 &4869876911078508194
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -496,6 +505,25 @@ CapsuleCollider:
   m_Height: 65
   m_Direction: 2
   m_Center: {x: 0, y: 15, z: 0}
+--- !u!95 &3241827095473802880
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2508299821562689672}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f8090f99e91c3a849a479de456c2b34b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2922346421244747807
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,7 +541,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &856581704913286637
 Transform:
   m_ObjectHideFlags: 0
@@ -1800,6 +1828,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5556385846730761923}
     m_Modifications:
+    - target: {fileID: 1193878147501301170, guid: 19dcfc84d06a8b2478e4027776311bbe,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193878147501301170, guid: 19dcfc84d06a8b2478e4027776311bbe,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193878147501301170, guid: 19dcfc84d06a8b2478e4027776311bbe,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193878147501301170, guid: 19dcfc84d06a8b2478e4027776311bbe,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 2454665521280352023, guid: 19dcfc84d06a8b2478e4027776311bbe,
         type: 3}
       propertyPath: m_Name
@@ -2102,22 +2150,22 @@ PrefabInstance:
     - target: {fileID: 5096183919202409008, guid: 19dcfc84d06a8b2478e4027776311bbe,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 5096183919202409008, guid: 19dcfc84d06a8b2478e4027776311bbe,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5096183919202409008, guid: 19dcfc84d06a8b2478e4027776311bbe,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 5096183919202409008, guid: 19dcfc84d06a8b2478e4027776311bbe,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5096183919202409008, guid: 19dcfc84d06a8b2478e4027776311bbe,
         type: 3}
@@ -2127,7 +2175,7 @@ PrefabInstance:
     - target: {fileID: 5096183919202409008, guid: 19dcfc84d06a8b2478e4027776311bbe,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 5096183919202409008, guid: 19dcfc84d06a8b2478e4027776311bbe,
         type: 3}

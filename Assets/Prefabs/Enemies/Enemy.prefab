@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 2256883615177678918}
   - component: {fileID: 8280840974513001898}
   - component: {fileID: 3249493560424023936}
+  - component: {fileID: 7503745443551512579}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
@@ -99,6 +100,7 @@ MonoBehaviour:
   lives: 1
   cannonSystem: {fileID: 5318458065060799390}
   dropSystem: {fileID: 6876716755613685566}
+  sinkAnim: enemy_large_boat_sink
 --- !u!136 &3249493560424023936
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -113,6 +115,25 @@ CapsuleCollider:
   m_Height: 80
   m_Direction: 2
   m_Center: {x: 0, y: 15, z: 0}
+--- !u!95 &7503745443551512579
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1708710551032043359}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3a45f9213ed06534c9d29cf43cbb31aa, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5297965660539676208
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,6 +618,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6574440006330165242}
     m_Modifications:
+    - target: {fileID: 1193878147501301170, guid: 19dcfc84d06a8b2478e4027776311bbe,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193878147501301170, guid: 19dcfc84d06a8b2478e4027776311bbe,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193878147501301170, guid: 19dcfc84d06a8b2478e4027776311bbe,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193878147501301170, guid: 19dcfc84d06a8b2478e4027776311bbe,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 2454665521280352023, guid: 19dcfc84d06a8b2478e4027776311bbe,
         type: 3}
       propertyPath: m_Name
@@ -694,6 +735,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6574440006330165242}
     m_Modifications:
+    - target: {fileID: 1193878147501301170, guid: 19dcfc84d06a8b2478e4027776311bbe,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193878147501301170, guid: 19dcfc84d06a8b2478e4027776311bbe,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193878147501301170, guid: 19dcfc84d06a8b2478e4027776311bbe,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193878147501301170, guid: 19dcfc84d06a8b2478e4027776311bbe,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
     - target: {fileID: 2454665521280352023, guid: 19dcfc84d06a8b2478e4027776311bbe,
         type: 3}
       propertyPath: m_Name

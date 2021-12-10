@@ -8,10 +8,15 @@ public class EnemyShip : Enemy
     public CannonSystem cannonSystem;
     public DropSystem dropSystem;
 
+    [Header("Animation")] 
+    public string sinkAnim;
+    
     private PlayerShip _playerShip;
+    private Animator _animator;
     private void Start()
     {
         _playerShip = FindObjectOfType<PlayerShip>();
+        _animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -26,7 +31,7 @@ public class EnemyShip : Enemy
         if (!isInRange || isBehindPlayer || cannonSystem.IsObstructed(_playerShip.transform.position)) 
             return;
         
-        cannonSystem.Fire(_playerShip.transform.position + Vector3.forward * _playerShip.forwardSpeed);
+        cannonSystem.Fire(_playerShip.transform.position + _playerShip.rigidbody.velocity);
     }
 
     public override void GetHit(int damage)
@@ -34,10 +39,14 @@ public class EnemyShip : Enemy
         lives -= damage;
         if (lives <= 0)
         {
-            // TODO sunk animation
-            dropSystem.DropReward();
-            GameObjectPoolController.Enqueue(gameObject.GetComponent<Poolable>());
+            _animator.Play(sinkAnim);
         }
+    }
+
+    public void Sink()
+    {
+        dropSystem.DropReward();
+        GameObjectPoolController.Enqueue(gameObject.GetComponent<Poolable>());
     }
 
     

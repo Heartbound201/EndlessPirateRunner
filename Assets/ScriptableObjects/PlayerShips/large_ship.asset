@@ -18,13 +18,13 @@ MonoBehaviour:
   cost: 1000
   sprite: {fileID: 21300000, guid: 25e5b8be8d1af6a4b9f678cb45790123, type: 3}
   lateralSpeedMin: 50
-  lateralSpeedMax: 80
+  lateralSpeedMax: 50
   lateralSpeed: 50
-  lateralSpeedLinearChange: 0.5
+  lateralSpeedLinearChange: 0
   forwardSpeedMin: 50
-  forwardSpeedMax: 100
+  forwardSpeedMax: 50
   forwardSpeed: 50
-  forwardSpeedLinearChange: 0.5
+  forwardSpeedLinearChange: 0
   lives: 5
   graceTime: 1
   scoreIncreasedPerSecond: 10
