@@ -9,9 +9,14 @@ public class MagnetCollectable : Collectable
     public override void Collect(PlayerShip ship)
     {
         base.Collect(ship);
+        base.StartCollection();
+        CollectionEffect();
+    }
+
+    protected override void CollectionEffect()
+    {
+        base.CollectionEffect();
         Debug.LogFormat("Magnet booster activated for {0} seconds with size {1}", duration, sizeMultiplier);
-        ship.collectorSystem.ChangeSize(sizeMultiplier, duration);
-        // TODO animate
-        GameObjectPoolController.Enqueue(gameObject.GetComponent<Poolable>());
+        PlayerShip.collectorSystem.ChangeSize(sizeMultiplier, duration);
     }
 }

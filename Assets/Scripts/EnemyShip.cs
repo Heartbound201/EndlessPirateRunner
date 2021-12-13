@@ -28,7 +28,7 @@ public class EnemyShip : Enemy
         bool isInRange = Vector3.Distance(transform.position, _playerShip.transform.position) < cannonSystem.targetIndicatorRadius;
         bool isBehindPlayer = _playerShip.transform.position.z > transform.position.z;
         
-        if (!isInRange || isBehindPlayer || cannonSystem.IsObstructed(_playerShip.transform.position)) 
+        if (lives > 0 && (!isInRange || isBehindPlayer || cannonSystem.IsObstructed(_playerShip.transform.position))) 
             return;
         
         cannonSystem.Fire(_playerShip.transform.position + _playerShip.rigidbody.velocity);

@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 2676145445179121035}
   - component: {fileID: 348653191928487959}
   - component: {fileID: 1292300080440528728}
+  - component: {fileID: 1235503293310724383}
   m_Layer: 0
   m_Name: Shield
   m_TagString: Untagged
@@ -158,7 +159,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectionSfx: {fileID: 11400000, guid: ba3100fca8ab6f045a11d8dcc5902422, type: 2}
+  gatherAnim: collectable_gather
   duration: 10
+--- !u!95 &1235503293310724383
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5363063186765604708}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c30e7fa08530e3040b13b9e0f15073c6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7298065695336543134
 GameObject:
   m_ObjectHideFlags: 0

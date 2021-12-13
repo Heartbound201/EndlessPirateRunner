@@ -273,6 +273,7 @@ GameObject:
   - component: {fileID: 1057105815546094210}
   - component: {fileID: 1521199984879933568}
   - component: {fileID: 5262036056092746293}
+  - component: {fileID: 296248317128149515}
   m_Layer: 0
   m_Name: Chest
   m_TagString: Untagged
@@ -325,6 +326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectionSfx: {fileID: 11400000, guid: ba3100fca8ab6f045a11d8dcc5902422, type: 2}
+  gatherAnim: collectable_gather
   amount: 100
 --- !u!65 &5262036056092746293
 BoxCollider:
@@ -339,6 +341,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.15, y: 5.189444, z: 6.332252}
   m_Center: {x: 0, y: 3.9, z: -0.016125917}
+--- !u!95 &296248317128149515
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8205960017158668500}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c30e7fa08530e3040b13b9e0f15073c6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &7292432860686517994
 PrefabInstance:
   m_ObjectHideFlags: 0
