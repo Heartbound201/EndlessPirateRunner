@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 
-public class EntityPrototype : ScriptableObject
+public abstract class EntityPrototype : ScriptableObject
 {
     public string poolKey;
     public GameObject prefab;
+    
+    public abstract GameObject Build(GameObject obj);
 }

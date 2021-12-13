@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 614001463374716053}
   - component: {fileID: 4173145096982409030}
   - component: {fileID: 6198693614633501944}
-  - component: {fileID: 7697202245628120390}
+  - component: {fileID: 2864025973455999082}
   m_Layer: 6
   m_Name: Rock
   m_TagString: Untagged
@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collisionDamage: 1
---- !u!136 &7697202245628120390
+--- !u!136 &2864025973455999082
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -73,10 +73,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 25
-  m_Height: 80
+  m_Radius: 30.9
+  m_Height: 116.2
   m_Direction: 1
-  m_Center: {x: 0, y: 20, z: 0}
+  m_Center: {x: 2.83, y: 25.08, z: 0}
 --- !u!1 &4978958070860676742
 GameObject:
   m_ObjectHideFlags: 0

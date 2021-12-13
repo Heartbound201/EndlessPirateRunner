@@ -37,7 +37,7 @@ public class GameState : State
         // ScrollingPlane.Instance.Enabled = false;
         EntityGenerator.Instance.Enabled = false;
         WeatherGenerator.Instance.Enabled = false;
-        Time.timeScale = 0;
+        // Time.timeScale = 0;
         
         base.ExitState();
     }

@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4407720394179130441}
   - component: {fileID: -6341025186214490949}
   - component: {fileID: 5828423004746003488}
-  - component: {fileID: 3280661378447524152}
   m_Layer: 0
   m_Name: ExplosiveBarrel
   m_TagString: Untagged
@@ -90,7 +89,7 @@ Animator:
   m_GameObject: {fileID: 1869448385745014714}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f8a12c433e5344a4fb3888a6905ed7bc, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2c1b52f249b784441b5cade0b3631b5a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -99,21 +98,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!111 &3280661378447524152
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1869448385745014714}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 3101d0d84d554ce4fb29d35e116daabe, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!1 &3044022926782054363
 GameObject:
   m_ObjectHideFlags: 0

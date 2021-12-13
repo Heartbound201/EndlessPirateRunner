@@ -14,3 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolKey: entity.enemy1
   prefab: {fileID: 1708710551032043359, guid: 793fdc6b4f2a1da4696b70e8d6120e54, type: 3}
+  lives: 1
+  drops:
+  - item: {fileID: 11400000, guid: f2c764fcecbf0bb448f0af546f4993bd, type: 2}
+    weight: 1
+  - item: {fileID: 11400000, guid: 696402716510a6247bfe2aaeea3bd4e9, type: 2}
+    weight: 1
+  - item: {fileID: 11400000, guid: 0cf967ecddd6f8e4db66556a1ea1e709, type: 2}
+    weight: 1
+  - item: {fileID: 11400000, guid: 4643f2eca703cd440995281242f6057b, type: 2}
+    weight: 1

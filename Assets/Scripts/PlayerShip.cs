@@ -11,26 +11,40 @@ public class PlayerShip : Entity, IDamageable
 
     public PlayerData playerData;
     
-    public float lateralSpeed;
-    public float forwardSpeed;
     public int maxLives;
     public float graceTime;
     public int scoreIncreasedPerSecond;
 
+    public float lateralSpeedMin;
+    public float lateralSpeedMax;
+    public float lateralSpeed;
+    public float lateralSpeedLinearChange;
+    
+    public float forwardSpeedMin;
+    public float forwardSpeedMax;
+    public float forwardSpeed;
+    public float forwardSpeedLinearChange;
+
     public CannonSystem cannonSystem;
     public CollectorSystem collectorSystem;
-    public Renderer renderer;
     public Rigidbody rigidbody;
 
+    [Header("Animation")] 
+    public string hitAnim;
+    public string invulAnim;
+    public string sinkAnim;
+    
     private bool _canMove = false;
     private bool _isInvulnerable = false;
+    private bool _isInGrace = false;
     private bool _isIncrementingScore = false;
-    private Color _originalColor;
+    private Animator _animator;
+    
 
     private void Start()
     {
         collectorSystem.ship = this;
-        _originalColor = renderer.material.color;
+        _animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -50,7 +64,7 @@ public class PlayerShip : Entity, IDamageable
             {
                 cannonSystem.AimAt(new Vector3(axisHorCannon, 0, axisVerCannon));
             }
-            else
+            else if (CrossPlatformInputManager.GetButtonUp("Cannon"))
             {
                 cannonSystem.Fire();
             }
@@ -66,8 +80,8 @@ public class PlayerShip : Entity, IDamageable
     {
         if(!_canMove) return;
         var axis = CrossPlatformInputManager.GetAxis("Horizontal");
-        Vector3 forwardVelocity = Vector3.forward * forwardSpeed;
-        Vector3 lateralVelocity = Vector3.right * axis * lateralSpeed;
+        Vector3 forwardVelocity = Vector3.forward * ChangeByDistance(forwardSpeed, forwardSpeedLinearChange, playerData.score.Value, forwardSpeedMin, forwardSpeedMax);
+        Vector3 lateralVelocity = Vector3.right * axis * ChangeByDistance(lateralSpeed, lateralSpeedLinearChange, playerData.score.Value, lateralSpeedMin, lateralSpeedMax);
         rigidbody.velocity = forwardVelocity + lateralVelocity;
     }
 
@@ -84,6 +98,14 @@ public class PlayerShip : Entity, IDamageable
             Obstacle obstacle = obj.GetComponent<Obstacle>();
             obstacle.Collide(this);
         }
+        if(_isInvulnerable)
+        {
+            EnemyShip damageable = other.gameObject.GetComponent<EnemyShip>();
+            if (damageable != null)
+            {
+                damageable.GetHit(1);
+            }
+        }
     }
     
     private IEnumerator IncrementScore()
@@ -96,27 +118,38 @@ public class PlayerShip : Entity, IDamageable
 
     public void GetHit(int damage)
     {
-        if(_isInvulnerable) return;
-        StartCoroutine(FlashRed());
+        if(_isInvulnerable || _isInGrace) return;
         playerData.lives.Value -= damage;
+        StartCoroutine(FlashRed());
         if (playerData.lives.Value <= 0)
         {
-            // TODO sunk animation
-            OnFatalHit?.Invoke();
-            Destroy(gameObject);
+            _canMove = false;
+            rigidbody.velocity = Vector3.zero;
+            _animator.Play(sinkAnim);
         }
+    }
 
-
+    public void Sink()
+    {
+        OnFatalHit?.Invoke();
+        Destroy(gameObject);
+    }
+    
+    private float ChangeByDistance(float value, float decrement, float dist, float min, float max)
+    {
+        return Mathf.Clamp(value + dist * decrement, min, max);
     }
 
     private IEnumerator FlashRed()
     {
-        _isInvulnerable = true;
-        var material = renderer.material;
-        material.color = Color.red;
+        _isInGrace = true;
+        _animator.Play(hitAnim);
         yield return new WaitForSeconds(graceTime);
-        material.color = _originalColor;
-        _isInvulnerable = false;
+        if (playerData.lives.Value > 0)
+        {
+            _animator.Play("default");
+        }
+        _isInGrace = false;
     }
     
     public void GiveInvulnerability(float duration)
@@ -127,7 +160,9 @@ public class PlayerShip : Entity, IDamageable
     private IEnumerator DoGiveInvulnerability(float duration)
     {
         _isInvulnerable = true;
+        _animator.Play(invulAnim);
         yield return new WaitForSeconds(duration);
+        _animator.Play("default");
         _isInvulnerable = false;
     }
 }

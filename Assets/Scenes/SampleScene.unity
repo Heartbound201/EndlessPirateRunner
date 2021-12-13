@@ -152,7 +152,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2000, y: 500, z: 50}
+  m_Size: {x: 10000, y: 500, z: 50}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &8007955
 Transform:
@@ -1929,11 +1929,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 89872232}
-  duration: 10
+  duration: 5
   warningMessage: Beware of the wind!
   warningText: {fileID: 1749838978}
   windStrengthMin: 500
-  windStrengthMax: 1000
+  windStrengthMax: 3500
 --- !u!1 &368348967
 GameObject:
   m_ObjectHideFlags: 0
@@ -5704,7 +5704,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1540158790
 Transform:
   m_ObjectHideFlags: 0
@@ -6026,6 +6026,7 @@ GameObject:
   - component: {fileID: 1699091737}
   - component: {fileID: 1699091736}
   - component: {fileID: 1699091735}
+  - component: {fileID: 1699091738}
   m_Layer: 0
   m_Name: Sea
   m_TagString: Untagged
@@ -6041,7 +6042,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1699091733}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.1, z: 0}
   m_LocalScale: {x: 500, y: 1, z: 500}
   m_Children: []
   m_Father: {fileID: 89872233}
@@ -6108,6 +6109,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1699091733}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1699091738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699091733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d41cc6be5a925464e90d0fb1beef107d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amplitude: 1
+  length: 2
+  speed: 1
+  offset: 0
 --- !u!1 &1720372438
 GameObject:
   m_ObjectHideFlags: 0
@@ -6605,29 +6622,23 @@ MonoBehaviour:
   islePrefab: {fileID: 1154080528151886237, guid: cf3a6ccaf88e9004985997cf16a54046,
     type: 3}
   entities:
-  - data: {fileID: 11400000, guid: 696402716510a6247bfe2aaeea3bd4e9, type: 2}
-    minScore: 0
-    weight: 3
   - data: {fileID: 11400000, guid: 4643f2eca703cd440995281242f6057b, type: 2}
-    minScore: 500
+    minScore: 1000
     weight: 1
   - data: {fileID: 11400000, guid: 81dc0983bd1bf2e45b1388280e8a54ac, type: 2}
-    minScore: 100
-    weight: 3
+    minScore: 0
+    weight: 5
   - data: {fileID: 11400000, guid: f869f462a69077941b2c48a2b734fa10, type: 2}
-    minScore: 400
-    weight: 2
+    minScore: 250
+    weight: 5
   - data: {fileID: 11400000, guid: 446ec2dfc89f2c14cbfaf7d1e29cf47a, type: 2}
-    minScore: 400
-    weight: 2
+    minScore: 500
+    weight: 5
   - data: {fileID: 11400000, guid: 161c92c98e0e1d4459e2ca7595035974, type: 2}
-    minScore: 500
-    weight: 1
-  - data: {fileID: 11400000, guid: f2c764fcecbf0bb448f0af546f4993bd, type: 2}
-    minScore: 500
-    weight: 1
-  - data: {fileID: 11400000, guid: da62b2f1ae7a10d4cb32c9d9dcabedfe, type: 2}
-    minScore: 500
+    minScore: 0
+    weight: 3
+  - data: {fileID: 11400000, guid: 696402716510a6247bfe2aaeea3bd4e9, type: 2}
+    minScore: 100
     weight: 1
   quantityMin: 50
   quantityMax: 300
@@ -6637,7 +6648,7 @@ MonoBehaviour:
   frequencyMax: 3
   frequency: 3
   frequencyLinearChange: 0
-  generatorWidth: 500
+  generatorWidth: 1500
   generatorDepth: 100
 --- !u!1 &1828545027
 GameObject:
@@ -6729,7 +6740,7 @@ MonoBehaviour:
     m_Right: 5
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 3
+  m_ChildAlignment: 4
   m_Spacing: 5
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -7353,7 +7364,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1957672626
 Transform:
   m_ObjectHideFlags: 0
@@ -7785,7 +7796,6 @@ MonoBehaviour:
   buyItemPanel: {fileID: 1861191556}
   currentGoldText: {fileID: 1288911972}
   availableShips:
-  - {fileID: 11400000, guid: e71f8c9c778cffe42b931d74ee5a1af3, type: 2}
   - {fileID: 11400000, guid: 31b4bfd7de100af4f9bb613c205631c2, type: 2}
   - {fileID: 11400000, guid: 1d73b522f8561634e8702d05fe4d3329, type: 2}
 --- !u!114 &2144944147

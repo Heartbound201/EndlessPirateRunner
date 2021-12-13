@@ -12,14 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 856f9958d364e7b4cadedbec2e7174e7, type: 3}
   m_Name: medium_ship
   m_EditorClassIdentifier: 
+  poolKey: 
   prefab: {fileID: 2508299821562689672, guid: 5b4c9b2fe2c05434ca6d623238bf519b, type: 3}
+  playerData: {fileID: 11400000, guid: e3598ac255708414d90af84270ef2028, type: 2}
   cost: 500
   sprite: {fileID: 21300000, guid: 10d867f181e4ca44aad1f49e399a0fb1, type: 3}
-  hasCannons: 0
+  lateralSpeedMin: 50
+  lateralSpeedMax: 50
   lateralSpeed: 50
+  lateralSpeedLinearChange: 0
+  forwardSpeedMin: 50
+  forwardSpeedMax: 50
   forwardSpeed: 50
+  forwardSpeedLinearChange: 0
   lives: 3
   graceTime: 1
   scoreIncreasedPerSecond: 10
-  firingCooldown: 0
-  targetIndicatorSpeed: 0
+  hasCannons: 1
+  firingCooldown: 1
+  targetIndicatorSpeed: 1
+  targetIndicatorRadius: 180

@@ -41,9 +41,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6966700019004202946}
   - component: {fileID: -5435529112774478407}
-  - component: {fileID: 9064479098493952465}
   - component: {fileID: 4887947661967393255}
   - component: {fileID: 4186768551696542452}
+  - component: {fileID: 275649067302183547}
+  - component: {fileID: 614818881153113446}
+  - component: {fileID: 3733312682696335315}
   m_Layer: 6
   m_Name: DestroyableRock
   m_TagString: Untagged
@@ -82,19 +84,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!65 &9064479098493952465
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3419584974126722619}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 53.85, y: 69.8, z: 12.8}
-  m_Center: {x: 0, y: 45.71, z: 0}
 --- !u!114 &4887947661967393255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,9 +111,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01ea27631423448b805ecf9ffe16e665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drops:
-  - item: {fileID: 11400000, guid: 4643f2eca703cd440995281242f6057b, type: 2}
-    weight: 1
+  drops: []
+--- !u!136 &275649067302183547
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3419584974126722619}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 21.74
+  m_Height: 52.09
+  m_Direction: 1
+  m_Center: {x: -13.45, y: 4.7, z: 0}
+--- !u!136 &614818881153113446
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3419584974126722619}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 18.3
+  m_Height: 105.63
+  m_Direction: 1
+  m_Center: {x: 4.66, y: 35.15, z: -4.51}
+--- !u!136 &3733312682696335315
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3419584974126722619}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 12.56
+  m_Height: 31.85
+  m_Direction: 1
+  m_Center: {x: 22.53, y: 3.92, z: 3.72}
 --- !u!1001 &314497029882681289
 PrefabInstance:
   m_ObjectHideFlags: 0

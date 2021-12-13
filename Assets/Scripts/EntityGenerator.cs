@@ -105,8 +105,8 @@ public class EntityGenerator : MonoSingleton<EntityGenerator>
         obj.transform.position = new Vector3(pos.x, 0, pos.y);
         obj.gameObject.SetActive(true);
         obj.transform.SetParent(environment);
-        
-        return obj.gameObject;
+
+        return randomEntity.Build(obj.gameObject);
     }
 
     private EntityPrototype PickRandomEntity(List<SpawnData<EntityPrototype>> spawnData)
