@@ -101,6 +101,7 @@ MonoBehaviour:
   cannonSystem: {fileID: 5318458065060799390}
   dropSystem: {fileID: 6876716755613685566}
   sinkAnim: enemy_large_boat_sink
+  idleAnim: enemy_large_boat_idle
 --- !u!136 &3249493560424023936
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -292,6 +293,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 64
+  errorMargin: 100
 --- !u!1 &8692795828227650635
 GameObject:
   m_ObjectHideFlags: 0

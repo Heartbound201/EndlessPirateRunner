@@ -64,7 +64,7 @@ public class PlayerShip : Entity, IDamageable
             {
                 cannonSystem.AimAt(new Vector3(axisHorCannon, 0, axisVerCannon));
             }
-            else if (CrossPlatformInputManager.GetButtonUp("Cannon"))
+            else if (CrossPlatformInputManager.GetButtonUp("Cannon") && playerData.lives.Value > 0)
             {
                 cannonSystem.Fire();
             }

@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyShip : Enemy
 {
@@ -10,9 +11,11 @@ public class EnemyShip : Enemy
 
     [Header("Animation")] 
     public string sinkAnim;
+    public string idleAnim;
     
     private PlayerShip _playerShip;
     private Animator _animator;
+    
     private void Start()
     {
         _playerShip = FindObjectOfType<PlayerShip>();
@@ -30,8 +33,9 @@ public class EnemyShip : Enemy
         
         if (lives > 0 && (!isInRange || isBehindPlayer || cannonSystem.IsObstructed(_playerShip.transform.position))) 
             return;
-        
+
         cannonSystem.Fire(_playerShip.transform.position + _playerShip.rigidbody.velocity);
+        
     }
 
     public override void GetHit(int damage)
@@ -45,6 +49,7 @@ public class EnemyShip : Enemy
 
     public void Sink()
     {
+        _animator.Play(idleAnim);
         dropSystem.DropReward();
         GameObjectPoolController.Enqueue(gameObject.GetComponent<Poolable>());
     }

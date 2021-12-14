@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.114631206, g: 0.32985252, b: 0.71225923, a: 1}
+  m_IndirectSpecularColor: {r: 0.37578237, g: 0.61411345, b: 0.8668405, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1718,6 +1718,7 @@ GameObject:
   - component: {fileID: 315910379}
   - component: {fileID: 315910378}
   - component: {fileID: 315910377}
+  - component: {fileID: 315910381}
   m_Layer: 5
   m_Name: CustomMobileSingleStickControl
   m_TagString: Untagged
@@ -1795,6 +1796,29 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &315910381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315910376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
 --- !u!1 &351227314
 GameObject:
   m_ObjectHideFlags: 0
@@ -5336,6 +5360,7 @@ GameObject:
   - component: {fileID: 1422099091}
   - component: {fileID: 1422099090}
   - component: {fileID: 1422099089}
+  - component: {fileID: 1422099093}
   m_Layer: 5
   m_Name: CustomMobileSingleStickControlCannon
   m_TagString: Untagged
@@ -5413,6 +5438,29 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1422099093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422099088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
 --- !u!1 &1423940679
 GameObject:
   m_ObjectHideFlags: 0
@@ -6644,12 +6692,12 @@ MonoBehaviour:
   quantityMax: 300
   quantity: 300
   quantityLinearChange: -0.05
-  frequencyMin: 3
-  frequencyMax: 3
-  frequency: 3
+  frequencyMin: 25
+  frequencyMax: 25
+  frequency: 25
   frequencyLinearChange: 0
   generatorWidth: 1500
-  generatorDepth: 100
+  generatorDepth: 1000
 --- !u!1 &1828545027
 GameObject:
   m_ObjectHideFlags: 0

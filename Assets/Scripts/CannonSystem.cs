@@ -12,6 +12,7 @@ public class CannonSystem : MonoBehaviour
     public float targetIndicatorRadius;
     public LaunchArcRenderer arcRenderer;
     public LayerMask layerMask;
+    public float errorMargin;
 
     private GameObject _targetIndicator;
     private bool _isFiring;
@@ -116,7 +117,12 @@ public class CannonSystem : MonoBehaviour
     {
         _isFiring = true;
         Cannon cannon = SelectClosestCannon(target);
-        cannon.Fire(target);
+        
+        
+        Vector2 shootingError = Random.insideUnitCircle * errorMargin;
+        Debug.Log("shooting at " + (target + new Vector3(shootingError.x, 0, shootingError.y)) + " with an error of " + shootingError);
+        
+        cannon.Fire(target + new Vector3(shootingError.x, 0, shootingError.y));
         yield return new WaitForSeconds(firingCooldown);
         _isFiring = false;
     }
@@ -164,7 +170,7 @@ public class CannonSystem : MonoBehaviour
             out RaycastHit hit, targetIndicatorRadius, layerMask))
         {
             Debug.DrawRay(cannon.transform.position, target - cannon.transform.position, Color.yellow, 3f);
-            Debug.Log("Cannon Obstructed from " + hit.collider.name);
+            Debug.Log("Cannon Obstructed by " + hit.collider.name);
             if (hit.collider.GetComponent<PlayerShip>())
             {
                 return false;

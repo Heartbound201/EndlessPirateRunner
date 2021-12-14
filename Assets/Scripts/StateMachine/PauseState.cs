@@ -8,6 +8,8 @@ public class PauseState : State
         
         owner.PauseView.OnResumeClicked += ResumeClicked;
         owner.PauseView.OnMenuClicked += MenuClicked;
+
+        Time.timeScale = 0;
         
         owner.PauseView.Show();
     }
@@ -17,6 +19,8 @@ public class PauseState : State
         owner.PauseView.Hide();
         owner.PauseView.OnResumeClicked -= ResumeClicked;
         owner.PauseView.OnMenuClicked -= MenuClicked;
+
+        Time.timeScale = 1;
         
         base.ExitState();
     }
