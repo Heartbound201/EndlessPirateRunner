@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.37578237, g: 0.61411345, b: 0.8668405, a: 1}
+  m_IndirectSpecularColor: {r: 0.114631206, g: 0.32985252, b: 0.71225923, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6670,13 +6670,10 @@ MonoBehaviour:
   islePrefab: {fileID: 1154080528151886237, guid: cf3a6ccaf88e9004985997cf16a54046,
     type: 3}
   entities:
-  - data: {fileID: 11400000, guid: 4643f2eca703cd440995281242f6057b, type: 2}
-    minScore: 1000
-    weight: 1
   - data: {fileID: 11400000, guid: 81dc0983bd1bf2e45b1388280e8a54ac, type: 2}
     minScore: 0
     weight: 5
-  - data: {fileID: 11400000, guid: f869f462a69077941b2c48a2b734fa10, type: 2}
+  - data: {fileID: 11400000, guid: db42f1ed2b1b8ac4296e3fd16c29d5d6, type: 2}
     minScore: 250
     weight: 5
   - data: {fileID: 11400000, guid: 446ec2dfc89f2c14cbfaf7d1e29cf47a, type: 2}
@@ -6692,9 +6689,9 @@ MonoBehaviour:
   quantityMax: 300
   quantity: 300
   quantityLinearChange: -0.05
-  frequencyMin: 25
+  frequencyMin: 20
   frequencyMax: 25
-  frequency: 25
+  frequency: 0.1
   frequencyLinearChange: 0
   generatorWidth: 1500
   generatorDepth: 1000

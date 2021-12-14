@@ -24,9 +24,9 @@ public class GameView : View
     private List<GameObject> _lives = new List<GameObject>();
     private Color _lifePrefabOriginalColor;
 
-    public void MoveCamera()
+    public void MoveCamera(Vector3 playerPos)
     {
-        Camera.main.transform.position = cameraPosition;
+        Camera.main.transform.position = playerPos + cameraPosition;
         Camera.main.transform.rotation = cameraRotation;
         
     }
