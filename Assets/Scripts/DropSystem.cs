@@ -9,6 +9,8 @@ public class DropSystem : MonoBehaviour
 
     private List<int> _prob = new List<int>();
 
+    private Transform _env;
+
     private void Awake()
     {
         foreach (var drop in drops)
@@ -22,6 +24,8 @@ public class DropSystem : MonoBehaviour
 
     private void Start()
     {
+        _env = GameObject.FindGameObjectWithTag("Environment").transform;
+
         for (int i = 0; i < drops.Count; i++)
         {
             for (int j = 0; j < drops[i].weight; j++)
@@ -42,6 +46,7 @@ public class DropSystem : MonoBehaviour
             var spawnPos = transform.position;
             obj.transform.position = new Vector3(spawnPos.x, 0, spawnPos.z);
             obj.gameObject.SetActive(true);
+            obj.transform.SetParent(_env);
         }
     }
 

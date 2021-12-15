@@ -54,9 +54,23 @@ public class PlayerShip : Entity, IDamageable
         {
             StartCoroutine(IncrementScore());
         }
-        
         // aim cannon
         if(cannonSystem)
+        {
+            if (CrossPlatformInputManager.GetButtonUp("Cannon") && playerData.lives.Value > 0)
+            {
+                cannonSystem.Fire();
+            }
+        }
+       
+    }
+
+    private void FixedUpdate()
+    {
+        Move();
+        
+        // aim cannon
+        if (cannonSystem)
         {
             var axisHorCannon = CrossPlatformInputManager.GetAxis("HorizontalCannon");
             var axisVerCannon = CrossPlatformInputManager.GetAxis("VerticalCannon");
@@ -64,16 +78,7 @@ public class PlayerShip : Entity, IDamageable
             {
                 cannonSystem.AimAt(new Vector3(axisHorCannon, 0, axisVerCannon));
             }
-            else if (CrossPlatformInputManager.GetButtonUp("Cannon") && playerData.lives.Value > 0)
-            {
-                cannonSystem.Fire();
-            }
         }
-    }
-
-    private void FixedUpdate()
-    {
-        Move();
     }
 
     private void Move()
