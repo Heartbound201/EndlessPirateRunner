@@ -35,7 +35,7 @@ public class EnemyShip : Enemy
         bool isInRange = distance < cannonSystem.targetIndicatorRadius;
         bool isBehindPlayer = _playerShip.transform.position.z > transform.position.z;
         
-        if (lives > 0 && (!isInRange || isBehindPlayer || cannonSystem.IsObstructed(_playerShip.transform.position))) 
+        if (lives <= 0 || !isInRange || isBehindPlayer || cannonSystem.IsObstructed(_playerShip.transform.position)) 
             return;
 
         cannonSystem.Fire(_playerShip.transform.position + new Vector3(0, 0, _playerShip.rigidbody.velocity.z));
@@ -47,6 +47,7 @@ public class EnemyShip : Enemy
         lives -= damage;
         if (lives <= 0)
         {
+            collisionDamage = 0;
             _animator.Play(sinkAnim);
             dropSystem.DropReward();
         }

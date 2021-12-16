@@ -2897,7 +2897,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allPlayerShips:
-  - {fileID: 11400000, guid: e71f8c9c778cffe42b931d74ee5a1af3, type: 2}
   - {fileID: 11400000, guid: 31b4bfd7de100af4f9bb613c205631c2, type: 2}
   - {fileID: 11400000, guid: 1d73b522f8561634e8702d05fe4d3329, type: 2}
   playerData: {fileID: 11400000, guid: e3598ac255708414d90af84270ef2028, type: 2}
@@ -6423,7 +6422,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1806785511}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 500}
+  m_LocalPosition: {x: 0, y: 0, z: 800}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 89872233}
@@ -6450,27 +6449,27 @@ MonoBehaviour:
     minScore: 0
     weight: 5
   - data: {fileID: 11400000, guid: db42f1ed2b1b8ac4296e3fd16c29d5d6, type: 2}
-    minScore: 250
+    minScore: 0
     weight: 5
   - data: {fileID: 11400000, guid: 446ec2dfc89f2c14cbfaf7d1e29cf47a, type: 2}
     minScore: 500
-    weight: 5
+    weight: 1
   - data: {fileID: 11400000, guid: 161c92c98e0e1d4459e2ca7595035974, type: 2}
     minScore: 0
     weight: 3
   - data: {fileID: 11400000, guid: 696402716510a6247bfe2aaeea3bd4e9, type: 2}
-    minScore: 100
+    minScore: 500
     weight: 1
-  quantityMin: 50
+  quantityMin: 150
   quantityMax: 300
   quantity: 300
   quantityLinearChange: -0.05
-  frequencyMin: 20
-  frequencyMax: 25
-  frequency: 0.1
+  frequencyMin: 26
+  frequencyMax: 26
+  frequency: 26
   frequencyLinearChange: 0
   generatorWidth: 2000
-  generatorDepth: 1000
+  generatorDepth: 1500
 --- !u!1 &1828545027
 GameObject:
   m_ObjectHideFlags: 0
