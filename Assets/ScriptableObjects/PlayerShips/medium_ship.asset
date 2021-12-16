@@ -30,5 +30,5 @@ MonoBehaviour:
   scoreIncreasedPerSecond: 10
   hasCannons: 1
   firingCooldown: 1
-  targetIndicatorSpeed: 5
+  targetIndicatorSpeed: 4
   targetIndicatorRadius: 475
