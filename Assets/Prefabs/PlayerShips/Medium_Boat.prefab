@@ -233,7 +233,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 20.98, y: 52.3, z: 31.94}
+  m_Size: {x: 17.5, y: 47.1, z: 31.94}
   m_Center: {x: 0, y: 17.66, z: -2.75}
 --- !u!95 &6928353855538471878
 Animator:
@@ -605,6 +605,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 64
+  errorMargin: 0
 --- !u!1001 &1056682014933013619
 PrefabInstance:
   m_ObjectHideFlags: 0

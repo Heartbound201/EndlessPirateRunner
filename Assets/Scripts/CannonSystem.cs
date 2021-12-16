@@ -27,7 +27,7 @@ public class CannonSystem : MonoBehaviour
     private void Start()
     {
         _targetIndicator = Instantiate(targetIndicatorPrefab, transform);
-        // _lr = GetComponent<LineRenderer>();
+        // _lr = arcRenderer.GetComponent<LineRenderer>();
         // _lr.positionCount = _dotsNumber;
         ResetTargetIndicator();
     }
@@ -76,7 +76,7 @@ public class CannonSystem : MonoBehaviour
         _targetIndicator.transform.position = targetPosition;
 
         // simulate arc
-        // UpdateTrajectory(cannon.transform.position, cannon.BallisticVelocity(clampedPosition, cannon.firingAngle));
+        // UpdateTrajectory(cannon.transform.position, cannon.BallisticVelocity(_targetIndicator.transform.position, cannon.firingAngle));
         // arcRenderer.RenderArc(100, 10);
     }
 

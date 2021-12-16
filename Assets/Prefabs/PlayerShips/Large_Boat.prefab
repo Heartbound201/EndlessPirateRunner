@@ -1125,10 +1125,12 @@ MonoBehaviour:
     type: 3}
   targetIndicatorSpeed: 1
   targetIndicatorRadius: 200
+  targetIndicatorRadiusMin: 50
   arcRenderer: {fileID: 864868951020592995}
   layerMask:
     serializedVersion: 2
     m_Bits: 64
+  errorMargin: 0
 --- !u!1 &5048486229745766130
 GameObject:
   m_ObjectHideFlags: 0

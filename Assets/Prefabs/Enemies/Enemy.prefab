@@ -112,8 +112,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 15
-  m_Height: 80
+  m_Radius: 14
+  m_Height: 73.4
   m_Direction: 2
   m_Center: {x: 0, y: 15, z: 0}
 --- !u!95 &7503745443551512579
@@ -293,7 +293,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 64
-  errorMargin: 100
+  errorMargin: 50
 --- !u!1 &8692795828227650635
 GameObject:
   m_ObjectHideFlags: 0
