@@ -31,4 +31,4 @@ MonoBehaviour:
   hasCannons: 1
   firingCooldown: 1
   targetIndicatorSpeed: 2
-  targetIndicatorRadius: 180
+  targetIndicatorRadius: 400

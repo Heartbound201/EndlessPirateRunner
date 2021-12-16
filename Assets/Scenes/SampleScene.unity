@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.37578237, g: 0.61411345, b: 0.8668405, a: 1}
+  m_IndirectSpecularColor: {r: 0.114631206, g: 0.32985252, b: 0.71225923, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1195,8 +1195,8 @@ MonoBehaviour:
   poolKey: LifeSprite
   LifePrefab: {fileID: 4458817352298766058, guid: e5d3f7337e8abdd4f9fc387b4b6dbaf1,
     type: 3}
-  cameraPosition: {x: 0, y: 175, z: -100}
-  cameraRotation: {x: 0.34202012, y: 0, z: 0, w: 0.9396926}
+  cameraPosition: {x: 0, y: 175, z: -140}
+  cameraRotation: {x: 0.25881904, y: 0, z: 0, w: 0.9659258}
 --- !u!114 &153073201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3505,8 +3505,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 500
+  near clip plane: 3
+  far clip plane: 700
   field of view: 60
   orthographic: 0
   orthographic size: 25
@@ -3532,13 +3532,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.3420201, y: 0, z: 0, w: 0.9396927}
-  m_LocalPosition: {x: 0, y: 175, z: -100}
+  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
+  m_LocalPosition: {x: 0, y: 175, z: -190}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 40, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3552,7 +3552,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 89872233}
-  Offset: {x: 0, y: 175, z: -100}
+  Offset: {x: 0, y: 175, z: -140}
   Damping: 5
 --- !u!1 &985973798
 GameObject:
@@ -5940,7 +5940,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1699091733}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d41cc6be5a925464e90d0fb1beef107d, type: 3}
   m_Name: 
@@ -6469,7 +6469,7 @@ MonoBehaviour:
   frequencyMax: 25
   frequency: 0.1
   frequencyLinearChange: 0
-  generatorWidth: 1500
+  generatorWidth: 2000
   generatorDepth: 1000
 --- !u!1 &1828545027
 GameObject:
