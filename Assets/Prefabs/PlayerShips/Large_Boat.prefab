@@ -473,7 +473,7 @@ MonoBehaviour:
   collectorSystem: {fileID: 6418084197775525778}
   rigidbody: {fileID: 4869876911078508194}
   hitAnim: large_boat_hit
-  invulAnim: large_boat_invuln
+  invulAnim: large_boat_invul
   sinkAnim: large_boat_sink
 --- !u!54 &4869876911078508194
 Rigidbody:
@@ -1125,7 +1125,6 @@ MonoBehaviour:
     type: 3}
   targetIndicatorSpeed: 1
   targetIndicatorRadius: 200
-  targetIndicatorRadiusMin: 50
   arcRenderer: {fileID: 864868951020592995}
   layerMask:
     serializedVersion: 2

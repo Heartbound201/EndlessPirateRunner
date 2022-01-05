@@ -4915,9 +4915,11 @@ MonoBehaviour:
   explosionPoolKey: Explosion
   explosion: {fileID: 6460561655989831488, guid: bad7b627db603474f8591858325e9703,
     type: 3}
+  hitAudio: {fileID: 11400000, guid: fe98ffee1871ceb47bb3e9eab293a810, type: 2}
   waterSplashPoolKey: WaterSplash
   waterSplash: {fileID: 5602288306624573635, guid: 845fd807b40dca546a2a3237f0f4b415,
     type: 3}
+  missAudio: {fileID: 11400000, guid: af0ff4074e40bf4418d275401a8b4e44, type: 2}
 --- !u!1 &7826699843866518253
 GameObject:
   m_ObjectHideFlags: 0

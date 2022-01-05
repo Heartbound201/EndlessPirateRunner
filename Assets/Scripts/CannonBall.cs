@@ -9,9 +9,11 @@ public class CannonBall : MonoBehaviour
     public float gravity;
     public string explosionPoolKey;
     public GameObject explosion;
+    public AudioClipSO hitAudio;
     // public AudioClipSO explosionSfx;
     public string waterSplashPoolKey;
     public GameObject waterSplash;
+    public AudioClipSO missAudio;
     // public AudioClipSO waterSplashSfx;
 
     private Rigidbody _rb;
@@ -36,14 +38,15 @@ public class CannonBall : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Poolable obj = GameObjectPoolController.Dequeue(explosionPoolKey);
+        obj.transform.position = transform.position;
+        obj.gameObject.SetActive(true);
         IDamageable damageable = other.gameObject.GetComponent<IDamageable>();
         if (damageable != null)
         {
             damageable.GetHit(damage);
+            AudioManager.Instance.PlaySFX(hitAudio);
         }
-        Poolable obj = GameObjectPoolController.Dequeue(explosionPoolKey);
-        obj.transform.position = transform.position;
-        obj.gameObject.SetActive(true);
         GameObjectPoolController.Enqueue(gameObject.GetComponent<Poolable>());
     }
 
@@ -59,6 +62,7 @@ public class CannonBall : MonoBehaviour
             Poolable obj = GameObjectPoolController.Dequeue(waterSplashPoolKey);
             obj.transform.position = transform.position;
             obj.gameObject.SetActive(true);
+            AudioManager.Instance.PlaySFX(missAudio);
             GameObjectPoolController.Enqueue(gameObject.GetComponent<Poolable>());
         }
     }

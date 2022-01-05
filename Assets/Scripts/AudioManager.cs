@@ -12,6 +12,7 @@ public class AudioManager : MonoSingleton<AudioManager>
     // TODO pool these
     public AudioSource musicEmitter;
     public AudioSource sfxEmitter;
+    public AudioSource weatherEmitter;
 
     public void SetMixerVolume(string key, float value)
     {
@@ -48,5 +49,15 @@ public class AudioManager : MonoSingleton<AudioManager>
         sfxEmitter.clip = audioClipSo.audioClip;
         // sfxEmitter.volume = GetMixerVolume(MIXER_PARAM_SFX_VOLUME);;
         sfxEmitter.Play();
+    }
+    public void PlayWeatherSFX(AudioClipSO audioClipSo)
+    {
+        weatherEmitter.clip = audioClipSo.audioClip;
+        // weatherEmitter.volume = GetMixerVolume(MIXER_PARAM_SFX_VOLUME);;
+        weatherEmitter.Play();
+    }
+    public void StopWeatherSFX()
+    {
+        weatherEmitter.Stop();
     }
 }

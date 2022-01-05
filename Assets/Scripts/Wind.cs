@@ -7,6 +7,7 @@ public class Wind : Weather
     public Text warningText;
     public int windStrengthMin;
     public int windStrengthMax;
+    public AudioClipSO windAudio;
     private Vector3 _windVelocity;
     private float _expiredTime;
 
@@ -43,11 +44,13 @@ public class Wind : Weather
         base.Show();
         warningText.text = warningMessage;
         warningText.gameObject.SetActive(true);
+        AudioManager.Instance.PlayWeatherSFX(windAudio);
     }
 
     public override void Hide()
     {
         base.Hide();
         warningText.gameObject.SetActive(false);
+        AudioManager.Instance.StopWeatherSFX();
     }
 }

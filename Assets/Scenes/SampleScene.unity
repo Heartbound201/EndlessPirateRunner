@@ -1847,6 +1847,7 @@ MonoBehaviour:
   warningText: {fileID: 1749838978}
   windStrengthMin: 500
   windStrengthMax: 3500
+  windAudio: {fileID: 11400000, guid: 5ddb3c19082ab64409376dffc37fada5, type: 2}
 --- !u!1 &368348967
 GameObject:
   m_ObjectHideFlags: 0

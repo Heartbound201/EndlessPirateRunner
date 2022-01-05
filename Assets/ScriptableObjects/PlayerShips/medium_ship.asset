@@ -15,7 +15,7 @@ MonoBehaviour:
   poolKey: 
   prefab: {fileID: 2508299821562689672, guid: 5b4c9b2fe2c05434ca6d623238bf519b, type: 3}
   playerData: {fileID: 11400000, guid: e3598ac255708414d90af84270ef2028, type: 2}
-  cost: 500
+  cost: 0
   sprite: {fileID: 21300000, guid: 10d867f181e4ca44aad1f49e399a0fb1, type: 3}
   lateralSpeedMin: 50
   lateralSpeedMax: 50
